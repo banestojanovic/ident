@@ -2,28 +2,28 @@
 
 namespace App\Models;
 
+use App\Enums\StaffRoleEnum;
+use App\Enums\StatusEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Spatie\Sluggable\SlugOptions;
 
-class Patient extends Model
+class Staff extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'old_id',
         'first_name',
         'last_name',
         'slug',
-        'address',
-        'city',
-        'phone',
-        'dob',
+        'role',
+        'status',
         'data',
     ];
 
     protected $casts = [
+        'role' => StaffRoleEnum::class,
+        'status' => StatusEnum::class,
         'data' => 'array',
     ];
 
@@ -34,8 +34,8 @@ class Patient extends Model
             ->saveSlugsTo('slug');
     }
 
-    public function records(): HasMany
+    public function getFullNameAttribute()
     {
-        return $this->hasMany(Record::class);
-    }
+        return ucfirst($this->first_name).' '.ucfirst($this->last_name);
+    }k
 }
