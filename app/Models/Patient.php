@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Spatie\Sluggable\SlugOptions;
 
 class Patient extends Model
@@ -34,8 +35,18 @@ class Patient extends Model
             ->saveSlugsTo('slug');
     }
 
+    public function getFullNameAttribute()
+    {
+        return ucfirst($this->first_name).' '.ucfirst($this->last_name);
+    }
+
     public function records(): HasMany
     {
         return $this->hasMany(Record::class);
+    }
+
+    public function lastRecord(): HasOne
+    {
+        return $this->hasOne(Record::class)->latest();
     }
 }

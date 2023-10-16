@@ -23,11 +23,19 @@ Route::get('/', function () {
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
     ]);
-});
+})->name('home');
 
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+//Route::get('/dashboard', function () {
+//    return Inertia::render('Dashboard');
+//})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/pacijenti', \App\Http\Controllers\IndexPatientsController::class)
+    ->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/pacijenti/{slug}', \App\Http\Controllers\ShowPatientController::class)
+    ->middleware(['auth', 'verified'])->name('patients.show');
+
+Route::get('/kalendar', \App\Http\Controllers\ShowCalendarController::class)
+    ->middleware(['auth', 'verified'])->name('calendar.show');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
