@@ -15,9 +15,7 @@ class ShowPatientController extends Controller
         if (is_numeric(request('slug'))) {
             $patient = Patient::with('records')->findOrFail(request('slug'));
         }
-        $patient = Patient::where('slug', request('slug'))->with('records', 'records.therapy')->firstOrFail();
-
-        $patient->history = $patient->records->groupBy('date')->reverse();
+        $patient = Patient::where('slug', request('slug'))->with('records', 'records.therapy', 'photos')->firstOrFail();
 
         return inertia('Patient', [
             'patient' => $patient,

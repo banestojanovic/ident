@@ -1,19 +1,6 @@
-<script setup>
-import {ref} from 'vue';
-import ApplicationLogo from '@/Components/ApplicationLogo.vue';
-import Dropdown from '@/Components/Dropdown.vue';
-import DropdownLink from '@/Components/DropdownLink.vue';
-import NavLink from '@/Components/NavLink.vue';
-import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
-import {Link} from '@inertiajs/vue3';
-import Tabs from "@/Pages/Tabs.vue";
-
-const showingNavigationDropdown = ref(false);
-</script>
-
 <template>
     <div>
-        <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
+        <div class="min-h-screen bg-gray-50 dark:bg-gray-900">
             <nav class="bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
                 <!-- Primary Navigation Menu -->
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -148,7 +135,7 @@ const showingNavigationDropdown = ref(false);
             <main>
                 <div class="py-12">
                     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                        <Tabs/>
+                        <Tabs v-if="type === 'default'"/>
                         <slot/>
                     </div>
                 </div>
@@ -156,3 +143,24 @@ const showingNavigationDropdown = ref(false);
         </div>
     </div>
 </template>
+
+<script setup>
+import {ref} from 'vue';
+import ApplicationLogo from '@/Components/ApplicationLogo.vue';
+import Dropdown from '@/Components/Dropdown.vue';
+import DropdownLink from '@/Components/DropdownLink.vue';
+import NavLink from '@/Components/NavLink.vue';
+import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
+import {Link} from '@inertiajs/vue3';
+import Tabs from "@/Pages/Tabs.vue";
+
+const props = defineProps({
+    type: {
+        type: String,
+        default: () => 'default',
+    },
+})
+
+const showingNavigationDropdown = ref(false);
+</script>
+

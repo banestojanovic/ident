@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Spatie\Sluggable\SlugOptions;
 
 class Patient extends Model
@@ -42,11 +43,16 @@ class Patient extends Model
 
     public function records(): HasMany
     {
-        return $this->hasMany(Record::class);
+        return $this->hasMany(Record::class)->orderByDesc('date');
     }
 
     public function lastRecord(): HasOne
     {
         return $this->hasOne(Record::class)->latest();
+    }
+
+    public function photos(): MorphMany
+    {
+        return $this->morphMany(Photo::class, 'photoable');
     }
 }
