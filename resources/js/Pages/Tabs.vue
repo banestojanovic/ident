@@ -14,7 +14,7 @@
                    :aria-current="tab.current ? 'page' : undefined">
                     <span>{{ tab.name }}</span>
                     <span aria-hidden="true"
-                          :class="[tab.current ? 'bg-cyan-500' : 'bg-transparent', 'absolute inset-x-0 bottom-0 h-1']"/>
+                          :class="[tab.current ? 'bg-cyan-500' : '', 'absolute inset-x-0 bottom-0 h-1']"/>
                 </inertia-link>
             </nav>
         </div>

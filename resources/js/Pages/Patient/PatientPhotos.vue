@@ -4,7 +4,7 @@
             <h3 class="text-xl font-semibold">Snimci</h3>
             <button
                 type="button"
-                class="focus-visible:ring-ring border-input inline-flex items-center justify-center rounded-md border text-base bg-slate-700 bg-transparent px-4 py-2 font-medium text-white shadow-sm transition-colors hover:bg-slate-800 hover:text-white focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-50"
+                class="focus-visible:ring-ring border-input inline-flex items-center justify-center rounded-md border text-base bg-gray-700  px-4 py-2 font-medium text-white shadow-sm transition-colors hover:bg-gray-800 hover:text-white focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-50"
             >
                 Dodaj snimak
             </button>
@@ -14,7 +14,8 @@
                 <div class="grid grid-cols-1 px-4 py-4 sm:grid-cols-3 sm:px-6">
                     <div class="mt-2 sm:mt-0">
                         <p class="truncate text-lg font-medium">
-                            {{ new Date(record?.created_at).toLocaleDateString(serbianLocale, options) }}
+                            {{ new Date(record?.created_at).toLocaleDateString(dateOptions.locale, dateOptions.options)
+                          }}
                         </p>
                     </div>
                     <div class="mt-2 sm:mt-0">
@@ -40,17 +41,9 @@
 </template>
 
 <script setup>
+import { dateOptions } from "../../helpers.js"
+
 const props = defineProps({
     patient: true
 })
-
-const serbianLocale = "sr-Latn-SR"
-
-const options = {
-    year: "numeric",
-    month: "long",
-    day: "2-digit"
-}
-
-console.log(props.patient)
 </script>

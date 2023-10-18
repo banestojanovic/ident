@@ -7,7 +7,7 @@
 
         <button
             type="button"
-            class="focus-visible:ring-ring border-input inline-flex items-center justify-center rounded-md border text-xl bg-slate-700 bg-transparent px-12 py-3 font-medium text-white shadow-sm transition-colors hover:bg-slate-800 hover:text-white focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-50"
+            class="focus-visible:ring-ring border-input inline-flex items-center justify-center rounded-md border text-xl bg-gray-700  px-12 py-3 font-medium text-white shadow-sm transition-colors hover:bg-gray-800 hover:text-white focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-50"
         >
             Zakaži
         </button>

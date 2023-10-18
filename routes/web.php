@@ -34,6 +34,13 @@ Route::get('/pacijenti', \App\Http\Controllers\IndexPatientsController::class)
 Route::get('/pacijenti/{slug}', \App\Http\Controllers\ShowPatientController::class)
     ->middleware(['auth', 'verified'])->name('patients.show');
 
+Route::post('/pacijenti/dodaj-karton', \App\Http\Controllers\StoreRecordController::class)
+    ->middleware(['auth', 'verified'])->name('records.store');
+Route::post('/pacijenti/izmeni-karton', \App\Http\Controllers\UpdateRecordController::class)
+    ->middleware(['auth', 'verified'])->name('records.update');
+Route::delete('/pacijenti/ukloni-karton/{id}', \App\Http\Controllers\DeleteRecordController::class)
+    ->middleware(['auth', 'verified'])->name('records.delete');
+
 Route::get('/kalendar', \App\Http\Controllers\ShowCalendarController::class)
     ->middleware(['auth', 'verified'])->name('calendar.show');
 

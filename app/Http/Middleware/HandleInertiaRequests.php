@@ -2,6 +2,8 @@
 
 namespace App\Http\Middleware;
 
+use App\Enums\TeethEnum;
+use App\Models\Therapy;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
 use Tightenco\Ziggy\Ziggy;
@@ -39,6 +41,11 @@ class HandleInertiaRequests extends Middleware
                 ...(new Ziggy)->toArray(),
                 'location' => $request->url(),
             ],
+            'global' => fn() => [
+                'teeth' => fn() => TeethEnum::toArray(),
+                'therapies' => fn() => Therapy::get(),
+            ],
+            'notification' => fn() => $request->session()->get('notification'),
         ];
     }
 }
