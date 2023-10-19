@@ -10,7 +10,7 @@
                 Dodaj karton
             </button>
         </div>
-        <ul role="list" class="divide-y divide-gray-200">
+        <ul role="list" class="divide-y divide-gray-200 overflow-y-auto max-h-[540px]">
             <li v-for="(record, idx) in patient?.records" :key="record.id">
                 <div :class="[highlightFirstRecord && idx === 0 ? 'bg-gray-100' : '', 'grid grid-cols-1 px-4 py-4 transition-all sm:grid-cols-3 sm:px-6 lg:grid-cols-6']">
                     <div class="mt-2 sm:mt-0">
@@ -40,8 +40,8 @@
 
     <Modal
         :open="recordModalOpen"
-        title="Dodaj karton"
-        subtitle="Dodaj novi karton za pacijenta"
+        :title="edit ? 'Izmeni karton' : 'Dodaj karton'"
+        :subtitle="edit ? 'Uredi podatke kartona pacijenta' : 'Dodaj novi karton za pacijenta'"
         @close="
             () => {
                 recordModalOpen = false

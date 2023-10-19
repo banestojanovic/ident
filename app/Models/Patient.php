@@ -53,6 +53,6 @@ class Patient extends Model
 
     public function photos(): MorphMany
     {
-        return $this->morphMany(Photo::class, 'photoable');
+        return $this->morphMany(Photo::class, 'photoable')->orderByDesc('created_at');
     }
 }

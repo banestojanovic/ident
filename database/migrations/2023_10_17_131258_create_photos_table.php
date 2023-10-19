@@ -16,8 +16,10 @@ return new class extends Migration
             $table->string('photoable_type')->nullable();
             $table->foreignId('photoable_id')->nullable();
             $table->string('name')->nullable();
+            $table->text('description')->nullable();
             $table->text('src')->nullable();
             $table->string('type')->default('default')->nullable();
+            $table->text('data')->nullable();
             $table->timestamps();
         });
     }

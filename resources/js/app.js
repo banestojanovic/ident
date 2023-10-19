@@ -1,5 +1,6 @@
 import "./bootstrap"
 import "@vuepic/vue-datepicker/dist/main.css"
+import 'glightbox/dist/css/glightbox.min.css'
 import "../css/app.css"
 
 import { createApp, h } from "vue"

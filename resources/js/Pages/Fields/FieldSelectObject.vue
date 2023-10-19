@@ -1,6 +1,6 @@
 <template>
     <div>
-        <label :for="name" class="relative flex text-sm font-medium text-gray-700 sm:mt-px sm:pt-3">
+        <label class="relative flex text-sm font-medium text-gray-700 sm:mt-px sm:pt-3">
             <span>
                 {{ label }}
                 <span v-if="required" class="relative -left-1 -top-1 text-red-500">*</span>

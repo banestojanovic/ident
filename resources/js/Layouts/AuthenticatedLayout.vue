@@ -125,7 +125,7 @@
 </template>
 
 <script setup>
-import { computed, ref, watch } from "vue"
+import { computed, onMounted, ref, watch } from "vue"
 import ApplicationLogo from "@/Components/ApplicationLogo.vue"
 import Dropdown from "@/Components/Dropdown.vue"
 import DropdownLink from "@/Components/DropdownLink.vue"
@@ -148,10 +148,24 @@ const page = usePage()
 
 const showingNavigationDropdown = ref(false)
 
-watch(() => page.props.notification, (value) => {
-    store.fireNotificaiton({
-        title: value?.title || '',
-        text: value?.text || '',
+const notification = computed(() => {
+    return page.props.notification
+})
+
+onMounted(() => {
+    router.on('success', () => {
+        console.log(notification.value)
     })
 })
+
+watch(
+    () => notification.value,
+    (value) => {
+        store.fireNotificaiton({
+            title: value?.title || "",
+            text: value?.text || "",
+            group: value?.group || "success"
+        })
+    }
+)
 </script>
