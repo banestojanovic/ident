@@ -9,14 +9,15 @@
                             <!-- Logo -->
                             <div class="flex shrink-0 items-center">
                                 <Link :href="route('dashboard')">
-                                    <ApplicationLogo class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
+<!--                                    <ApplicationLogo class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />-->
+                                    <span class="text-xl uppercase font-bold">Dentister</span>
                                 </Link>
                             </div>
 
                             <!-- Navigation Links -->
-                            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                                <NavLink :href="route('dashboard')" :active="route().current('dashboard')">Dashboard</NavLink>
-                            </div>
+<!--                            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">-->
+<!--                                <NavLink :href="route('dashboard')" :active="route().current('dashboard')">Nalog</NavLink>-->
+<!--                            </div>-->
                         </div>
 
                         <div class="hidden sm:ml-6 sm:flex sm:items-center">
@@ -113,7 +114,7 @@
             <main>
                 <div class="py-12">
                     <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
-                        <Tabs v-if="type === 'default'" />
+                        <Tabs v-if="type === 'dashboard'" />
                         <slot />
                     </div>
                 </div>

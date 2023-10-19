@@ -15,15 +15,17 @@ class IndexPatientsController extends Controller
     public function __invoke(Request $request)
     {
         $keyword = request('keyword');
+        $phone = request('phone');
 
         return inertia('Patients', [
             'patients' => IndexPatientsResource::collection(
                 Patient::with('lastRecord')
                     ->when(!empty($keyword),
-                        fn($q) => $q->orWhere(DB::raw("concat(first_name, ' ', last_name)"), 'LIKE',
-                            "%".$keyword."%")->orWhere('phone', 'LIKE', "%".$keyword."%"))
+                        fn($q) => $q->orWhere(DB::raw("concat(first_name, ' ', last_name)"), 'LIKE', "%".$keyword."%"))
+                    ->when(!empty($phone),
+                        fn($q) => $q->where('phone', 'LIKE', "%".$phone."%"))
                     ->orderByDesc('created_at')
-                    ->paginate(24)
+                    ->paginate(12)
                     ->onEachSide(1)
             ),
         ]);

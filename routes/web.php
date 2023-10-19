@@ -29,8 +29,10 @@ Route::get('/', function () {
 //    return Inertia::render('Dashboard');
 //})->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/pacijenti', \App\Http\Controllers\IndexPatientsController::class)
+Route::get('/nalog', \App\Http\Controllers\ShowDashboardController::class)
     ->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/pacijenti', \App\Http\Controllers\IndexPatientsController::class)
+    ->middleware(['auth', 'verified'])->name('patients.index');
 Route::get('/pacijenti/{slug}', \App\Http\Controllers\ShowPatientController::class)
     ->middleware(['auth', 'verified'])->name('patients.show');
 

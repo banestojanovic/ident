@@ -20,6 +20,6 @@ class DeletePatientsController extends Controller
             'group' => 'success'
         ]);
 
-        return to_route('dashboard');
+        return to_route('patients.idex');
     }
 }
