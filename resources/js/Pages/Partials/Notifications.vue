@@ -9,7 +9,7 @@
     >
         <div v-if="open" aria-live="assertive" class="pointer-events-none fixed inset-0 bottom-0 left-0 top-auto flex items-center justify-end px-4 py-6 sm:p-6">
             <div class="flex w-full flex-col items-center space-y-4">
-                <div class="pointer-events-auto w-full max-w-sm overflow-hidden rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5">
+                <div class="pointer-events-auto relative w-full max-w-sm overflow-hidden rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5">
                     <div class="p-4">
                         <div class="flex items-start">
                             <div class="flex-shrink-0">
@@ -24,7 +24,16 @@
                                     {{ notification.text }}
                                 </p>
                             </div>
+                            <div class="ml-4 flex-shrink-0 flex">
+                                <button @click="open = false" class="bg-white rounded-md inline-flex text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                    <span class="sr-only">Close</span>
+                                    <XMarkIcon class="h-5 w-5" aria-hidden="true" />
+                                </button>
+                            </div>
                         </div>
+                    </div>
+                    <div class="absolute -bottom-4 mb-4 h-0.5 w-full rounded-full bg-gray-200 dark:bg-gray-700">
+                        <div class="h-0.5 absolute right-0 rounded-full bg-green-600 dark:bg-green-500 w-full transform translate-x-full transition animate-progress"></div>
                     </div>
                 </div>
             </div>
@@ -32,7 +41,7 @@
     </transition>
 </template>
 <script setup>
-import { CheckCircleIcon, ExclamationTriangleIcon } from "@heroicons/vue/20/solid/index.js"
+import { CheckCircleIcon, ExclamationTriangleIcon, XMarkIcon } from "@heroicons/vue/20/solid/index.js"
 import { computed, onMounted, ref, watch } from "vue"
 import { usePage } from "@inertiajs/vue3"
 
@@ -47,16 +56,19 @@ onMounted(() => {
         open.value = true
         setTimeout(() => {
             open.value = false
-        }, 4000)
+        }, 3000)
     }
 })
 
-watch(() => notification.value, (value) => {
-    if (value) {
-        open.value = true
-        setTimeout(() => {
-            open.value = false
-        }, 4000)
+watch(
+    () => notification.value,
+    (value) => {
+        if (value) {
+            open.value = true
+            setTimeout(() => {
+                open.value = false
+            }, 3000)
+        }
     }
-})
+)
 </script>
