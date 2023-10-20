@@ -15,11 +15,11 @@ class DeletePatientsController extends Controller
         //Patient::where('id', request('id'))->delete();
 
         $request->session()->flash('notification', [
-            'title' => 'Uspešno obrisano',
+            'title' => 'Uspešno izbrisano',
             'text' => 'Uspešno ste izbrisali pacijenta iz baze podataka',
-            'group' => 'success'
+            'group' => 'success',
         ]);
 
-        return to_route('patients.idex');
+        return to_route('patients.index');
     }
 }

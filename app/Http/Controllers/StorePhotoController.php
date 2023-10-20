@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Patient;
-use App\Models\Photo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Storage;
@@ -46,7 +45,7 @@ class StorePhotoController extends Controller
                     'photoable_type' => Patient::class,
                     'name' => request('name'),
                     'src' => "images/teeth/$patient->id/$name.webp",
-                    'description' => request('description')
+                    'description' => request('description'),
                 ]);
             });
         }
@@ -54,7 +53,7 @@ class StorePhotoController extends Controller
         $request->session()->flash('notification', [
             'title' => 'Snimak sačuvan',
             'text' => 'Uspešno ste sačuvali snimak u bazu podataka',
-            'group' => 'success'
+            'group' => 'success',
         ]);
 
         return back();

@@ -60,7 +60,7 @@
                 <button
                     type="button"
                     class="focus-visible:ring-ring border-input inline-flex items-center justify-center rounded-md border bg-gray-700 px-4 py-2 text-base font-medium text-white shadow-sm transition-colors hover:bg-gray-800 hover:text-white focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-50"
-                    @click="addPatient()"
+                    @click="() => newPatientModal = true"
                 >
                     Dodaj pacijenta
                 </button>
@@ -69,8 +69,8 @@
             <div class="flex min-w-0 flex-1 bg-gray-50 px-4 pb-2 pt-4 sm:px-6">
                 <div class="min-w-0 flex-1 md:grid md:grid-cols-3 md:gap-4">
                     <div class="text-sm font-semibold text-gray-500">Pacijent</div>
-                    <div class="hidden md:block text-sm font-semibold text-gray-500">Kontakt informacije</div>
-                    <div class="hidden md:block text-sm font-semibold text-gray-500">SMS</div>
+                    <div class="hidden text-sm font-semibold text-gray-500 md:block">Kontakt informacije</div>
+                    <div class="hidden text-sm font-semibold text-gray-500 md:block">SMS</div>
                 </div>
                 <div class="mr-24 text-sm font-semibold text-gray-500">Akcija</div>
             </div>
@@ -99,7 +99,7 @@
                                             <span class="truncate">{{ `${patient?.address}, ${patient?.city}` }}</span>
                                         </p>
                                     </div>
-                                    <div>DA</div>
+                                    <div>{{ patient?.sms ? "DA" : "NE" }}</div>
                                 </div>
                             </div>
 
@@ -121,6 +121,19 @@
 
             <Pagination :data="patients" />
         </div>
+
+        <Modal
+            :open="newPatientModal"
+            title="Dodaj pacijenta"
+            subtitle="Unesi podatke novog pacijenta u bazu podataka"
+            @close="
+            () => {
+                newPatientModal = false
+            }
+        "
+        >
+            <FormPatientDetails :edit="false" @success="() => newPatientModal = false" />
+        </Modal>
     </AuthenticatedLayout>
 </template>
 
@@ -131,12 +144,15 @@ import { EyeIcon, MapPinIcon, PhoneIcon, ArrowLeftIcon, CalendarDaysIcon, Magnif
 import Pagination from "@/Pages/Partials/Pagination.vue"
 import { ref, watch } from "vue"
 import debounce from "lodash.debounce"
+import Modal from "@/Pages/Partials/Modal.vue"
+import FormPatientDetails from "@/Pages/Forms/FormPatientDetails.vue"
 
 const props = defineProps({
     patients: true
 })
 
 const loading = ref(false)
+const newPatientModal = ref(false)
 
 const makeAppointment = () => {
     console.log("termin je uspesno zakazan")
@@ -160,7 +176,10 @@ const search = debounce(() => {
 watch(
     () => form.keyword,
     (value) => {
-        form.phone = null
+        if (form.keyword && form.phone !== null) {
+            form.phone = null
+            return
+        }
         search("keyword")
     }
 )
@@ -168,12 +187,11 @@ watch(
 watch(
     () => form.phone,
     (value) => {
-        form.keyword = null
+        if (form.phone && form.keyword !== null) {
+            form.keyword = null
+            return
+        }
         search("phone")
     }
 )
-
-const addPatient = () => {
-    console.log("added a new patient")
-}
 </script>

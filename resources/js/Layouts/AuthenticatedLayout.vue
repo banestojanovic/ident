@@ -122,20 +122,17 @@
         </div>
     </div>
 
-    <Notifications :show="store.notify" />
+    <Notifications />
 </template>
 
 <script setup>
-import { computed, onMounted, ref, watch } from "vue"
-import ApplicationLogo from "@/Components/ApplicationLogo.vue"
+import { computed, ref, watch } from "vue"
 import Dropdown from "@/Components/Dropdown.vue"
 import DropdownLink from "@/Components/DropdownLink.vue"
-import NavLink from "@/Components/NavLink.vue"
 import ResponsiveNavLink from "@/Components/ResponsiveNavLink.vue"
-import { Link, router, usePage } from "@inertiajs/vue3"
+import { Link, usePage } from "@inertiajs/vue3"
 import Tabs from "@/Pages/Tabs.vue"
 import Notifications from "@/Pages/Partials/Notifications.vue"
-import { useGlobalStore } from "@/stores.js"
 
 const props = defineProps({
     type: {
@@ -144,29 +141,6 @@ const props = defineProps({
     }
 })
 
-const store = useGlobalStore()
-const page = usePage()
-
 const showingNavigationDropdown = ref(false)
 
-const notification = computed(() => {
-    return page.props.notification
-})
-
-onMounted(() => {
-    router.on('success', () => {
-        console.log(notification.value)
-    })
-})
-
-watch(
-    () => notification.value,
-    (value) => {
-        store.fireNotificaiton({
-            title: value?.title || "",
-            text: value?.text || "",
-            group: value?.group || "success"
-        })
-    }
-)
 </script>

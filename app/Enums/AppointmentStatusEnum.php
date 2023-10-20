@@ -10,4 +10,3 @@ enum AppointmentStatusEnum: int
     case finished = 3;
     case cancelled = 4;
 }
-

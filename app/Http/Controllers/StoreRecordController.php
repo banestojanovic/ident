@@ -34,7 +34,7 @@ class StoreRecordController extends Controller
         $request->session()->flash('notification', [
             'title' => 'Karton dodat',
             'text' => 'Uspešno ste dodali karton pacijenta',
-            'group' => 'success'
+            'group' => 'success',
         ]);
 
         return back();

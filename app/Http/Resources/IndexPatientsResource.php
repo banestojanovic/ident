@@ -28,8 +28,7 @@ class IndexPatientsResource extends JsonResource
             'photo' => $this?->photo?->src ? Storage::url($this?->photo?->src) : null,
             'dob' => $this->dob,
             'last_record' => Carbon::parse($this->lastRecord?->date)->translatedFormat('jS M, Y.'),
+            'sms' => $this->sms,
         ];
-
-        return parent::toArray($request);
     }
 }

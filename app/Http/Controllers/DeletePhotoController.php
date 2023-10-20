@@ -18,7 +18,7 @@ class DeletePhotoController extends Controller
         $request->session()->flash('notification', [
             'title' => 'Snimak izbrisan',
             'text' => 'Uspešno ste izbrisali snimak iz baze podataka',
-            'group' => 'success'
+            'group' => 'success',
         ]);
 
         return back();

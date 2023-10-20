@@ -22,14 +22,14 @@
     <Modal
         :open="editPatientModalOpen"
         title="Promeni podatke"
-        subtitle="Promenite podatke pacijenta"
+        subtitle="Promeni podatke pacijenta u bazi podataka"
         @close="
             () => {
                 editPatientModalOpen = false
             }
         "
     >
-        <FormPatientDetails :patient="patient" @success="() => editPatientModalOpen = false" @delete="() => {
+        <FormPatientDetails :patient="patient" :edit="true" @success="() => editPatientModalOpen = false" @delete="() => {
             editPatientModalOpen = false
             confirmDialogOpen = true
         }" />

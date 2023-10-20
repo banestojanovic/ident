@@ -46,5 +46,4 @@ class Photo extends Model
             }
         });
     }
-
 }

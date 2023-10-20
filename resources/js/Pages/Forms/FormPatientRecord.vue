@@ -7,7 +7,7 @@
         <FieldTextarea v-model="form.description" name="description" label="Dodatne informacije" :error="form?.errors?.description" />
 
         <div class="flex items-end">
-            <button type="button" @click="$emit('delete', {id: form.record })" class="mr-auto text-red-500 hover:underline">Izbriši karton</button>
+            <button v-if="edit" type="button" @click="$emit('delete', {id: form.record })" class="mr-auto text-red-500 hover:underline">Izbriši karton</button>
             <button
                 type="submit"
                 :class="[

@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Enums;
 
 enum StatusEnum: int
@@ -6,4 +7,3 @@ enum StatusEnum: int
     case inactive = 0;
     case active = 1;
 }
-

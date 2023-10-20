@@ -43,7 +43,7 @@ enum TeethEnum: string
         foreach (self::cases() as $case) {
             $array[$case->value] = str_replace('T_', 'Zub ', $case->name);
         }
+
         return $array;
     }
 }
-

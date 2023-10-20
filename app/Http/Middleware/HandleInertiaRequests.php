@@ -20,7 +20,7 @@ class HandleInertiaRequests extends Middleware
     /**
      * Determine the current asset version.
      */
-    public function version(Request $request): string|null
+    public function version(Request $request): ?string
     {
         return parent::version($request);
     }
@@ -41,11 +41,11 @@ class HandleInertiaRequests extends Middleware
                 ...(new Ziggy)->toArray(),
                 'location' => $request->url(),
             ],
-            'global' => fn() => [
-                'teeth' => fn() => TeethEnum::toArray(),
-                'therapies' => fn() => Therapy::get(),
+            'global' => fn () => [
+                'teeth' => fn () => TeethEnum::toArray(),
+                'therapies' => fn () => Therapy::get(),
             ],
-            'notification' => fn() => $request->session()->get('notification'),
+            'notification' => fn () => $request->session()->get('notification'),
         ];
     }
 }

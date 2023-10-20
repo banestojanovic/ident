@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Patient;
 use Illuminate\Http\Request;
 
-class UpdatePatientsController extends Controller
+class StorePatientController extends Controller
 {
     /**
      * Handle the incoming request.
@@ -17,13 +17,11 @@ class UpdatePatientsController extends Controller
             'last_name' => 'required',
         ]);
 
-        $patient = Patient::where('id', request('id'))->firstOrFail();
-
-        $patient->update(request()->all());
+        Patient::create(request()->all());
 
         $request->session()->flash('notification', [
-            'title' => 'Podaci sačuvani',
-            'text' => 'Uspešno ste sačuvali podatke o pacijentu',
+            'title' => 'Pacijent dodat',
+            'text' => 'Uspešno ste dodali novog pacijenta u bazu podataka',
             'group' => 'success',
         ]);
 

@@ -36,6 +36,8 @@ Route::get('/pacijenti', \App\Http\Controllers\IndexPatientsController::class)
 Route::get('/pacijenti/{slug}', \App\Http\Controllers\ShowPatientController::class)
     ->middleware(['auth', 'verified'])->name('patients.show');
 
+Route::post('/pacijenti/dodaj', \App\Http\Controllers\StorePatientController::class)
+    ->middleware(['auth', 'verified'])->name('patients.store');
 Route::put('/pacijenti/izmeni-podatke/{id}', \App\Http\Controllers\UpdatePatientsController::class)
     ->middleware(['auth', 'verified'])->name('patients.update');
 Route::delete('/pacijenti/ukloni/{id}', \App\Http\Controllers\DeletePatientsController::class)

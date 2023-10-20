@@ -28,7 +28,7 @@ class UpdatePhotoController extends Controller
         $request->session()->flash('notification', [
             'title' => 'Snimak izmenjen',
             'text' => 'Uspešno ste sačuvali izmene snimka u bazi podataka',
-            'group' => 'success'
+            'group' => 'success',
         ]);
 
         return back();

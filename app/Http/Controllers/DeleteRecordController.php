@@ -17,7 +17,7 @@ class DeleteRecordController extends Controller
         $request->session()->flash('notification', [
             'title' => 'Karton izbrisan',
             'text' => 'Uspešno ste izbrisali karton pacijenta',
-            'group' => 'success'
+            'group' => 'success',
         ]);
 
         return back();

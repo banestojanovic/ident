@@ -35,7 +35,7 @@ class UpdateRecordController extends Controller
         $request->session()->flash('notification', [
             'title' => 'Karton sačuvan',
             'text' => 'Uspešno ste sačuvali podatke za karton pacijenta',
-            'group' => 'success'
+            'group' => 'success',
         ]);
 
         return back();
