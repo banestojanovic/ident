@@ -13,13 +13,11 @@ return new class extends Migration
     {
         Schema::create('appointments', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('staff_id')->nullable()->constrained()->references('id')->on('staff')->nullOnDelete();
+            $table->datetime('start_time');
+            $table->datetime('finish_time');
+            $table->foreignId('user_id')->nullable()->constrained()->references('id')->on('users')->nullOnDelete();
             $table->foreignId('patient_id')->nullable()->constrained()->references('id')->on('patients')->nullOnDelete();
-            $table->dateTime('appointment_datetime');
-            $table->text('diagnosis')->nullable();
-            $table->text('description')->nullable();
-            $table->integer('status')->default(0);
-            $table->text('data')->nullable();
+            $table->longText('data')->nullable();
             $table->timestamps();
         });
     }

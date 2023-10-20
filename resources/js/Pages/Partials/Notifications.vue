@@ -7,7 +7,8 @@
         leave-from-class="opacity-100"
         leave-to-class="opacity-0"
     >
-        <div v-if="open" aria-live="assertive" class="pointer-events-none fixed inset-0 bottom-0 left-0 top-auto flex items-center justify-end px-4 py-6 sm:p-6">
+        <div v-if="open" aria-live="assertive" class="pointer-events-none fixed inset-0 bottom-0 left-0 top-auto flex items-center justify-end px-4 py-6 sm:p-6 z-20">
+
             <div class="flex w-full flex-col items-center space-y-4">
                 <div class="pointer-events-auto relative w-full max-w-sm overflow-hidden rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5">
                     <div class="p-4">

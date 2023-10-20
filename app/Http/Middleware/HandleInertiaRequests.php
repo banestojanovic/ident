@@ -3,7 +3,9 @@
 namespace App\Http\Middleware;
 
 use App\Enums\TeethEnum;
+use App\Enums\UserRoleEnum;
 use App\Models\Therapy;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
 use Tightenco\Ziggy\Ziggy;
@@ -42,6 +44,7 @@ class HandleInertiaRequests extends Middleware
                 'location' => $request->url(),
             ],
             'global' => fn () => [
+                'dentists' => fn() => User::where('role', UserRoleEnum::dentist)->get()->pluck('name', 'id')->prepend('Izaberite doktora', 0),
                 'teeth' => fn () => TeethEnum::toArray(),
                 'therapies' => fn () => Therapy::get(),
             ],

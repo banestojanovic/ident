@@ -2,7 +2,7 @@
     <div class="flex items-start justify-between px-6 sm:px-0">
         <div class="space-y-1">
             <h1 class="text-4xl font-semibold">{{ `${patient?.first_name} ${patient?.last_name}` }}</h1>
-            <p class="text-lg">{{ `${patient?.address}, ${patient?.city}` }}</p>
+            <p v-if="patient?.address" class="text-lg">{{ `${patient?.address || ''}, ${patient?.city || ''}` }}</p>
             <button
                 type="button"
                 class="focus-visible:ring-ring border-input inline-flex items-center justify-center rounded-md border bg-gray-700 px-2 py-1 text-sm font-medium text-white shadow-sm transition-colors hover:bg-gray-800 hover:text-white focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-50"
@@ -12,12 +12,12 @@
             </button>
         </div>
 
-        <button
-            type="button"
+        <inertia-link
+            :href="route('calendar.show', {patient_id: patient.id})"
             class="focus-visible:ring-ring border-input inline-flex items-center justify-center rounded-md border bg-gray-700 px-12 py-3 text-xl font-medium text-white shadow-sm transition-colors hover:bg-gray-800 hover:text-white focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-50"
         >
             Zakaži
-        </button>
+        </inertia-link>
     </div>
     <Modal
         :open="editPatientModalOpen"

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Enums\UserRoleEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -21,6 +22,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
     ];
 
     /**
@@ -41,5 +43,20 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
+        'role' => UserRoleEnum::class,
     ];
+
+    public static function dentistColor($id)
+    {
+        switch ($id) {
+            case 1:
+                return '#6366f1';
+            case 2:
+                return '#0891b2';
+            case 3:
+                return '#10b981';
+            default:
+                return '#3788d8';
+        }
+    }
 }

@@ -180,6 +180,14 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'therapy' => 'Terapija',
+        'date' => 'Datum',
+        'description' => 'Dodatan opis',
+        'diagnosis' => 'Dijagnoza',
+        'tooth' => 'Zub',
+        'dentist_id' => 'Doktor',
+        'patient_id' => 'Pacijent',
+    ],
 
 ];

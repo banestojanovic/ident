@@ -57,4 +57,9 @@ class Patient extends Model
     {
         return $this->morphMany(Photo::class, 'photoable')->orderByDesc('created_at');
     }
+
+    public function appointments(): HasMany
+    {
+        return $this->hasMany(Appointment::class);
+    }
 }

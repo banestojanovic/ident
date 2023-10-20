@@ -60,7 +60,7 @@
                 <button
                     type="button"
                     class="focus-visible:ring-ring border-input inline-flex items-center justify-center rounded-md border bg-gray-700 px-4 py-2 text-base font-medium text-white shadow-sm transition-colors hover:bg-gray-800 hover:text-white focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-50"
-                    @click="() => newPatientModal = true"
+                    @click="() => (newPatientModal = true)"
                 >
                     Dodaj pacijenta
                 </button>
@@ -94,9 +94,9 @@
                                             <PhoneIcon class="mr-1.5 h-4 w-4 flex-shrink-0 text-gray-400" aria-hidden="true" />
                                             <span class="truncate">{{ patient.phone }}</span>
                                         </p>
-                                        <p class="flex items-center text-sm text-gray-700">
+                                        <p v-if="patient?.address" class="flex items-center text-sm text-gray-700">
                                             <MapPinIcon class="mr-1.5 h-4 w-4 flex-shrink-0 text-gray-400" aria-hidden="true" />
-                                            <span class="truncate">{{ `${patient?.address}, ${patient?.city}` }}</span>
+                                            <span class="truncate">{{ `${patient?.address}, ${patient?.city || ''}` }}</span>
                                         </p>
                                     </div>
                                     <div>{{ patient?.sms ? "DA" : "NE" }}</div>
@@ -109,10 +109,10 @@
                                     <span>Vidi</span>
                                 </inertia-link>
 
-                                <button type="button" class="group flex items-center text-indigo-500 hover:text-indigo-800" @click="makeAppointment">
+                                <inertia-link :href="route('calendar.show', { patient_id: patient.id })" class="group flex items-center text-indigo-500 hover:text-indigo-800">
                                     <CalendarDaysIcon class="-ml-0.5 mr-1 h-4 w-4" aria-hidden="true" />
                                     <span>Zakaži</span>
-                                </button>
+                                </inertia-link>
                             </div>
                         </div>
                     </li>
@@ -127,12 +127,12 @@
             title="Dodaj pacijenta"
             subtitle="Unesi podatke novog pacijenta u bazu podataka"
             @close="
-            () => {
-                newPatientModal = false
-            }
-        "
+                () => {
+                    newPatientModal = false
+                }
+            "
         >
-            <FormPatientDetails :edit="false" @success="() => newPatientModal = false" />
+            <FormPatientDetails :edit="false" @success="() => (newPatientModal = false)" />
         </Modal>
     </AuthenticatedLayout>
 </template>
@@ -153,10 +153,6 @@ const props = defineProps({
 
 const loading = ref(false)
 const newPatientModal = ref(false)
-
-const makeAppointment = () => {
-    console.log("termin je uspesno zakazan")
-}
 
 const form = useForm({
     keyword: null,

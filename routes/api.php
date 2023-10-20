@@ -17,3 +17,6 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/pacijenti',
+    \App\Http\Controllers\Api\SearchPatientsController::class)->name('api.patients.index');

@@ -16,14 +16,6 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-})->name('home');
 
 //Route::get('/dashboard', function () {
 //    return Inertia::render('Dashboard');
@@ -59,6 +51,11 @@ Route::delete('/pacijenti/izmeni-snimak/{id}', \App\Http\Controllers\DeletePhoto
 
 Route::get('/kalendar', \App\Http\Controllers\ShowCalendarController::class)
     ->middleware(['auth', 'verified'])->name('calendar.show');
+
+Route::post('/kalendar/dodaj', \App\Http\Controllers\StoreAppointmentController::class)
+    ->middleware(['auth', 'verified'])->name('appointments.store');
+Route::delete('/kalendar/ukloni/{id}', \App\Http\Controllers\DeleteAppointmentController::class)
+    ->middleware(['auth', 'verified'])->name('appointments.delete');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

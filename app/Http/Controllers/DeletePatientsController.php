@@ -12,7 +12,10 @@ class DeletePatientsController extends Controller
      */
     public function __invoke(Request $request)
     {
-        Patient::where('id', request('id'))->delete();
+        $patient = Patient::where('id', request('id'))->firstOrFail();
+        $patient->appointments()->delete();
+        $patient->records()->delete();
+        $patient->delete();
 
         $request->session()->flash('notification', [
             'title' => 'Uspešno izbrisano',
