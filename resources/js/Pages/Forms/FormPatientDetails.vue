@@ -54,7 +54,7 @@ const form = useForm({
     address: props.patient?.address || null,
     city: props.patient?.city || null,
     dob: props.patient?.dob ? new Date(props.patient.dob) : new Date(),
-    sms: props.patient?.sms
+    sms: props.patient?.sms || 1
 })
 
 const emit = defineEmits(["success", "delete"])

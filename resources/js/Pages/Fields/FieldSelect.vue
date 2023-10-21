@@ -13,7 +13,7 @@
                     }
                 "
             >
-                <option v-for="(value, idx) in items" :key="idx" :value="idx">{{ value }}</option>
+                <option v-for="(value, idx) in items" :key="idx" :value="idx">{{ type === "dentist" && parseInt(idx, 10) !== 0 ? "dr" : ""}} {{ value }}</option>
             </select>
             <p v-if="error" class="ml-2 mt-1 text-xs text-red-500">{{ error }}</p>
         </div>
@@ -54,6 +54,9 @@ const props = defineProps({
     additional: {
         type: Object,
         required: false
+    },
+    type: {
+        required: false,
     }
 })
 </script>

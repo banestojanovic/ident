@@ -1,0 +1,1 @@
+import{o as e,f as t,b as o}from"./app-3ec168ce.js";const r={class:"container py-24"},a=o("div",null,"bakalar",-1),n=[a],_={__name:"Welcome",props:{canLogin:{type:Boolean},canRegister:{type:Boolean},laravelVersion:{type:String,required:!0},phpVersion:{type:String,required:!0}},setup(s){return(c,i)=>(e(),t("div",r,n))}};export{_ as default};

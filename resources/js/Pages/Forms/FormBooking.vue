@@ -1,6 +1,6 @@
 <template>
     <form @submit.prevent="submit" class="space-y-2">
-        <FieldSelect v-model="form.dentist_id" :items="$page.props.global.dentists" name="dentist_id" label="Izaberite doktora" :error="form.errors?.dentist_id" />
+        <FieldSelect v-model="form.dentist_id" type="dentist" :items="$page.props.global.dentists" name="dentist_id" label="Izaberite doktora" :error="form.errors?.dentist_id" />
         <FieldCombobox v-if="!newPatient" v-model="form.patient_id" :items="patients" name="patient_id" label="Izaberite pacijenta" :error="form.errors?.patient_id" @searched="(patients) => (searchedValues = patients)" />
 
         <button
