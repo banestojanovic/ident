@@ -38,9 +38,7 @@ class StorePhotoController extends Controller
                     $img->orientate()->encode('webp', 100);
                 }
 
-                $path = Storage::disk()->put("images/teeth/$patient->id/$name.webp", $img);
-
-                info($path);
+                Storage::disk()->put("images/teeth/$patient->id/$name.webp", $img);
 
                 $patient->photos()->create([
                     'photoable_id' => $patient->id,
