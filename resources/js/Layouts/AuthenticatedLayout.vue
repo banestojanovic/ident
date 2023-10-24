@@ -1,7 +1,7 @@
 <template>
     <div>
-        <div class="min-h-screen bg-gray-50 dark:bg-gray-900">
-            <nav class="border-b border-gray-100 bg-white dark:border-gray-700 dark:bg-gray-800">
+        <div class="min-h-screen bg-sky-100">
+            <nav class="border-b border-gray-100 bg-white">
                 <!-- Primary Navigation Menu -->
                 <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                     <div class="flex h-16 justify-between">
@@ -9,15 +9,10 @@
                             <!-- Logo -->
                             <div class="flex shrink-0 items-center">
                                 <Link :href="route('dashboard')">
-<!--                                    <ApplicationLogo class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />-->
+                                    <ApplicationLogo class="block h-9 w-auto fill-current" />
                                     <span class="text-xl uppercase font-bold">Dentister</span>
                                 </Link>
                             </div>
-
-                            <!-- Navigation Links -->
-<!--                            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">-->
-<!--                                <NavLink :href="route('dashboard')" :active="route().current('dashboard')">Nalog</NavLink>-->
-<!--                            </div>-->
                         </div>
 
                         <div class="hidden sm:ml-6 sm:flex sm:items-center">
