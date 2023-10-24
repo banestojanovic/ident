@@ -1,16 +1,15 @@
 <template>
     <div>
-        <div class="min-h-screen bg-sky-100">
-            <nav class="border-b border-gray-100 bg-white">
+        <div class="relative min-h-screen bg-sky-50">
+            <nav class="mx-auto max-w-8xl">
                 <!-- Primary Navigation Menu -->
-                <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                <div class="mx-auto rounded-b-lg bg-white px-8 py-4">
                     <div class="flex h-16 justify-between">
                         <div class="flex">
                             <!-- Logo -->
                             <div class="flex shrink-0 items-center">
-                                <Link :href="route('dashboard')">
-                                    <ApplicationLogo class="block h-9 w-auto fill-current" />
-                                    <span class="text-xl uppercase font-bold">Dentister</span>
+                                <Link :href="route('patients.index')">
+                                    <ApplicationLogo class="h-9 fill-current" />
                                 </Link>
                             </div>
                         </div>
@@ -20,18 +19,18 @@
                             <div class="relative ml-3">
                                 <Dropdown align="right" width="48">
                                     <template #trigger>
-                                        <span class="inline-flex rounded-md">
-                                            <button
-                                                type="button"
-                                                class="inline-flex items-center rounded-md border border-transparent bg-white px-3 py-2 text-sm font-medium leading-4 text-gray-500 transition duration-150 ease-in-out hover:text-gray-700 focus:outline-none dark:bg-gray-800 dark:text-gray-400 dark:hover:text-gray-300"
-                                            >
-                                                {{ $page.props.auth?.user?.role === 2 ? 'dr' : ''}} {{ $page.props.auth.user.name }}
+                                        <div class="inline-flex rounded-md">
+                                            <button type="button" class="inline-flex items-center space-x-4 rounded-md border border-transparent bg-white px-3 py-2 text-sm font-medium leading-4 transition duration-150 ease-in-out focus:outline-none">
+                                                <figure v-if="$page.props.auth?.photo" class="relative h-10 w-10 overflow-hidden rounded-full">
+                                                    <img :src="$page.props.auth.photo" alt="Slika doktora" class="absolute left-0 top-0 h-full w-full object-cover" />
+                                                </figure>
 
-                                                <svg class="-mr-0.5 ml-2 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                                </svg>
+                                                <span class="inline-flex flex-col text-left">
+                                                    <span class="text-gray-500">Doktor</span>
+                                                    <span class="text-lg font-medium">{{ $page.props.auth.user.name }}</span>
+                                                </span>
                                             </button>
-                                        </span>
+                                        </div>
                                     </template>
 
                                     <template #content>
@@ -78,7 +77,7 @@
                 <!-- Responsive Navigation Menu -->
                 <div :class="{ block: showingNavigationDropdown, hidden: !showingNavigationDropdown }" class="sm:hidden">
                     <div class="space-y-1 pb-3 pt-2">
-                        <ResponsiveNavLink :href="route('dashboard')" :active="route().current('dashboard')">Dashboard</ResponsiveNavLink>
+                        <ResponsiveNavLink :href="route('patients.index')" :active="route().current('patients.index')">Nalog</ResponsiveNavLink>
                     </div>
 
                     <!-- Responsive Settings Options -->
@@ -91,8 +90,8 @@
                         </div>
 
                         <div class="mt-3 space-y-1">
-                            <ResponsiveNavLink :href="route('profile.edit')">Profile</ResponsiveNavLink>
-                            <ResponsiveNavLink :href="route('logout')" method="post" as="button">Log Out</ResponsiveNavLink>
+                            <ResponsiveNavLink :href="route('profile.edit')">Nalog</ResponsiveNavLink>
+                            <ResponsiveNavLink :href="route('logout')" method="post" as="button">Izloguj se</ResponsiveNavLink>
                         </div>
                     </div>
                 </div>
@@ -107,15 +106,15 @@
 
             <!-- Page Content -->
             <main>
-                <div class="py-12">
-                    <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
-                        <Tabs v-if="type === 'dashboard'" />
-                        <slot />
-                    </div>
+                <div class="mx-auto max-w-8xl">
+                    <Tabs />
+                    <slot />
                 </div>
             </main>
         </div>
     </div>
+
+    <Footer />
 
     <Notifications />
 </template>
@@ -128,6 +127,8 @@ import ResponsiveNavLink from "@/Components/ResponsiveNavLink.vue"
 import { Link, usePage } from "@inertiajs/vue3"
 import Tabs from "@/Pages/Tabs.vue"
 import Notifications from "@/Pages/Partials/Notifications.vue"
+import ApplicationLogo from "@/Components/ApplicationLogo.vue"
+import Footer from "@/Components/Footer.vue"
 
 const props = defineProps({
     type: {
@@ -137,5 +138,4 @@ const props = defineProps({
 })
 
 const showingNavigationDropdown = ref(false)
-
 </script>

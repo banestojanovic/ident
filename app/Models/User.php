@@ -5,6 +5,8 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Enums\UserRoleEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -45,6 +47,11 @@ class User extends Authenticatable
         'password' => 'hashed',
         'role' => UserRoleEnum::class,
     ];
+
+    public function avatar(): MorphOne
+    {
+        return $this->morphOne(Photo::class, 'photoable');
+    }
 
     public static function dentistColor($id)
     {

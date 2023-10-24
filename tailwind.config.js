@@ -15,8 +15,10 @@ export default {
                 padding: {
                     DEFAULT: "1rem",
                     sm: "2rem",
-                    lg: "4rem"
                 }
+            },
+            maxWidth: {
+              '8xl': '85rem',
             },
             keyframes: {
                 progress: {

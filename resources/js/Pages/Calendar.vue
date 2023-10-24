@@ -5,7 +5,7 @@
         <div class="mb-8 flex flex-col space-y-8 px-4 sm:px-0">
             <div class="flex justify-between border-b py-4">
                 <div class="flex items-center">
-                    <inertia-link :href="route('dashboard')" class="group flex items-center space-x-3 text-sm uppercase text-gray-600 hover:text-gray-800">
+                    <inertia-link :href="route('patients.index')" class="group flex items-center space-x-3 text-sm uppercase text-gray-600 hover:text-gray-800">
                         <span class="border-r"><ArrowLeftIcon class="mr-1 h-6 w-6 text-gray-400 group-hover:text-gray-600" aria-hidden="true" /></span>
                         <span>Vrati se nazad</span>
                     </inertia-link>

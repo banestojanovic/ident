@@ -1,6 +1,6 @@
 <template>
     <form @submit.prevent="submit" class="space-y-2">
-        <FieldSelect v-model="form.dentist_id" type="dentist" :items="$page.props.global.dentists" name="dentist_id" label="Izaberite doktora" :error="form.errors?.dentist_id" />
+        <FieldSelectDentists v-model="form.dentist_id" type="dentist" :items="$page.props.global.dentists.data" name="dentist_id" label="Izaberite doktora" :error="form.errors?.dentist_id" />
         <FieldCombobox v-if="!newPatient" v-model="form.patient_id" :items="patients" name="patient_id" label="Izaberite pacijenta" :error="form.errors?.patient_id" @searched="(patients) => (searchedValues = patients)" />
 
         <button
@@ -60,6 +60,7 @@ import { ref } from "vue"
 import Loader from "@/Pages/Partials/Loader.vue"
 import FieldCombobox from "@/Pages/Fields/FieldCombobox.vue"
 import FieldInput from "@/Pages/Fields/FieldInput.vue"
+import FieldSelectDentists from "@/Pages/Fields/FieldSelectDentists.vue"
 
 const props = defineProps({
     selectedPatient: {
@@ -79,7 +80,7 @@ const props = defineProps({
 
 const form = useForm({
     date: props.date?.date || null,
-    dentist_id: props?.data?.dentist_id || (usePage()?.props.auth?.user?.role === 2 ? usePage()?.props.auth?.user?.id : 0),
+    dentist_id: props?.data?.dentist_id || (usePage()?.props.auth?.user?.role === 2 ? usePage()?.props.auth?.user : 0),
     patient_id: props?.data?.patient_id || null,
     new_patient: false,
     first_name: null,
