@@ -26,7 +26,7 @@
                                                 </figure>
 
                                                 <span class="inline-flex flex-col text-left">
-                                                    <span class="text-gray-500">Doktor</span>
+                                                    <span class="text-gray-500">{{ $page.props.auth.user.role === 2 ? 'Doktor' : 'Stomatološka sestra'}}</span>
                                                     <span class="text-lg font-medium">{{ $page.props.auth.user.name }}</span>
                                                 </span>
                                             </button>
