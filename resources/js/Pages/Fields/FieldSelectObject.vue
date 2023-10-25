@@ -1,16 +1,14 @@
 <template>
     <div>
-        <label class="relative flex text-sm font-medium text-gray-700 sm:mt-px sm:pt-3">
-            <span>
-                {{ label }}
-                <span v-if="required" class="relative -left-1 -top-1 text-red-500">*</span>
-            </span>
+        <label :for="name" :class="[{ 'sr-only': hideLabel }, 'mb-3 flex space-x-1 sm:mt-px sm:pt-2']">
+            <slot name="icon" />
+            <span>{{ label }}</span>
         </label>
         <div class="mt-1 sm:col-span-2 sm:mt-0">
             <Listbox :multiple="multiple || false" :modelValue="value" @update:modelValue="(value) => $emit('update:modelValue', value)" by="id">
                 <div class="relative mt-1">
                     <ListboxButton
-                        class="relative h-10 w-full cursor-default rounded-md border border-gray-300 bg-white py-2 pl-3 pr-10 text-left shadow-sm focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm"
+                        class="block w-full text-left rounded-md border-0 bg-stone-100 h-10 px-4 p-1.5 text-gray-500 placeholder-gray-400 focus:border-stone-300 focus:ring-stone-300"
                     >
                         <span v-if="value" class="block truncate">{{ props.multiple ? value.map((item) => item.name).join(", ") : value.name }}</span>
                         <span v-if="value?.length === 0" class="block truncate text-gray-400">{{ label }}</span>
@@ -20,9 +18,9 @@
                     <transition leave-active-class="transition duration-100 ease-in" leave-from-class="opacity-100" leave-to-class="opacity-0">
                         <ListboxOptions class="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-sm ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
                             <ListboxOption v-slot="{ active, selected }" v-for="item in items" :key="item?.id" :value="item" as="template">
-                                <li :class="[active ? 'bg-red-100 text-red-900' : 'text-gray-900', 'relative cursor-default select-none py-2 pl-10 pr-4']">
+                                <li :class="[active ? 'bg-sky-100 text-sky-900' : 'text-gray-900', 'relative cursor-pointer select-none py-2 pl-10 pr-4']">
                                     <span :class="[selected ? 'font-medium' : 'font-normal', 'block truncate']">{{ item?.name }}</span>
-                                    <span v-if="selected" class="absolute inset-y-0 left-0 flex items-center pl-3 text-red-600"><CheckIcon class="h-5 w-5" aria-hidden="true" /></span>
+                                    <span v-if="selected" class="absolute inset-y-0 left-0 flex items-center pl-3 text-sky-600"><CheckIcon class="h-5 w-5" aria-hidden="true" /></span>
                                     <span v-if="item?.description" class="text-sm text-gray-500">{{ item.description }}</span>
                                 </li>
                             </ListboxOption>
@@ -62,6 +60,11 @@ const props = defineProps({
     label: {
         type: String,
         required: true
+    },
+    hideLabel: {
+        type: Boolean,
+        required: false,
+        default: () => false
     },
     name: {
         type: String,

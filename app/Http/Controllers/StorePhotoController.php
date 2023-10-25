@@ -17,6 +17,7 @@ class StorePhotoController extends Controller
     {
         $request->validate([
             'patient_id' => 'required',
+            'photo' => 'required|max:5120',
             'photo.*' => 'required|max:5120',
             'name' => 'required',
         ]);

@@ -1,13 +1,17 @@
 <template>
     <div>
-        <label :for="name" class="mb-1 block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">{{ label }}</label>
-        <div :class="['mt-1 sm:col-span-2 sm:mt-0', additional?.fieldClass ? additional?.fieldClass : '']">
+        <label :for="name" :class="[{ 'sr-only': hideLabel }, 'mb-3 flex space-x-1 sm:mt-px sm:pt-2']">
+            <slot name="icon" />
+            <span>{{ label }}</span>
+        </label>
+        <div :class="[hideLabel ? 'mt-1 sm:col-span-2 sm:mt-11' : 'mt-1 sm:col-span-2 sm:mt-0', additional?.fieldClass ? additional?.fieldClass : '']">
             <input
                 :value="modelValue"
                 :id="name"
                 :name="name"
                 autocomplete="off"
-                class="block w-full rounded-md border-gray-300 text-sm shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                class="block w-full rounded-md border-0 bg-stone-100 px-4 placeholder-gray-400 focus:border-stone-300 focus:ring-stone-300"
+                :placeholder="placeholder"
                 @change="
                     ($e) => {
                         $emit('update:modelValue', $e.target.value)
@@ -24,6 +28,11 @@ const props = defineProps({
     label: {
         type: String,
         required: true
+    },
+    hideLabel: {
+        type: Boolean,
+        required: false,
+        default: () => false
     },
     name: {
         type: String,
@@ -43,6 +52,10 @@ const props = defineProps({
     },
     additional: {
         type: Object,
+        required: false
+    },
+    placeholder: {
+        type: String,
         required: false
     }
 })

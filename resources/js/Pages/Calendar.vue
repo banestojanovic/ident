@@ -2,26 +2,7 @@
     <Head title="Kalendar" />
 
     <AuthenticatedLayout>
-        <div class="mb-8 flex flex-col space-y-8 px-4 sm:px-0">
-            <div class="flex justify-between border-b py-4">
-                <div class="flex items-center">
-                    <inertia-link :href="route('patients.index')" class="group flex items-center space-x-3 text-sm uppercase text-gray-600 hover:text-gray-800">
-                        <span class="border-r"><ArrowLeftIcon class="mr-1 h-6 w-6 text-gray-400 group-hover:text-gray-600" aria-hidden="true" /></span>
-                        <span>Vrati se nazad</span>
-                    </inertia-link>
-                    <div v-if="patient?.id" class="ml-2 flex flex-col text-gray-700">
-                        <h3>/ zakaži termin za - {{ patient?.first_name }} {{ patient?.last_name }}</h3>
-                    </div>
-                </div>
-
-                <inertia-link :href="route('patients.index')" class="group flex items-center space-x-3 text-gray-600 hover:text-gray-800">
-                    <span>Idi na pacijente</span>
-                    <UserGroupIcon class="h-6 w-6" aria-hidden="true" />
-                </inertia-link>
-            </div>
-        </div>
-
-        <FullCalendar ref="calendarEl" :options="calendarOptions" class="h-[80vh]">
+        <FullCalendar ref="calendarEl" :options="calendarOptions" class="h-[80vh] bg-white p-10">
             <template v-slot:eventContent="arg">
                 <div class="flex flex-col">
                     <span>{{ arg.event.title }}</span>
@@ -145,7 +126,7 @@ const calendarApi = ref(null)
 const calendarOptions = ref({
     locale: "sr-Latn-RS",
     firstDay: 1,
-    slotDuration: "00:05:00",
+    slotDuration: "00:30:00",
     allDaySlot: false,
     slotMinTime: "07:00:00",
     slotMaxTime: "20:00:00",
@@ -153,55 +134,35 @@ const calendarOptions = ref({
     slotEventOverlap: true,
     plugins: [timeGridPlugin, interactionPlugin],
     eventDisplay: "block",
-    initialView: "timeGridSevenDay",
-    // headerToolbar: {
-    //     left: 'prev,next,today',
-    //     center: 'title',
-    //     right: 'timeGridWeek,timeGridDay'
-    // },
+    initialView: "dva",
+    headerToolbar: {
+        left: 'title',
+        center: '',
+        right: 'prev,next,today,timeGridDay,dva,pet,timeGridWeek',
+    },
     scrollTime: new Date(currentDate.setHours(currentDate.getHours() - 1)).toTimeString(),
     views: {
-        timeGridSevenDay: {
+        dva: {
             type: "timeGrid",
-            duration: { days: 5 }
+            duration: { days: 2 },
+            buttonText: 'Dva dana'
         },
-        timeGridOneDay: {
+        pet: {
             type: "timeGrid",
-            duration: { days: 1 }
-        }
+            duration: { days: 5 },
+            buttonText: 'Pet dana'
+        },
     },
     dateClick: handleDateClick,
     eventClick: handleEventClick,
     events: props.bookings?.data,
     buttonText: {
-        today: "Danas",
+        today: "Vrati se",
         month: "Mesec",
         week: "Sedmica",
         day: "Dan",
         list: "Lista"
     }
-})
-
-const onResize = () => {
-    if (window.innerHeight > 768) {
-        calendarApi.value.changeView("timeGridSevenDay")
-    } else {
-        calendarApi.value.changeView("timeGridOneDay")
-    }
-}
-
-onMounted(() => {
-    calendarApi.value = calendarEl.value.getApi()
-    window.addEventListener("resize", onResize)
-
-    if (window.innerHeight > 768) {
-        calendarApi.value.changeView("timeGridSevenDay")
-    } else {
-        calendarApi.value.changeView("timeGridOneDay")
-    }})
-
-onUnmounted(() => {
-    window.addEventListener("resize", onResize)
 })
 
 watch(
@@ -258,5 +219,8 @@ const handleAppointmentSuccess = () => {
 
 .fc-timegrid-slot-lane {
     cursor: pointer;
+}
+.fc-timegrid-event-harness {
+    min-height: 100px;
 }
 </style>

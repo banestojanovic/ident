@@ -1,12 +1,15 @@
 <template>
     <div>
-        <label :for="name" class="mb-1 block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">{{ label }}</label>
+        <label :for="name" :class="[{ 'sr-only': hideLabel }, 'mb-3 flex space-x-1 sm:mt-px sm:pt-2']">
+            <slot name="icon" />
+            <span>{{ label }}</span>
+        </label>
         <div :class="['mt-1 sm:col-span-2 sm:mt-0', additional?.fieldClass ? additional?.fieldClass : '']">
             <select
                 :value="modelValue"
                 :id="name"
                 :name="name"
-                class="block w-full rounded-md border-gray-300 text-sm shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                class="block w-full rounded-md border-0 bg-stone-100 px-4 p-1.5 text-gray-500 placeholder-gray-400 focus:border-stone-300 focus:ring-stone-300"
                 @change="
                     ($e) => {
                         $emit('update:modelValue', $e.target.value)
@@ -25,6 +28,11 @@ const props = defineProps({
     label: {
         type: String,
         required: true
+    },
+    hideLabel: {
+        type: Boolean,
+        required: false,
+        default: () => false
     },
     name: {
         type: String,

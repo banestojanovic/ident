@@ -22,7 +22,7 @@
 
         <form @submit.prevent="submit">
             <div>
-                <FieldSelectDentists v-model="form.id" :items="$page.props.global.dentists?.data" name="id" label="Vaše ime" placeholder="Izaberite" :error="form.errors?.id" />
+                <FieldSelectDentists v-model="form.id" :items="$page.props.global.users?.data" name="id" label="Vaše ime" placeholder="Izaberite" :error="form.errors?.id" />
             </div>
 
             <div class="mt-4">
@@ -41,15 +41,8 @@
             </div>
 
             <div class="mt-4 flex items-center justify-end">
-                <Link
-                    v-if="canResetPassword"
-                    :href="route('password.request')"
-                    class="rounded-md text-sm text-gray-600 underline hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                >
-                    Zaboravljena lozinka?
-                </Link>
 
-                <PrimaryButton class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">Uloguj se</PrimaryButton>
+                <PrimaryButton class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">Prijavi me</PrimaryButton>
             </div>
         </form>
     </GuestLayout>

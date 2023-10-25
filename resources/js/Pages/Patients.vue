@@ -188,6 +188,7 @@
             :open="newPatientModal"
             title="Dodaj pacijenta"
             subtitle="Unesi podatke novog pacijenta u bazu podataka"
+            type="big"
             @close="
                 () => {
                     newPatientModal = false

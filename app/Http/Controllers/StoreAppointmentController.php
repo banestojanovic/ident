@@ -17,7 +17,7 @@ class StoreAppointmentController extends Controller
         $request->validate([
             'date' => 'required',
             'patient_id' => 'required_if:new_patient,false',
-            'dentist_id' => 'required|numeric|min:0|not_in:0',
+            'dentist_id' => 'required|min:0|not_in:0',
             'new_patient' => 'required',
             'first_name' => 'required_if:new_patient,true',
             'last_name' => 'required_if:new_patient,true',
@@ -33,7 +33,7 @@ class StoreAppointmentController extends Controller
             'start_time' => Carbon::parse(request('date'))->tz('Europe/Belgrade'),
             'finish_time' => Carbon::parse(request('date'))->tz('Europe/Belgrade')->addMinutes(15),
             'patient_id' => $patient?->id ?? request('patient_id')['id'],
-            'user_id' => request('dentist_id'),
+            'user_id' => request('dentist_id')['id'],
         ]);
 
         $request->session()->flash('notification', [

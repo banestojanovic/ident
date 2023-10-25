@@ -38,15 +38,16 @@
         </div>
 
         <div class="flex items-end">
-            <button v-if="edit" type="button" @click="$emit('delete', { id: form.record })" class="mr-auto text-red-500 hover:underline">Izbriši karton</button>
+            <button v-if="edit" type="button" @click="$emit('delete', { id: form.record })" class="mr-auto text-red-500 hover:underline">Izbriši zakazano</button>
             <button
                 type="submit"
                 :class="[
                     loading ? 'opacity-25' : '',
-                    'focus-visible:ring-ring border-input ml-auto mt-4 inline-flex items-center justify-center rounded-md border bg-gray-700 px-4 py-2 text-base font-medium text-white shadow-sm transition-colors hover:bg-gray-800 hover:text-white focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-50'
+                    'focus-visible:ring-ring border-input mb-4 ml-auto inline-flex w-full items-center justify-center space-x-2 rounded-xl border bg-emerald-600 px-6 py-2 text-base font-medium text-white shadow-sm transition-colors hover:bg-emerald-700 hover:text-white focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-50 sm:mb-0 sm:mt-4 sm:w-[200px]'
                 ]"
             >
-                <span v-if="!loading">Sačuvaj</span>
+
+                <span v-if="!loading">{{ "Zakaži" }}</span>
                 <Loader v-if="loading" class="w-[56px]" />
             </button>
         </div>

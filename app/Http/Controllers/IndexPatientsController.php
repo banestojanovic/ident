@@ -22,8 +22,6 @@ class IndexPatientsController extends Controller
                 Patient::with('lastRecord')
                     ->when(! empty($keyword),
                         fn ($q) => $q->orWhere(DB::raw("concat(first_name, ' ', last_name)"), 'LIKE', '%'.$keyword.'%'))
-                    ->when(! empty($phone),
-                        fn ($q) => $q->where('phone', 'LIKE', '%'.$phone.'%'))
                     ->orderByDesc('id')
                     ->paginate(12)
                     ->onEachSide(1)

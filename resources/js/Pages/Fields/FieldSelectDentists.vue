@@ -10,7 +10,7 @@
             <Listbox :multiple="multiple || false" :modelValue="modelValue" @update:modelValue="(value) => $emit('update:modelValue', value)" by="id">
                 <div class="relative mt-1">
                     <ListboxButton
-                        class="relative h-10 w-full cursor-default rounded-md bg-gray-100 py-2 pl-4 pr-10 text-left text-base focus:outline-none focus-visible:border-gray-300 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm"
+                        class="relative h-10 w-full cursor-default rounded-md bg-stone-100 py-2 pl-4 pr-10 text-left text-base focus:outline-none focus-visible:border-gray-300 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm"
                     >
                         <span v-if="modelValue" class="block truncate text-base">{{ props.multiple ? modelValue.map((item) => item.name).join(", ") : modelValue.name }}</span>
                         <span v-if="!modelValue && placeholder" class="block truncate text-base text-gray-500">{{ placeholder }}</span>
@@ -27,7 +27,7 @@
                                         </figure>
 
                                         <span class="inline-flex flex-col text-left">
-                                            <span class="text-gray-500">Doktor</span>
+                                            <span class="text-gray-500">{{ item?.role == 2 ? 'Doktor' : 'Stomatološka sestra'}}</span>
                                             <span class="text-lg font-medium">{{ item?.name }}</span>
                                         </span>
                                     </div>

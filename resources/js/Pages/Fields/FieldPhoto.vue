@@ -1,8 +1,11 @@
 <template>
     <div>
-        <label for="photo" class="mb-1 block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">{{ label }}</label>
+        <label :for="name" :class="[{ 'sr-only': hideLabel }, 'mb-3 flex space-x-1 sm:mt-px sm:pt-2']">
+            <slot name="icon" />
+            <span>{{ label }}</span>
+        </label>
         <div class="mt-1 sm:col-span-2 sm:mt-0">
-            <div class="relative flex max-w-lg justify-center rounded-md border-2 border-dashed border-gray-300 px-6 pb-6 pt-5">
+            <div class="relative flex max-w-lg justify-center rounded-md bg-stone-100 border border-dashed border-gray-300 px-6 pb-6 pt-5">
                 <input
                     id="photo"
                     name="photo"
@@ -30,7 +33,7 @@
                         />
                     </svg>
                     <div class="flex text-sm text-gray-600">
-                        <div class="relative cursor-pointer rounded-md bg-white font-medium text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:text-indigo-500">
+                        <div class="relative cursor-pointer rounded-md font-medium text-stone-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:text-indigo-500">
                             <span>Klikni da dodaš snimak</span>
                         </div>
                     </div>
@@ -50,6 +53,11 @@ const props = defineProps({
     label: {
         type: String,
         required: true
+    },
+    hideLabel: {
+        type: Boolean,
+        required: false,
+        default: () => false
     },
     name: {
         type: String,

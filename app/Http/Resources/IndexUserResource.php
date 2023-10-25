@@ -17,9 +17,10 @@ class IndexUserResource extends JsonResource
     {
 
         return [
-          'id' => $this->id,
-          'name' => $this->name,
-          'photo' => Storage::url($this->avatar?->src),
+            'id' => $this->id,
+            'name' => $this->name,
+            'role' => $this->role,
+            'photo' => Storage::url($this->avatar?->src),
         ];
         return parent::toArray($request);
     }

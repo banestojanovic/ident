@@ -49,6 +49,7 @@ class HandleInertiaRequests extends Middleware
                 'location' => $request->url(),
             ],
             'global' => fn() => [
+                'users' => fn() => IndexUserResource::collection(User::where('role', UserRoleEnum::dentist)->orWhere('role', UserRoleEnum::assistant)->get()),
                 'dentists' => fn() => IndexUserResource::collection(User::where('role', UserRoleEnum::dentist)->get()),
                 'teeth' => fn() => TeethEnum::toArray(),
                 'therapies' => fn() => Therapy::get(),
