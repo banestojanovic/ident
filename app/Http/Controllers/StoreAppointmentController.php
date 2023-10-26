@@ -31,7 +31,7 @@ class StoreAppointmentController extends Controller
 
         Appointment::create([
             'start_time' => Carbon::parse(request('date'))->tz('Europe/Belgrade'),
-            'finish_time' => Carbon::parse(request('date'))->tz('Europe/Belgrade')->addMinutes(15),
+            'finish_time' => Carbon::parse(request('date'))->tz('Europe/Belgrade')->addMinutes(60),
             'patient_id' => $patient?->id ?? request('patient_id')['id'],
             'user_id' => request('dentist_id')['id'],
         ]);

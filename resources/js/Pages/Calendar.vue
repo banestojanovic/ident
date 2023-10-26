@@ -2,12 +2,15 @@
     <Head title="Kalendar" />
 
     <AuthenticatedLayout>
+        <div>
+            <FieldSelectDentists v-model="dentistForm.dentist" :items="$page.props.global.dentists.data" name="dentist" label="Izaberite doktora" />
+        </div>
+
         <FullCalendar ref="calendarEl" :options="calendarOptions" class="h-[80vh] bg-white p-10">
             <template v-slot:eventContent="arg">
                 <div class="flex flex-col">
                     <span>{{ arg.event.title }}</span>
                     <span>{{ arg.event.extendedProps.patient.first_name }}</span>
-                    <span>{{ `${arg.event.start.getHours()}:${arg.event.start.getMinutes()}-${arg.event.end.getHours()}:${arg.event.end.getMinutes()}h` }}</span>
                 </div>
             </template>
         </FullCalendar>
@@ -86,20 +89,21 @@
 
 <script setup>
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue"
-import { Head, router, useForm } from "@inertiajs/vue3"
+import { Head, router, useForm, usePage } from "@inertiajs/vue3"
 import FullCalendar from "@fullcalendar/vue3"
 import timeGridPlugin from "@fullcalendar/timegrid"
 import interactionPlugin from "@fullcalendar/interaction"
 import Modal from "@/Pages/Partials/Modal.vue"
-import { onMounted, onUnmounted, ref, watch } from "vue"
+import { ref, watch } from "vue"
 import FormBooking from "@/Pages/Forms/FormBooking.vue"
 import { dateOptions } from "@/helpers.js"
 import ConfirmDialog from "@/Pages/Partials/ConfirmDialog.vue"
-import { ArrowLeftIcon, CalendarDaysIcon, UserGroupIcon } from "@heroicons/vue/24/solid/index.js"
+import FieldSelectDentists from "@/Pages/Fields/FieldSelectDentists.vue"
 
 const props = defineProps({
     patient: Object,
-    bookings: Object
+    bookings: Object,
+    query: Object
 })
 
 const loading = ref(false)
@@ -119,6 +123,25 @@ const handleEventClick = (info, date) => {
     eventModal.value = true
 }
 
+const dentistForm = useForm({
+    dentist: props.query.dentist
+})
+
+watch(
+    () => dentistForm.dentist,
+    (value) => {
+        if (dentistForm.dentist?.id) {
+            router.visit(route("calendar.show", { dentist: dentistForm.dentist.id || null }), {
+                preserveScroll: true,
+            })
+        } else {
+            router.visit(route("calendar.show"), {
+                preserveScroll: true,
+            })
+        }
+    }
+)
+
 const currentDate = new Date()
 const calendarEl = ref(null)
 const calendarApi = ref(null)
@@ -131,27 +154,27 @@ const calendarOptions = ref({
     slotMinTime: "07:00:00",
     slotMaxTime: "20:00:00",
     nowIndicator: true,
-    slotEventOverlap: true,
+    slotEventOverlap: false,
     plugins: [timeGridPlugin, interactionPlugin],
     eventDisplay: "block",
-    initialView: "dva",
+    initialView: "timeGridWeek",
     headerToolbar: {
-        left: 'title',
-        center: '',
-        right: 'prev,next,today,timeGridDay,dva,pet,timeGridWeek',
+        left: "title",
+        center: "",
+        right: "prev,next,today,timeGridDay,dva,pet,timeGridWeek"
     },
     scrollTime: new Date(currentDate.setHours(currentDate.getHours() - 1)).toTimeString(),
     views: {
         dva: {
             type: "timeGrid",
             duration: { days: 2 },
-            buttonText: 'Dva dana'
+            buttonText: "Dva dana"
         },
         pet: {
             type: "timeGrid",
             duration: { days: 5 },
-            buttonText: 'Pet dana'
-        },
+            buttonText: "Pet dana"
+        }
     },
     dateClick: handleDateClick,
     eventClick: handleEventClick,
@@ -189,24 +212,24 @@ const handleDeleteAppointment = () => {
 }
 
 const handleAppointmentSuccess = () => {
+    bookingModal.value = false
     if (props.patient) {
         setTimeout(() => {
             router.replace(route("calendar.show"))
         }, 3000)
     } else {
-        calendarApi.value.render()
+        calendarApi?.value?.render()
     }
-    bookingModal.value = false
 }
 </script>
 
 <style>
-.fc-scrollgrid {
-    @apply overflow-hidden rounded bg-white;
+.fc .fc-timegrid-slot {
+    height: 4rem;
 }
 
-.fc-event {
-    width: 100px;
+.fc-scrollgrid {
+    @apply overflow-hidden rounded bg-white;
 }
 
 .fc-event-main {
@@ -219,8 +242,5 @@ const handleAppointmentSuccess = () => {
 
 .fc-timegrid-slot-lane {
     cursor: pointer;
-}
-.fc-timegrid-event-harness {
-    min-height: 100px;
 }
 </style>
