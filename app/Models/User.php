@@ -53,17 +53,59 @@ class User extends Authenticatable
         return $this->morphOne(Photo::class, 'photoable');
     }
 
+    public static function dentistBaseColor($id)
+    {
+        switch ($id) {
+            case 1:
+                return 'orange';
+            case 2:
+                return 'emerald';
+            case 3:
+                return 'red';
+            default:
+                return 'sky';
+        }
+    }
+
     public static function dentistColor($id)
     {
         switch ($id) {
             case 1:
-                return '#6366f1';
+                return '#fff7ed';
             case 2:
-                return '#0891b2';
+                return '#ecfdf5';
             case 3:
-                return '#10b981';
+                return '#fef2f2';
             default:
-                return '#3788d8';
+                return '#f0f9ff';
+        }
+    }
+
+    public static function dentistTextColor($id)
+    {
+        switch ($id) {
+            case 1:
+                return '#9a3412';
+            case 2:
+                return '#065f46';
+            case 3:
+                return '#991b1b';
+            default:
+                return '#075985';
+        }
+    }
+
+    public static function dentistBorderColor($id)
+    {
+        switch ($id) {
+            case 1:
+                return '#fed7aa';
+            case 2:
+                return '#a7f3d0';
+            case 3:
+                return '#fecaca';
+            default:
+                return '#bae6fd';
         }
     }
 }

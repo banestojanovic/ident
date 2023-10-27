@@ -28,7 +28,7 @@ export default {
             },
             animation: {
                 progress: "progress 3s linear"
-            }
+            },
         }
     },
 

@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="relative min-h-screen bg-sky-50">
-            <nav class="mx-auto max-w-8xl">
+            <nav class="">
                 <!-- Primary Navigation Menu -->
                 <div class="mx-auto rounded-b-lg bg-white px-8 py-4">
                     <div class="flex h-16 justify-between">
@@ -106,7 +106,7 @@
 
             <!-- Page Content -->
             <main>
-                <div class="mx-auto max-w-8xl">
+                <div class="">
                     <Tabs />
                     <slot />
                 </div>

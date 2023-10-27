@@ -23,6 +23,8 @@ class IndexAppointmentsResource extends JsonResource
             'dentist' => $this->dentist,
             'patient' => $this->patient,
             'color' => User::dentistColor($this->dentist?->id),
+            'textColor' => User::dentistTextColor($this->dentist?->id),
+            'borderColor' => User::dentistBorderColor($this->dentist?->id),
         ];
     }
 }

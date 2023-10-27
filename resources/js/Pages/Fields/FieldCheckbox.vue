@@ -53,6 +53,4 @@ const model = computed({
         emit("update:modelValue", value)
     }
 })
-
-console.log(props.modelValue)
 </script>
