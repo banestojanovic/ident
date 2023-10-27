@@ -17,7 +17,7 @@ class IndexAppointmentsResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'title' => "dr {$this?->dentist?->name}",
+            'title' => "{$this?->patient?->first_name} {$this?->patient?->last_name}",
             'start' => $this->start_time,
             'end' => $this->finish_time,
             'dentist' => $this->dentist,

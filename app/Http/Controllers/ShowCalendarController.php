@@ -25,7 +25,7 @@ class ShowCalendarController extends Controller
                     ->get()
             ),
             'query' => [
-                'dentists' => request('dentists') ? request('dentists') : [],
+                'dentists' => request('dentists') ? request('dentists') : null,
             ],
         ]);
     }
