@@ -3,7 +3,7 @@
 
     <AuthenticatedLayout type="patient">
         <div class="flex flex-col">
-            <div class="mt-1 grid w-full gap-0.5 xl:grid-cols-12">
+            <div class="mt-1 grid w-full gap-1 xl:grid-cols-12">
                 <div class="col-span-12 flex w-full pl-6 xl:col-span-9">
                     <inertia-link :href="route('calendar.show')" class="group relative mr-1 flex flex-col items-center justify-center space-y-1 bg-white px-4 text-gray-900">
                         <svg class="absolute -left-3 top-8" width="13" height="25" viewBox="0 0 13 25" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -64,7 +64,7 @@
                 </div>
             </div>
 
-            <div class="grid w-full grid-cols-12 gap-0.5">
+            <div class="grid w-full grid-cols-12 gap-1">
                 <PatientHistory :patient="patient" :modalOpen="recordModalOpen" @close-modal="() => (recordModalOpen = false)" @open-modal="() => (recordModalOpen = true)" />
 
                 <PatientPhotos :patient="patient" />

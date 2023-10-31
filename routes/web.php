@@ -52,6 +52,8 @@ Route::get('/kalendar', \App\Http\Controllers\ShowCalendarController::class)
 
 Route::post('/kalendar/dodaj', \App\Http\Controllers\StoreAppointmentController::class)
     ->middleware(['auth', 'verified'])->name('appointments.store');
+Route::put('/kalendar/izmeni/{id}', \App\Http\Controllers\UpdateAppointmentsController::class)
+    ->middleware(['auth', 'verified'])->name('appointments.update');
 Route::delete('/kalendar/ukloni/{id}', \App\Http\Controllers\DeleteAppointmentController::class)
     ->middleware(['auth', 'verified'])->name('appointments.delete');
 

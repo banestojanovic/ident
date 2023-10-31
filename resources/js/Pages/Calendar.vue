@@ -29,15 +29,7 @@
                     </div>
                 </div>
             </div>
-            <FullCalendar ref="calendarEl" :options="calendarOptions" class="col-span-7 h-[80vh] bg-white">
-                <!--            <template v-slot:eventContent="arg">-->
-                <!--                <div class="flex flex-col truncate">-->
-                <!--                    <span>{{ arg.event.title }}</span>-->
-                <!--                    <span>{{ arg.event.extendedProps.patient.first_name }}</span>-->
-                <!--                    <span>{{ `${arg.event.start.getHours()}:${arg.event.start.getMinutes()}-${arg.event.end.getHours()}:${arg.event.end.getMinutes()}h` }}</span>-->
-                <!--                </div>-->
-                <!--            </template>-->
-            </FullCalendar>
+            <FullCalendar ref="calendarEl" :options="calendarOptions" class="col-span-7 h-[80vh] bg-white" />
         </div>
 
         <Modal
@@ -64,36 +56,47 @@
             "
         >
             <div class="flex flex-col space-y-6">
-                <div>
-                    <span class="font-semibold">Doktor</span>
-                    <h5>{{ selectedEvent.extendedProps.dentist.name }}</h5>
-                </div>
-
-                <div class="flex flex-col space-y-3">
-                    <div>
-                        <span class="font-semibold">Pacijent</span>
-                        <h5>
-                            {{ `${selectedEvent.extendedProps.patient.first_name} ${selectedEvent.extendedProps.patient.last_name}` }}
-                        </h5>
-                        <div v-if="selectedEvent.extendedProps.patient?.address">
-                            {{ `${selectedEvent.extendedProps.patient?.address}, ${selectedEvent.extendedProps?.patient?.city}` }}
+                <div class="flex justify-between">
+                    <div class="flex flex-col space-y-3">
+                        <div>
+                            <span class="font-semibold">Pacijent</span>
+                            <h5>
+                                {{ `${selectedEvent.extendedProps.patient.first_name} ${selectedEvent.extendedProps.patient.last_name}` }}
+                            </h5>
+                            <div v-if="selectedEvent.extendedProps.patient?.address">
+                                {{ `${selectedEvent.extendedProps.patient?.address}, ${selectedEvent.extendedProps?.patient?.city}` }}
+                            </div>
+                            <div>{{ `${selectedEvent.extendedProps.patient?.phone}` }}</div>
                         </div>
-                        <div>{{ `${selectedEvent.extendedProps.patient?.phone}` }}</div>
+                    </div>
+
+                    <div>
+                        <span class="font-semibold">Doktor</span>
+                        <h5>{{ selectedEvent.extendedProps.dentist.name }}</h5>
                     </div>
                 </div>
 
-                <button
-                    type="button"
-                    @click="
-                        () => {
-                            confirmDialogOpen = true
-                            eventModal = false
-                        }
-                    "
-                    class="absolute bottom-4 right-10 text-red-500 hover:underline"
-                >
-                    Izbriši zakazani termin
-                </button>
+                <div class="flex items-end justify-between">
+                    <button
+                        type="button"
+                        @click="
+                            () => {
+                                confirmDialogOpen = true
+                                eventModal = false
+                            }
+                        "
+                        class="text-sm text-red-500 hover:underline"
+                    >
+                        Izbriši zakazani termin
+                    </button>
+
+                    <inertia-link
+                        :href="route('patients.show', { slug: selectedEvent.extendedProps.patient.slug })"
+                        class="focus-visible:ring-ring inline-flex items-center justify-center space-x-2 rounded-md bg-sky-100 px-4 py-1.5 text-base text-sky-800 transition-colors hover:bg-sky-200 focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-50 lg:col-span-3"
+                    >
+                        Vidi karton pacijenta
+                    </inertia-link>
+                </div>
             </div>
         </Modal>
 
@@ -131,6 +134,9 @@ const props = defineProps({
     query: Object
 })
 
+const currentDate = new Date()
+const calendarEl = ref(null)
+const calendarApi = ref(null)
 const loading = ref(false)
 const bookingModal = ref(false)
 const eventModal = ref(false)
@@ -148,6 +154,46 @@ const handleEventClick = (info, date) => {
     eventModal.value = true
 }
 
+const updateForm = useForm({
+    _method: "put",
+    type: null,
+    start_time: null,
+    end_time: null
+})
+
+const handleEventDrop = (info) => {
+    updateForm.type = "drop"
+    updateForm.start_time = info.event.start || null
+
+    updateForm.post(route("appointments.update", { id: info?.event?._def?.publicId ?? null }), {
+        preserveScroll: true,
+        onSuccess: () => {
+            updateForm.type = null
+            updateForm.start_time = null
+            updateForm.end_time = null
+        },
+        onError: () => {
+            info.revert()
+        }
+    })
+}
+
+const handleEventResize = (info) => {
+    updateForm.type = "resize"
+    updateForm.end_time = info.event.end || null
+    updateForm.post(route("appointments.update", { id: info?.event?._def?.publicId ?? null }), {
+        preserveScroll: true,
+        onSuccess: () => {
+            updateForm.type = null
+            updateForm.start_time = null
+            updateForm.end_time = null
+        },
+        onError: () => {
+            info.revert()
+        }
+    })
+}
+
 const dentistForm = useForm({
     dentists: props.query?.dentists || usePage().props.global.dentists?.data?.map((item) => item.id)
 })
@@ -162,10 +208,6 @@ watch(
         }
     }
 )
-
-const currentDate = new Date()
-const calendarEl = ref(null)
-const calendarApi = ref(null)
 
 const calendarOptions = ref({
     editable: true,
@@ -208,6 +250,8 @@ const calendarOptions = ref({
     },
     dateClick: handleDateClick,
     eventClick: handleEventClick,
+    eventDrop: handleEventDrop,
+    eventResize: handleEventResize,
     events: props.bookings?.data,
     buttonText: {
         today: "Danas",
