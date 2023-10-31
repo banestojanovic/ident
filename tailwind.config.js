@@ -14,11 +14,14 @@ export default {
                 center: true,
                 padding: {
                     DEFAULT: "1rem",
-                    sm: "2rem",
+                    sm: "2rem"
                 }
             },
             maxWidth: {
-              '8xl': '85rem',
+                "8xl": "85rem"
+            },
+            boxShadow: {
+                search: "0px 10px 5px 0px #EBF2F5"
             },
             keyframes: {
                 progress: {
@@ -28,7 +31,7 @@ export default {
             },
             animation: {
                 progress: "progress 3s linear"
-            },
+            }
         }
     },
 

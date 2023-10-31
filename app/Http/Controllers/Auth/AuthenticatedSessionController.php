@@ -34,7 +34,7 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->route('patients.index');
+        return redirect()->route('calendar.show');
     }
 
     /**

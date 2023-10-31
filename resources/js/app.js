@@ -11,10 +11,11 @@ import { createPinia } from "pinia"
 import { useGlobalStore } from "@/stores.js"
 import VueDatePicker from "@vuepic/vue-datepicker"
 import Notifications from "notiwind"
+import vClickOutside from 'click-outside-vue3'
 
 const pinia = createPinia()
 
-const appName = import.meta.env.VITE_APP_NAME || "Dentister"
+const appName = import.meta.env.VITE_APP_NAME || "iDent"
 
 createInertiaApp({
     title: (title) => `${title} - ${appName}`,
@@ -25,6 +26,7 @@ createInertiaApp({
             .use(pinia)
             .use(ZiggyVue, Ziggy)
             .use(Notifications)
+            .use(vClickOutside)
             .component("inertia-link", Link)
             .component("VueDatePicker", VueDatePicker)
             .mount(el)

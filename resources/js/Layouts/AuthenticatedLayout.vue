@@ -3,7 +3,7 @@
         <div class="relative min-h-screen bg-sky-50">
             <nav class="">
                 <!-- Primary Navigation Menu -->
-                <div class="mx-auto rounded-b-lg bg-white px-8 py-4">
+                <div class="mx-auto bg-white px-8 py-4">
                     <div class="flex h-16 justify-between">
                         <div class="flex">
                             <!-- Logo -->
@@ -107,7 +107,6 @@
             <!-- Page Content -->
             <main>
                 <div class="">
-                    <Tabs />
                     <slot />
                 </div>
             </main>

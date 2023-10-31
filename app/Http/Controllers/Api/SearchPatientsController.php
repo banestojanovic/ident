@@ -16,9 +16,14 @@ class SearchPatientsController extends Controller
     {
 
         return response()->json([
-            'patients' => Patient::when(!empty(request('query')),
-                fn($q) => $q->orWhere(DB::raw("concat(first_name, ' ', last_name)"), 'LIKE', '%'.request('query').'%'))
-                ->take(8)->get(),
+            'patients' => empty(request('query')) ? [] : Patient::when(!empty(request('query')),
+                fn($q) => $q->orWhere(DB::raw("concat(first_name, ' ', last_name)"), 'LIKE', '%'.request('query').'%')
+                    ->orWhere(DB::raw("concat(last_name, ' ', first_name)"), 'LIKE', '%'.request('query').'%')
+                    ->orWhere(DB::raw("phone"), 'LIKE', '%'.request('query').'%')
+                    ->orWhere(DB::raw("address"), 'LIKE', '%'.request('query').'%')
+                    ->orWhere(DB::raw("city"), 'LIKE', '%'.request('query').'%'))
+                ->take(8)
+                ->get(),
         ]);
     }
 }

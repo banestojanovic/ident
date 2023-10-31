@@ -1,9 +1,9 @@
 <template>
-    <footer class="bg-sky-50 pb-12 pt-24 text-sm text-sky-700">
-        <div class="max-w-8xl mx-auto flex items-center justify-between">
+    <footer class="bg-sky-50 pb-8 text-sm text-sky-700">
+        <div class="flex items-center justify-between px-12">
             <div>
                 © Kreirao
-                <strong>Dimaso DOO</strong>
+                <strong>iDent</strong>
                 - Sva prava zadržana 2023.
             </div>
             <div class="ml-auto flex items-center space-x-8">
@@ -31,7 +31,7 @@
                         />
                     </svg>
 
-                    <span>dimaso.doo@gmail.com</span>
+                    <span>podrska@ident.rs</span>
                 </a>
                 <a href="#" class="flex items-center space-x-2 hover:text-sky-900">
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -2,10 +2,14 @@
     <Head title="Kalendar" />
 
     <AuthenticatedLayout>
-        <div class="grid grid-cols-12 bg-white">
+        <div class="mt-1">
+            <SearchPatients />
+        </div>
+
+        <div class="mt-1 grid grid-cols-8">
             <span class="sr-only text-emerald-400 text-orange-400 text-red-400 text-sky-400"></span>
-            <div class="col-span-1 mt-2 flex flex-col space-y-4 p-10">
-                <h5 class="font-semibold text-gray-600">Doktori</h5>
+            <div class="col-span-1 mr-1 flex flex-col space-y-4 bg-white p-6 px-10">
+                <h5 class="ml-6 text-gray-500">Doktori</h5>
 
                 <div class="flex flex-col space-y-2.5">
                     <div v-for="(dentist, idx) in $page.props.global.dentists.data" :key="dentist.id">
@@ -18,14 +22,14 @@
                                 type="checkbox"
                                 :class="[dentist?.color ? `text-${dentist.color}-400` : ' text-red-600 focus:ring-gray-100', 'h-4 w-4 cursor-pointer rounded border-gray-300']"
                             />
-                            <label :for="dentist.name" class="ml-2 block cursor-pointer text-sm text-gray-600">
+                            <label :for="dentist.name" class="ml-2 block cursor-pointer text-gray-900">
                                 {{ dentist.name }}
                             </label>
                         </div>
                     </div>
                 </div>
             </div>
-            <FullCalendar ref="calendarEl" :options="calendarOptions" class="col-span-11 h-[80vh] bg-white p-10">
+            <FullCalendar ref="calendarEl" :options="calendarOptions" class="col-span-7 h-[80vh] bg-white">
                 <!--            <template v-slot:eventContent="arg">-->
                 <!--                <div class="flex flex-col truncate">-->
                 <!--                    <span>{{ arg.event.title }}</span>-->
@@ -119,6 +123,7 @@ import { ref, watch } from "vue"
 import FormBooking from "@/Pages/Forms/FormBooking.vue"
 import { dateOptions } from "@/helpers.js"
 import ConfirmDialog from "@/Pages/Partials/ConfirmDialog.vue"
+import SearchPatients from "@/Pages/Patients/SearchPatients.vue"
 
 const props = defineProps({
     patient: Object,
@@ -192,23 +197,23 @@ const calendarOptions = ref({
     views: {
         dva: {
             type: "timeGrid",
-            duration: { days: 2 },
-            buttonText: "Dva dana"
+            duration: { days: 3 },
+            buttonText: "3 dana"
         },
         pet: {
             type: "timeGrid",
             duration: { days: 5 },
-            buttonText: "Pet dana"
+            buttonText: "5 dana"
         }
     },
     dateClick: handleDateClick,
     eventClick: handleEventClick,
     events: props.bookings?.data,
     buttonText: {
-        today: "Vrati se",
+        today: "Danas",
         month: "Mesec",
-        week: "Sedmica",
-        day: "Dan",
+        week: "7 Dana",
+        day: "1 Dan",
         list: "Lista"
     }
 })
@@ -286,7 +291,7 @@ const handleAppointmentSuccess = () => {
 }
 
 .fc-header-toolbar.fc-toolbar {
-    @apply flex flex-col md:flex-row;
+    @apply flex flex-col px-6 py-4 md:flex-row;
 }
 
 .fc-timegrid-slot-lane {
@@ -305,16 +310,18 @@ const handleAppointmentSuccess = () => {
 }
 
 .fc .fc-button-primary {
-    margin: 0 2px;
-    background-color: transparent;
-    font-weight: 500;
+    margin: 0 1px;
+    background-color: #ebf2f5;
+    font-weight: 400;
+    text-transform: uppercase;
+    font-size: 14px;
     border: none;
-    color: rgb(112 117 122 / 70%);
+    color: rgb(0 0 0 / 30%);
 }
 
 .fc .fc-button-primary:hover {
-    background-color: rgb(0 0 0 / 3%);
-    color: rgb(112 117 122 / 70%);
+    background-color: rgb(235 242 245 / 100%);
+    color: rgb(0 0 0 / 100%);
 }
 
 .fc .fc-button-primary:not(:disabled).fc-button-active:focus,
@@ -322,28 +329,30 @@ const handleAppointmentSuccess = () => {
 .fc .fc-button-primary:not(:disabled):active:focus,
 .fc .fc-button-primary:not(:disabled).fc-button-active,
 .fc .fc-button-primary:not(:disabled):active {
-    background-color: #f0f9ff;
+    background-color: #ebf2f5;
     box-shadow: none;
     border: none;
-    color: #075985;
+    color: rgb(0 0 0 / 100%);
 }
 
 .fc .fc-button-primary.fc-today-button:disabled {
-    background-color: transparent;
+    background-color: #ebf2f5;
     color: rgb(112 117 122 / 30%);
 }
 
 .fc .fc-button-primary.fc-today-button {
-    background-color: transparent;
-    color: rgb(112 117 122 / 70%);
+    background-color: #ebf2f5;
+    color: rgb(0 0 0 / 30%);
 }
 
 .fc .fc-button-primary.fc-today-button:not(:disabled):hover {
-    background-color: rgb(0 0 0 / 3%);
+    color: rgb(0 0 0 / 100%);
+    background-color: #ebf2f5;
 }
 
 .fc-toolbar-title {
-    font-size: 24px !important;
-    color: rgb(112 117 122 / 100%);
+    font-size: 16px !important;
+    text-transform: uppercase;
+    color: black;
 }
 </style>

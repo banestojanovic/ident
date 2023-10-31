@@ -1,5 +1,5 @@
 <template>
-    <div class="col-span-9 overflow-hidden rounded-b-lg mt-0.5">
+    <div class="col-span-9 overflow-hidden mt-0.5">
         <div class="flex min-w-0 flex-1 bg-stone-50 mb-0.5 px-4 py-2 sm:px-6">
             <div class="min-w-0 flex-1 md:grid md:grid-cols-5 md:gap-4">
                 <div class="text-xs font-light uppercase text-gray-500">Datum dolaska</div>
