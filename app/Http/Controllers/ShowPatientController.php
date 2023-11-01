@@ -27,6 +27,8 @@ class ShowPatientController extends Controller
             return $photo;
         });
 
+        $patient->teeth = $patient->records->groupBy('tooth');
+
         return inertia('Patient', [
             'patient' => $patient,
         ]);

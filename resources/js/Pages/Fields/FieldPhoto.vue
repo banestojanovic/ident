@@ -5,7 +5,7 @@
             <span>{{ label }}</span>
         </label>
         <div class="mt-1 sm:col-span-2 sm:mt-0">
-            <div class="relative flex max-w-lg justify-center rounded-md bg-stone-100 border border-dashed border-gray-300 px-6 pb-6 pt-5">
+            <div class="relative flex max-w-lg justify-center rounded-md bg-slate-100 border border-dashed border-gray-300 px-6 pb-6 pt-5">
                 <input
                     id="photo"
                     name="photo"
@@ -33,7 +33,7 @@
                         />
                     </svg>
                     <div class="flex text-sm text-gray-600">
-                        <div class="relative cursor-pointer rounded-md font-medium text-stone-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:text-indigo-500">
+                        <div class="relative cursor-pointer rounded-md font-medium text-slate-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:text-indigo-500">
                             <span>Klikni da dodaš snimak</span>
                         </div>
                     </div>

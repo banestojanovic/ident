@@ -9,7 +9,7 @@
                 :value="modelValue"
                 :id="name"
                 :name="name"
-                class="block w-full rounded-md border-0 bg-stone-100 px-4 p-1.5 text-gray-500 placeholder-gray-400 focus:border-stone-300 focus:ring-stone-300"
+                class="block w-full rounded-md border-0 bg-slate-100 px-4 p-1.5 text-gray-500 placeholder-gray-400 focus:border-slate-300 focus:ring-slate-300"
                 @change="
                     ($e) => {
                         $emit('update:modelValue', $e.target.value)

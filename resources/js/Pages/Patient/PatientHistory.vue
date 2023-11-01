@@ -1,91 +1,158 @@
 <template>
-    <div class="col-span-9 overflow-hidden mt-1">
-        <div class="flex min-w-0 flex-1 bg-stone-50 mb-0.5 px-4 py-2 sm:px-6">
-            <div class="min-w-0 flex-1 md:grid md:grid-cols-5 md:gap-4">
-                <div class="text-xs font-light uppercase text-gray-500">Datum dolaska</div>
-                <div class="hidden text-xs font-light uppercase text-gray-500 md:block">Zub</div>
-                <div class="hidden text-xs font-light uppercase text-gray-500 md:block">Dijagnoza</div>
-                <div class="hidden text-xs font-light uppercase text-gray-500 md:block">Terapija</div>
-                <div class="hidden text-xs font-light uppercase text-gray-500 md:block">Opis</div>
+    <div class="col-span-9 mt-1 overflow-hidden">
+        <div class="mb-1 flex flex-col space-y-10 bg-white p-10">
+            <div class="mx-auto grid grid-cols-2 gap-6">
+                <div class="grid grid-cols-8 gap-2">
+                    <button
+                        type="button"
+                        v-for="(tooth, idx) in firstTeeth"
+                        :key="tooth"
+                        :class="[!activeTeeth.includes(tooth) ? 'opacity-30' : 'opacity-100 hover:opacity-80', 'flex w-10 flex-col items-center justify-end space-y-1']"
+                        @click="handleToothChange(tooth)"
+                    >
+                        <img :src="`/storage/images/site/teeth/${tooth}.svg`" alt="Slika zuba" />
+                        <span class="text-sm text-gray-500">{{ tooth }}</span>
+                    </button>
+                </div>
+                <div class="mx-2 grid grid-cols-8">
+                    <button
+                        type="button"
+                        v-for="(tooth, idx) in secondTeeth"
+                        :key="tooth"
+                        :class="[!activeTeeth.includes(tooth) ? 'opacity-30' : 'opacity-100 hover:opacity-80', 'flex w-10 flex-col items-center justify-end space-y-1']"
+                        @click="handleToothChange(tooth)"
+                    >
+                        <img :src="`/storage/images/site/teeth/${tooth}.svg`" alt="Slika zuba" />
+                        <span class="text-sm text-gray-500">{{ tooth }}</span>
+                    </button>
+                </div>
+                <div class="mx-2 grid grid-cols-8">
+                    <button
+                        type="button"
+                        v-for="(tooth, idx) in fourthTeeth"
+                        :key="tooth"
+                        :class="[!activeTeeth.includes(tooth) ? 'opacity-30' : 'opacity-100 hover:opacity-80', 'flex w-10 flex-col items-center justify-start space-y-1']"
+                        @click="handleToothChange(tooth)"
+                    >
+                        <span class="text-sm text-gray-500">{{ tooth }}</span>
+                        <img :src="`/storage/images/site/teeth/${tooth}.svg`" alt="Slika zuba" />
+                    </button>
+                </div>
+                <div class="mx-2 grid grid-cols-8">
+                    <button
+                        type="button"
+                        v-for="(tooth, idx) in thirdTeeth"
+                        :key="tooth"
+                        :class="[!activeTeeth.includes(tooth) ? 'opacity-30' : 'opacity-100 hover:opacity-80', 'flex w-10 flex-col items-center justify-start space-y-1']"
+                        @click="handleToothChange(tooth)"
+                    >
+                        <span class="text-sm text-gray-500">{{ tooth }}</span>
+                        <img :src="`/storage/images/site/teeth/${tooth}.svg`" alt="Slika zuba" />
+                    </button>
+                </div>
             </div>
-            <div class="mr-28 text-xs font-light uppercase text-gray-500">Akcija</div>
         </div>
-        <ul role="list" class="divide-y divide-gray-200 bg-white overflow-y-auto max-h-[540px]">
-            <li v-for="(record, idx) in patient?.records" :key="record.id" class="py-2">
-                <div :class="[highlightFirstRecord && idx === 0 ? 'bg-gray-100' : '', 'grid grid-cols-1 px-4 py-4 transition-all sm:grid-cols-3 sm:px-6 lg:grid-cols-6']">
-                    <div class="flex items-center space-x-2 mt-2 sm:mt-0">
+
+        <div v-if="selectedTooth" class="grid grid-cols-12">
+            <div class="col-span-2 flex items-center justify-center bg-white p-6 text-3xl font-medium text-gray-500">
+                {{ selectedTooth }}
+            </div>
+            <div class="col-span-7 mx-1 flex items-center space-x-1 bg-white p-6">
+                <span class="text-3xl">{{ selectedRecords.length }}</span>
+                <span v-if="[1, 21, 31, 41, 51, 61, 71, 81, 91].includes(selectedRecords.length)">karton</span>
+                <span v-else>kartona</span>
+            </div>
+            <div class="col-span-3">
+                <button
+                    type="button"
+                    class="focus-visible:ring-ring inline-flex w-full items-center justify-center space-x-2 bg-pink-200 px-2 py-8 text-base uppercase text-[#8A245B] hover:bg-pink-300/70 focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-50"
+                    @click="
+                        () => {
+                            recordFormOpen = true
+                            selectedRecord.item = null
+                        }
+                    "
+                >
+                    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" class="shrink-0">
+                        <path
+                            d="M8.24992 11H13.7499M8.24992 14.6667H13.7499M15.5833 19.25H6.41659C5.93035 19.25 5.46404 19.0568 5.12022 18.713C4.77641 18.3692 4.58325 17.9029 4.58325 17.4167V4.58333C4.58325 4.0971 4.77641 3.63079 5.12022 3.28697C5.46404 2.94315 5.93035 2.75 6.41659 2.75H11.5371C11.7802 2.75005 12.0133 2.84666 12.1852 3.01858L17.148 7.98142C17.3199 8.15328 17.4165 8.3864 17.4166 8.6295V17.4167C17.4166 17.9029 17.2234 18.3692 16.8796 18.713C16.5358 19.0568 16.0695 19.25 15.5833 19.25Z"
+                            stroke="#A960A5"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        />
+                    </svg>
+
+                    <span class="text-base md:text-sm 2xl:text-base">Dodaj karton</span>
+                </button>
+            </div>
+        </div>
+
+        <div v-if="selectedRecords" class="grid grid-cols-12">
+            <div class="col-span-2">
+                <ul class="my-1">
+                    <li v-for="(record, idx) in selectedRecords" :key="record.id">
+                        <button type="button" @click="() => (selectedRecord.item = record)"
+                                :class="[{ 'bg-white': selectedRecord?.item?.id === record.id, 'bg-emerald-100': highlightFirstRecord && idx === 0}, 'flex w-full justify-center px-6 py-3 text-sm']">
+                            {{ new Date(record.date).toLocaleDateString(dateOptions.locale) }}
+                        </button>
+                    </li>
+                </ul>
+            </div>
+            <div v-if="recordFormOpen || selectedRecord.item" :key="selectedRecord.item?.id || 999999999" class="col-span-10 my-1 ml-1 w-full bg-white p-6">
+                <div class="mb-4 flex justify-between">
+                    <h5 v-if="recordFormOpen" class="text-lg font-semibold">Novi karton</h5>
+
+                    <div class="flex items-center space-x-1">
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M6.66667 5.83333V2.5M13.3333 5.83333V2.5M5.83333 9.16667H14.1667M4.16667 17.5H15.8333C16.2754 17.5 16.6993 17.3244 17.0118 17.0118C17.3244 16.6993 17.5 16.2754 17.5 15.8333V5.83333C17.5 5.39131 17.3244 4.96738 17.0118 4.65482C16.6993 4.34226 16.2754 4.16667 15.8333 4.16667H4.16667C3.72464 4.16667 3.30072 4.34226 2.98816 4.65482C2.67559 4.96738 2.5 5.39131 2.5 5.83333V15.8333C2.5 16.2754 2.67559 16.6993 2.98816 17.0118C3.30072 17.3244 3.72464 17.5 4.16667 17.5Z" stroke="black" stroke-opacity="0.4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path
+                                d="M10 5V10H13.75M17.5 10C17.5 10.9849 17.306 11.9602 16.9291 12.8701C16.5522 13.7801 15.9997 14.6069 15.3033 15.3033C14.6069 15.9997 13.7801 16.5522 12.8701 16.9291C11.9602 17.306 10.9849 17.5 10 17.5C9.01509 17.5 8.03982 17.306 7.12987 16.9291C6.21993 16.5522 5.39314 15.9997 4.6967 15.3033C4.00026 14.6069 3.44781 13.7801 3.0709 12.8701C2.69399 11.9602 2.5 10.9849 2.5 10C2.5 8.01088 3.29018 6.10322 4.6967 4.6967C6.10322 3.29018 8.01088 2.5 10 2.5C11.9891 2.5 13.8968 3.29018 15.3033 4.6967C16.7098 6.10322 17.5 8.01088 17.5 10Z"
+                                stroke="black"
+                                stroke-width="1.5"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            />
                         </svg>
 
-                        <p class="truncate text-base">
-                            {{ new Date(record?.date).toLocaleDateString(dateOptions.locale) }}
-                        </p>
-                    </div>
-                    <div class="mt-2 sm:mt-0">
-                        <p class="text-base text-gray-900">{{ record?.tooth }}</p>
-                    </div>
-                    <div class="mt-2 sm:mt-0">
-                        <div class="text-base text-gray-900">{{ record?.diagnosis }}</div>
-                    </div>
-                    <div class="mt-2 lg:mt-0">
-                        <div class="text-base text-gray-900">{{ record?.therapy?.name }}</div>
-                    </div>
-                    <div class="mt-2 lg:mt-0">
-                        <div class="text-base text-gray-900">{{ record?.description }}</div>
-                    </div>
-                    <div class="mt-2 text-base font-medium lg:mt-0 lg:text-right">
-                        <button type="button" class="flex items-center space-x-2 text-gray-500 hover:underline" @click="() => handleEditRecord(record)">
-                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M8.25 3.75H4.5C4.10218 3.75 3.72064 3.90803 3.43934 4.18934C3.15804 4.47064 3 4.85217 3 5.25V13.5C3 13.8978 3.15804 14.2794 3.43934 14.5607C3.72064 14.842 4.10218 15 4.5 15H12.75C13.1478 15 13.5294 14.842 13.8107 14.5607C14.092 14.2794 14.25 13.8978 14.25 13.5V9.75M13.1895 2.6895C13.3279 2.54623 13.4934 2.43196 13.6764 2.35335C13.8594 2.27473 14.0562 2.23335 14.2554 2.23162C14.4546 2.22989 14.6521 2.26785 14.8364 2.34327C15.0208 2.41869 15.1883 2.53007 15.3291 2.67091C15.4699 2.81175 15.5813 2.97922 15.6567 3.16357C15.7322 3.34791 15.7701 3.54543 15.7684 3.7446C15.7666 3.94377 15.7253 4.1406 15.6467 4.32361C15.568 4.50661 15.4538 4.67213 15.3105 4.8105L8.871 11.25H6.75V9.129L13.1895 2.6895Z"
-                                    stroke="#737373"
-                                    stroke-width="2"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                />
-                            </svg>
-
-                            <span class="text-sm">Izmeni</span>
-                        </button>
+                        <span>{{ `${selectedDate.getHours()}:${selectedDate.getMinutes()}:${selectedDate.getSeconds()}` }}</span>
                     </div>
                 </div>
-            </li>
-        </ul>
+
+                <FormPatientRecord
+                    :tooth="selectedTooth"
+                    :patient="patient"
+                    :edit="selectedRecord.item"
+                    @success="handleNewRecord"
+                    @delete="
+                        (id) => {
+                            recordFormOpen = false
+                            confirmDialogOpen = true
+                            deleteRecordId = id
+                        }
+                    "
+                />
+
+                <div class="mt-10 flex items-center justify-end divide-x divide-gray-900 text-sm">
+                    <button type="button" class="flex items-center space-x-1 px-3">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5.6 11.5242C5.4 11.5492 5.2 11.5758 5 11.6042M5.6 11.5242C8.52188 11.1576 11.4781 11.1576 14.4 11.5242M5.6 11.5242L5.28333 15M14.4 11.5242C14.6 11.5492 14.8 11.5758 15 11.6042M14.4 11.5242L14.7167 15L14.9075 17.1025C14.9193 17.2322 14.904 17.363 14.8624 17.4864C14.8209 17.6099 14.7541 17.7233 14.6663 17.8195C14.5785 17.9157 14.4716 17.9926 14.3524 18.0452C14.2332 18.0978 14.1044 18.125 13.9742 18.125H6.02583C5.47417 18.125 5.0425 17.6517 5.0925 17.1025L5.28333 15M5.28333 15H4.375C3.87772 15 3.40081 14.8025 3.04917 14.4508C2.69754 14.0992 2.5 13.6223 2.5 13.125V7.88C2.5 6.97917 3.14 6.20083 4.03083 6.0675C4.56079 5.98823 5.09229 5.9196 5.625 5.86167M14.715 15H15.6242C15.8705 15.0001 16.1144 14.9517 16.342 14.8575C16.5695 14.7633 16.7763 14.6252 16.9505 14.4511C17.1247 14.277 17.2629 14.0703 17.3572 13.8427C17.4515 13.6152 17.5 13.3713 17.5 13.125V7.88C17.5 6.97917 16.86 6.20083 15.9692 6.0675C15.4392 5.98823 14.9077 5.9196 14.375 5.86167M14.375 5.86167C11.4669 5.54525 8.53308 5.54525 5.625 5.86167M14.375 5.86167V2.8125C14.375 2.295 13.955 1.875 13.4375 1.875H6.5625C6.045 1.875 5.625 2.295 5.625 2.8125V5.86167M15 8.75H15.0067V8.75667H15V8.75ZM12.5 8.75H12.5067V8.75667H12.5V8.75Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+
+                        <span>Recept</span>
+                    </button>
+                    <button type="button" class="px-3">Opravdanje</button>
+                    <button type="button" class="px-3">Izjava</button>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <Modal
-        :open="modalOpen"
-        :title="edit ? 'Izmeni karton' : 'Dodaj karton'"
-        :subtitle="edit ? 'Uredi podatke kartona pacijenta' : 'Dodaj novi karton za pacijenta'"
-        @close="
-            () => {
-                $emit('closeModal')
-                recordModalOpen = false
-                edit = null
-            }
-        "
-    >
-        <FormPatientRecord
-            :patient="patient"
-            :edit="edit"
-            @success="handleNewRecord"
-            @delete="
-                (id) => {
-                    recordModalOpen = false
-                    confirmDialogOpen = true
-                    deleteRecordId = id
-                }
-            "
-        />
-    </Modal>
     <ConfirmDialog
         :open="confirmDialogOpen"
         @confirm="handleDeleteRecord"
         @cancel="
             () => {
                 confirmDialogOpen = false
-                recordModalOpen = true
                 deleteRecordId = false
             }
         "
@@ -95,46 +162,49 @@
 </template>
 
 <script setup>
-import Modal from "@/Pages/Partials/Modal.vue"
-import { ref, watch } from "vue"
+import { computed, reactive, ref, watch } from "vue"
 import { dateOptions } from "@/helpers.js"
 import FormPatientRecord from "@/Pages/Forms/FormPatientRecord.vue"
 import ConfirmDialog from "@/Pages/Partials/ConfirmDialog.vue"
-import { useForm } from "@inertiajs/vue3"
+import { useForm, usePage } from "@inertiajs/vue3"
 import { useGlobalStore } from "@/stores.js"
 
 const props = defineProps({
     patient: true,
-    modalOpen: false,
+    modalOpen: false
 })
 
-const emit = defineEmits(['closeModal', 'openModal'])
+const emit = defineEmits(["closeModal", "openModal"])
 
 const loading = ref(false)
 const edit = ref(null)
 const deleteRecordId = ref(null)
 const recordModalOpen = ref(false)
+const recordFormOpen = ref(false)
 const confirmDialogOpen = ref(false)
 const highlightFirstRecord = ref(false)
+const selectedTooth = ref(null)
+const selectedRecord = reactive({
+    item: null
+})
+const selectedDate = computed(() => {
+    return selectedRecord.item?.date ? new Date(selectedRecord.item.date) : new Date()
+})
 const store = useGlobalStore()
 
-
-const addRecord = () => {
-    recordModalOpen.value = true
-}
+const selectedRecords = computed(() => {
+    return props.patient.teeth?.[selectedTooth.value] ?? []
+})
 
 const handleNewRecord = () => {
     highlightFirstRecord.value = true
     edit.value = null
+    recordFormOpen.value = false
+    selectedRecord.item = selectedRecords.value[0] || null
 
     setTimeout(() => {
         highlightFirstRecord.value = false
     }, 3000)
-}
-
-const handleEditRecord = (record) => {
-    emit('openModal')
-    edit.value = record
 }
 
 const deleteForm = useForm({
@@ -145,10 +215,24 @@ const handleDeleteRecord = () => {
     loading.value = true
     deleteForm.post(route("records.delete", { id: deleteRecordId.value?.id }), {
         onFinish: () => {
-            emit('closeModal')
+            recordFormOpen.value = false
+            selectedRecord.item = null
             confirmDialogOpen.value = false
             loading.value = false
         }
     })
+}
+
+const firstTeeth = ["18", "17", "16", "15", "14", "13", "12", "11"]
+const secondTeeth = ["21", "22", "23", "24", "25", "26", "27", "28"]
+const thirdTeeth = ["31", "32", "33", "34", "35", "36", "37", "38"]
+const fourthTeeth = ["48", "47", "46", "45", "44", "43", "42", "41"]
+
+const activeTeeth = computed(() => Object.keys(props.patient.teeth))
+
+const handleToothChange = (tooth) => {
+    selectedTooth.value = tooth
+    selectedRecord.item = null
+    recordFormOpen.value = false
 }
 </script>

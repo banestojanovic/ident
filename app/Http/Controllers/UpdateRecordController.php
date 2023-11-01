@@ -25,7 +25,7 @@ class UpdateRecordController extends Controller
         $patient = Patient::where('id', request('patient_id'))->firstOrFail();
 
         $patient->records()->where('id', request('record'))->update([
-            'date' => Carbon::parse(request('date')),
+            'date' => Carbon::parse(request('date'))->tz('Europe/Belgrade'),
             'tooth' => request('tooth'),
             'diagnosis' => request('diagnosis'),
             'therapy' => request('therapy')['id'] ?? null,

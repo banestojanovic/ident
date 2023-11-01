@@ -1,5 +1,5 @@
 <template>
-    <input class="placeholder-text-gray-500 rounded-md border-none bg-stone-100 text-base focus:ring-stone-300" :value="modelValue" @input="$emit('update:modelValue', $event.target.value)" ref="input" :placeholder="placeholder" />
+    <input class="placeholder-text-gray-500 rounded-md border-none bg-slate-100 text-base focus:ring-slate-300" :value="modelValue" @input="$emit('update:modelValue', $event.target.value)" ref="input" :placeholder="placeholder" />
 </template>
 
 <script setup>

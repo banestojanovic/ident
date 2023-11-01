@@ -7,7 +7,7 @@
         <div class="relative mt-1">
             <ComboboxButton class="relative flex w-full items-center rounded-r-md focus:outline-none">
                 <ComboboxInput
-                    class="block w-full rounded-md border-0 bg-stone-100 px-4 p-2 text-gray-900 placeholder-gray-400 focus:border-stone-300 focus:ring-stone-300"
+                    class="block w-full rounded-md border-0 bg-slate-100 px-4 p-2 text-gray-900 placeholder-gray-400 focus:border-slate-300 focus:ring-slate-300"
                     @change="query = $event.target.value"
                     placeholder="Počnite da unosite ime pacijenta"
                     autocomplete="off"

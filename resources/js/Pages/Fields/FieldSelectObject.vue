@@ -8,7 +8,7 @@
             <Listbox :multiple="multiple || false" :modelValue="value" @update:modelValue="(value) => $emit('update:modelValue', value)" by="id">
                 <div class="relative mt-1">
                     <ListboxButton
-                        class="block w-full text-left rounded-md border-0 bg-stone-100 h-10 px-4 p-1.5 text-gray-500 placeholder-gray-400 focus:border-stone-300 focus:ring-stone-300"
+                        class="block w-full text-left rounded-md border-0 bg-slate-100 h-10 px-4 p-1.5 text-gray-500 placeholder-gray-400 focus:border-slate-300 focus:ring-slate-300"
                     >
                         <span v-if="value" class="block truncate">{{ props.multiple ? value.map((item) => item.name).join(", ") : value.name }}</span>
                         <span v-if="value?.length === 0" class="block truncate text-gray-400">{{ label }}</span>

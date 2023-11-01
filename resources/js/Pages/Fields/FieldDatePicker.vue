@@ -6,7 +6,7 @@
         </label>
         <div class="relative mt-1 sm:col-span-2">
             <div class="flex items-center space-x-2">
-                <VueDatePicker :model-value="modelValue" locale="sr-Latn-SR" format="d/MM/YYY" :auto-apply="true" :enable-time-picker="false" @update:model-value="handleDate" class="block w-full rounded-md border-0 bg-stone-100 placeholder-gray-400 focus:border-stone-300 focus:ring-stone-300" />
+                <VueDatePicker :model-value="modelValue" locale="sr-Latn-SR" format="d/MM/YYY" :auto-apply="true" :enable-time-picker="false" @update:model-value="handleDate" class="block w-full rounded-md border-0 bg-slate-100 placeholder-gray-400 focus:border-slate-300 focus:ring-slate-300" />
             </div>
             <p v-if="error" class="ml-2 mt-1 text-xs text-red-500">{{ error }}</p>
             <p v-if="props.description" class="ml-2 mt-1 text-xs text-gray-500">{{ props.description }}</p>
@@ -58,6 +58,6 @@ const handleDate = (modelData) => {
 input.dp__pointer {
     background-color: transparent;
     border: 0;
-    @apply rounded-lg focus:border-stone-300 focus:ring-stone-300;
+    @apply rounded-lg focus:border-slate-300 focus:ring-slate-300;
 }
 </style>

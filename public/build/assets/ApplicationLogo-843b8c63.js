@@ -1,0 +1,1 @@
+import{_ as o}from"./_plugin-vue_export-helper-c27b6911.js";import{o as e,f as t}from"./app-24a5834a.js";const s={},c={src:"/storage/images/site/logo.png",alt:"iDent",class:"h-10"};function r(n,a){return e(),t("img",c)}const m=o(s,[["render",r]]);export{m as A};

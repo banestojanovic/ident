@@ -1,48 +1,52 @@
 {
-  "_ApplicationLogo-63aa65cf.js": {
-    "file": "assets/ApplicationLogo-63aa65cf.js",
+  "FieldDatePicker.css": {
+    "file": "assets/FieldDatePicker-d41f2167.css",
+    "src": "FieldDatePicker.css"
+  },
+  "_ApplicationLogo-843b8c63.js": {
+    "file": "assets/ApplicationLogo-843b8c63.js",
     "imports": [
       "__plugin-vue_export-helper-c27b6911.js",
       "resources/js/app.js"
     ]
   },
-  "_AuthenticatedLayout-b947db35.js": {
-    "file": "assets/AuthenticatedLayout-b947db35.js",
+  "_AuthenticatedLayout-37b538e2.js": {
+    "file": "assets/AuthenticatedLayout-37b538e2.js",
     "imports": [
       "resources/js/app.js",
       "resources/js/Pages/Partials/Notifications.vue",
-      "_ApplicationLogo-63aa65cf.js",
+      "_ApplicationLogo-843b8c63.js",
       "__plugin-vue_export-helper-c27b6911.js"
     ]
   },
-  "_ChevronUpDownIcon-3bac5e85.js": {
-    "file": "assets/ChevronUpDownIcon-3bac5e85.js",
+  "_ChevronUpDownIcon-f4b8884a.js": {
+    "file": "assets/ChevronUpDownIcon-f4b8884a.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_ExclamationTriangleIcon-95b48495.js": {
-    "file": "assets/ExclamationTriangleIcon-95b48495.js",
+  "_ExclamationTriangleIcon-3bee3b49.js": {
+    "file": "assets/ExclamationTriangleIcon-3bee3b49.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_GuestLayout-fbd9df0e.js": {
-    "file": "assets/GuestLayout-fbd9df0e.js",
+  "_GuestLayout-dc769ba4.js": {
+    "file": "assets/GuestLayout-dc769ba4.js",
     "imports": [
-      "_ApplicationLogo-63aa65cf.js",
+      "_ApplicationLogo-843b8c63.js",
       "resources/js/app.js"
     ]
   },
-  "_PrimaryButton-a5d36f1c.js": {
-    "file": "assets/PrimaryButton-a5d36f1c.js",
+  "_PrimaryButton-ebcdd566.js": {
+    "file": "assets/PrimaryButton-ebcdd566.js",
     "imports": [
       "__plugin-vue_export-helper-c27b6911.js",
       "resources/js/app.js"
     ]
   },
-  "_TextInput-6a4087a1.js": {
-    "file": "assets/TextInput-6a4087a1.js",
+  "_TextInput-af6dbfb3.js": {
+    "file": "assets/TextInput-af6dbfb3.js",
     "imports": [
       "resources/js/app.js"
     ]
@@ -50,11 +54,11 @@
   "__plugin-vue_export-helper-c27b6911.js": {
     "file": "assets/_plugin-vue_export-helper-c27b6911.js"
   },
-  "_combobox-3f97974a.js": {
-    "file": "assets/combobox-3f97974a.js",
+  "_combobox-5baaa23a.js": {
+    "file": "assets/combobox-5baaa23a.js",
     "imports": [
-      "_hidden-d9b34b6a.js",
-      "_use-tracked-pointer-6135db55.js",
+      "_hidden-a9b7010e.js",
+      "_use-tracked-pointer-fbb95acd.js",
       "resources/js/app.js",
       "_disposables-ed35e013.js"
     ]
@@ -65,118 +69,118 @@
   "_helpers-41226ef1.js": {
     "file": "assets/helpers-41226ef1.js"
   },
-  "_hidden-d9b34b6a.js": {
-    "file": "assets/hidden-d9b34b6a.js",
+  "_hidden-a9b7010e.js": {
+    "file": "assets/hidden-a9b7010e.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_index-3cc1dff9.js": {
-    "file": "assets/index-3cc1dff9.js",
+  "_index-d673e21e.js": {
+    "file": "assets/index-d673e21e.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_listbox-a9b11ff2.js": {
-    "file": "assets/listbox-a9b11ff2.js",
+  "_listbox-26ab1718.js": {
+    "file": "assets/listbox-26ab1718.js",
     "imports": [
       "resources/js/app.js",
-      "_hidden-d9b34b6a.js",
-      "_use-tracked-pointer-6135db55.js"
+      "_hidden-a9b7010e.js",
+      "_use-tracked-pointer-fbb95acd.js"
     ]
   },
-  "_transition-6aa59ba0.js": {
-    "file": "assets/transition-6aa59ba0.js",
+  "_transition-6e04a2ba.js": {
+    "file": "assets/transition-6e04a2ba.js",
     "imports": [
-      "_hidden-d9b34b6a.js",
+      "_hidden-a9b7010e.js",
       "resources/js/app.js",
       "_disposables-ed35e013.js"
     ]
   },
-  "_use-tracked-pointer-6135db55.js": {
-    "file": "assets/use-tracked-pointer-6135db55.js",
+  "_use-tracked-pointer-fbb95acd.js": {
+    "file": "assets/use-tracked-pointer-fbb95acd.js",
     "imports": [
-      "_hidden-d9b34b6a.js",
+      "_hidden-a9b7010e.js",
       "resources/js/app.js"
     ]
   },
   "resources/js/Pages/Auth/ConfirmPassword.vue": {
-    "file": "assets/ConfirmPassword-70f70228.js",
+    "file": "assets/ConfirmPassword-9cb4b4ea.js",
     "imports": [
       "resources/js/app.js",
-      "_GuestLayout-fbd9df0e.js",
-      "_TextInput-6a4087a1.js",
-      "_PrimaryButton-a5d36f1c.js",
-      "_ApplicationLogo-63aa65cf.js",
+      "_GuestLayout-dc769ba4.js",
+      "_TextInput-af6dbfb3.js",
+      "_PrimaryButton-ebcdd566.js",
+      "_ApplicationLogo-843b8c63.js",
       "__plugin-vue_export-helper-c27b6911.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Auth/ConfirmPassword.vue"
   },
   "resources/js/Pages/Auth/ForgotPassword.vue": {
-    "file": "assets/ForgotPassword-80220a64.js",
+    "file": "assets/ForgotPassword-f33cf8a8.js",
     "imports": [
       "resources/js/app.js",
-      "_GuestLayout-fbd9df0e.js",
-      "_TextInput-6a4087a1.js",
-      "_PrimaryButton-a5d36f1c.js",
-      "_ApplicationLogo-63aa65cf.js",
+      "_GuestLayout-dc769ba4.js",
+      "_TextInput-af6dbfb3.js",
+      "_PrimaryButton-ebcdd566.js",
+      "_ApplicationLogo-843b8c63.js",
       "__plugin-vue_export-helper-c27b6911.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Auth/ForgotPassword.vue"
   },
   "resources/js/Pages/Auth/Login.vue": {
-    "file": "assets/Login-4c5ea898.js",
+    "file": "assets/Login-d6f24ab0.js",
     "imports": [
       "resources/js/app.js",
-      "_GuestLayout-fbd9df0e.js",
-      "_TextInput-6a4087a1.js",
-      "_PrimaryButton-a5d36f1c.js",
+      "_GuestLayout-dc769ba4.js",
+      "_TextInput-af6dbfb3.js",
+      "_PrimaryButton-ebcdd566.js",
       "resources/js/Pages/Fields/FieldSelectDentists.vue",
-      "_ApplicationLogo-63aa65cf.js",
+      "_ApplicationLogo-843b8c63.js",
       "__plugin-vue_export-helper-c27b6911.js",
-      "_listbox-a9b11ff2.js",
-      "_hidden-d9b34b6a.js",
-      "_use-tracked-pointer-6135db55.js",
-      "_ChevronUpDownIcon-3bac5e85.js"
+      "_listbox-26ab1718.js",
+      "_hidden-a9b7010e.js",
+      "_use-tracked-pointer-fbb95acd.js",
+      "_ChevronUpDownIcon-f4b8884a.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Auth/Login.vue"
   },
   "resources/js/Pages/Auth/Register.vue": {
-    "file": "assets/Register-92947e22.js",
+    "file": "assets/Register-b85ddd15.js",
     "imports": [
       "resources/js/app.js",
-      "_GuestLayout-fbd9df0e.js",
-      "_TextInput-6a4087a1.js",
-      "_PrimaryButton-a5d36f1c.js",
-      "_ApplicationLogo-63aa65cf.js",
+      "_GuestLayout-dc769ba4.js",
+      "_TextInput-af6dbfb3.js",
+      "_PrimaryButton-ebcdd566.js",
+      "_ApplicationLogo-843b8c63.js",
       "__plugin-vue_export-helper-c27b6911.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Auth/Register.vue"
   },
   "resources/js/Pages/Auth/ResetPassword.vue": {
-    "file": "assets/ResetPassword-04f2dc43.js",
+    "file": "assets/ResetPassword-a75cd1bc.js",
     "imports": [
       "resources/js/app.js",
-      "_GuestLayout-fbd9df0e.js",
-      "_TextInput-6a4087a1.js",
-      "_PrimaryButton-a5d36f1c.js",
-      "_ApplicationLogo-63aa65cf.js",
+      "_GuestLayout-dc769ba4.js",
+      "_TextInput-af6dbfb3.js",
+      "_PrimaryButton-ebcdd566.js",
+      "_ApplicationLogo-843b8c63.js",
       "__plugin-vue_export-helper-c27b6911.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Auth/ResetPassword.vue"
   },
   "resources/js/Pages/Auth/VerifyEmail.vue": {
-    "file": "assets/VerifyEmail-860e4292.js",
+    "file": "assets/VerifyEmail-b9eed918.js",
     "imports": [
       "resources/js/app.js",
-      "_GuestLayout-fbd9df0e.js",
-      "_PrimaryButton-a5d36f1c.js",
-      "_ApplicationLogo-63aa65cf.js",
+      "_GuestLayout-dc769ba4.js",
+      "_PrimaryButton-ebcdd566.js",
+      "_ApplicationLogo-843b8c63.js",
       "__plugin-vue_export-helper-c27b6911.js"
     ],
     "isDynamicEntry": true,
@@ -188,34 +192,35 @@
   },
   "resources/js/Pages/Calendar.vue": {
     "css": [
-      "assets/Calendar-b0f1caf3.css"
+      "assets/Calendar-b0f1caf3.css",
+      "assets/FieldDatePicker-d41f2167.css"
     ],
-    "file": "assets/Calendar-6abd9474.js",
+    "file": "assets/Calendar-ae0fc0cb.js",
     "imports": [
       "resources/js/app.js",
-      "_AuthenticatedLayout-b947db35.js",
+      "_AuthenticatedLayout-37b538e2.js",
       "resources/js/Pages/Partials/Modal.vue",
       "resources/js/Pages/Forms/FormBooking.vue",
       "_helpers-41226ef1.js",
       "resources/js/Pages/Partials/ConfirmDialog.vue",
       "resources/js/Pages/Patients/SearchPatients.vue",
       "resources/js/Pages/Partials/Notifications.vue",
-      "_ExclamationTriangleIcon-95b48495.js",
-      "_ApplicationLogo-63aa65cf.js",
+      "_ExclamationTriangleIcon-3bee3b49.js",
+      "_ApplicationLogo-843b8c63.js",
       "__plugin-vue_export-helper-c27b6911.js",
-      "_transition-6aa59ba0.js",
-      "_hidden-d9b34b6a.js",
+      "_transition-6e04a2ba.js",
+      "_hidden-a9b7010e.js",
       "_disposables-ed35e013.js",
       "resources/js/Pages/Partials/Loader.vue",
       "resources/js/Pages/Fields/FieldCombobox.vue",
-      "_index-3cc1dff9.js",
+      "_index-d673e21e.js",
       "resources/js/Pages/Partials/LoaderSmall.vue",
-      "_combobox-3f97974a.js",
-      "_use-tracked-pointer-6135db55.js",
-      "_ChevronUpDownIcon-3bac5e85.js",
+      "_combobox-5baaa23a.js",
+      "_use-tracked-pointer-fbb95acd.js",
+      "_ChevronUpDownIcon-f4b8884a.js",
       "resources/js/Pages/Fields/FieldInput.vue",
       "resources/js/Pages/Fields/FieldSelectDentists.vue",
-      "_listbox-a9b11ff2.js",
+      "_listbox-26ab1718.js",
       "resources/js/Pages/Forms/FormPatientDetails.vue",
       "resources/js/Pages/Fields/FieldDatePicker.vue",
       "resources/js/Pages/Fields/FieldSelect.vue"
@@ -224,20 +229,20 @@
     "src": "resources/js/Pages/Calendar.vue"
   },
   "resources/js/Pages/Dashboard.vue": {
-    "file": "assets/Dashboard-db26a91a.js",
+    "file": "assets/Dashboard-a84b8de2.js",
     "imports": [
-      "_AuthenticatedLayout-b947db35.js",
+      "_AuthenticatedLayout-37b538e2.js",
       "resources/js/app.js",
       "resources/js/Pages/Partials/Notifications.vue",
-      "_ExclamationTriangleIcon-95b48495.js",
-      "_ApplicationLogo-63aa65cf.js",
+      "_ExclamationTriangleIcon-3bee3b49.js",
+      "_ApplicationLogo-843b8c63.js",
       "__plugin-vue_export-helper-c27b6911.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Dashboard.vue"
   },
   "resources/js/Pages/Fields/FieldCheckbox.vue": {
-    "file": "assets/FieldCheckbox-4379c214.js",
+    "file": "assets/FieldCheckbox-affcf525.js",
     "imports": [
       "resources/js/app.js"
     ],
@@ -245,30 +250,26 @@
     "src": "resources/js/Pages/Fields/FieldCheckbox.vue"
   },
   "resources/js/Pages/Fields/FieldCombobox.vue": {
-    "file": "assets/FieldCombobox-2bd44668.js",
+    "file": "assets/FieldCombobox-93e374d7.js",
     "imports": [
-      "_index-3cc1dff9.js",
+      "_index-d673e21e.js",
       "resources/js/Pages/Partials/LoaderSmall.vue",
-      "_combobox-3f97974a.js",
-      "_ChevronUpDownIcon-3bac5e85.js",
+      "_combobox-5baaa23a.js",
+      "_ChevronUpDownIcon-f4b8884a.js",
       "resources/js/app.js",
       "__plugin-vue_export-helper-c27b6911.js",
-      "_hidden-d9b34b6a.js",
-      "_use-tracked-pointer-6135db55.js",
+      "_hidden-a9b7010e.js",
+      "_use-tracked-pointer-fbb95acd.js",
       "_disposables-ed35e013.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Fields/FieldCombobox.vue"
   },
-  "resources/js/Pages/Fields/FieldDatePicker.css": {
-    "file": "assets/FieldDatePicker-f857be2c.css",
-    "src": "resources/js/Pages/Fields/FieldDatePicker.css"
-  },
   "resources/js/Pages/Fields/FieldDatePicker.vue": {
     "css": [
-      "assets/FieldDatePicker-f857be2c.css"
+      "assets/FieldDatePicker-d41f2167.css"
     ],
-    "file": "assets/FieldDatePicker-c82c80ac.js",
+    "file": "assets/FieldDatePicker-45a2d242.js",
     "imports": [
       "resources/js/app.js"
     ],
@@ -276,7 +277,7 @@
     "src": "resources/js/Pages/Fields/FieldDatePicker.vue"
   },
   "resources/js/Pages/Fields/FieldInput.vue": {
-    "file": "assets/FieldInput-9bbf73e2.js",
+    "file": "assets/FieldInput-e2601917.js",
     "imports": [
       "resources/js/app.js"
     ],
@@ -284,7 +285,7 @@
     "src": "resources/js/Pages/Fields/FieldInput.vue"
   },
   "resources/js/Pages/Fields/FieldPhoto.vue": {
-    "file": "assets/FieldPhoto-3fe02969.js",
+    "file": "assets/FieldPhoto-cf136389.js",
     "imports": [
       "resources/js/app.js"
     ],
@@ -292,7 +293,7 @@
     "src": "resources/js/Pages/Fields/FieldPhoto.vue"
   },
   "resources/js/Pages/Fields/FieldSelect.vue": {
-    "file": "assets/FieldSelect-72e5b36d.js",
+    "file": "assets/FieldSelect-55e8073d.js",
     "imports": [
       "resources/js/app.js"
     ],
@@ -300,31 +301,31 @@
     "src": "resources/js/Pages/Fields/FieldSelect.vue"
   },
   "resources/js/Pages/Fields/FieldSelectDentists.vue": {
-    "file": "assets/FieldSelectDentists-6b5ac0ff.js",
+    "file": "assets/FieldSelectDentists-97bc68a0.js",
     "imports": [
       "resources/js/app.js",
-      "_listbox-a9b11ff2.js",
-      "_ChevronUpDownIcon-3bac5e85.js",
-      "_hidden-d9b34b6a.js",
-      "_use-tracked-pointer-6135db55.js"
+      "_listbox-26ab1718.js",
+      "_ChevronUpDownIcon-f4b8884a.js",
+      "_hidden-a9b7010e.js",
+      "_use-tracked-pointer-fbb95acd.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Fields/FieldSelectDentists.vue"
   },
   "resources/js/Pages/Fields/FieldSelectObject.vue": {
-    "file": "assets/FieldSelectObject-96d525f0.js",
+    "file": "assets/FieldSelectObject-f8bab6cb.js",
     "imports": [
       "resources/js/app.js",
-      "_ChevronUpDownIcon-3bac5e85.js",
-      "_listbox-a9b11ff2.js",
-      "_hidden-d9b34b6a.js",
-      "_use-tracked-pointer-6135db55.js"
+      "_ChevronUpDownIcon-f4b8884a.js",
+      "_listbox-26ab1718.js",
+      "_hidden-a9b7010e.js",
+      "_use-tracked-pointer-fbb95acd.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Fields/FieldSelectObject.vue"
   },
   "resources/js/Pages/Fields/FieldTextarea.vue": {
-    "file": "assets/FieldTextarea-a8d445df.js",
+    "file": "assets/FieldTextarea-6907cdce.js",
     "imports": [
       "resources/js/app.js"
     ],
@@ -332,7 +333,7 @@
     "src": "resources/js/Pages/Fields/FieldTextarea.vue"
   },
   "resources/js/Pages/Forms/FormBooking.vue": {
-    "file": "assets/FormBooking-242a2ee3.js",
+    "file": "assets/FormBooking-2121e65a.js",
     "imports": [
       "resources/js/app.js",
       "resources/js/Pages/Partials/Loader.vue",
@@ -340,20 +341,23 @@
       "resources/js/Pages/Fields/FieldInput.vue",
       "resources/js/Pages/Fields/FieldSelectDentists.vue",
       "__plugin-vue_export-helper-c27b6911.js",
-      "_index-3cc1dff9.js",
+      "_index-d673e21e.js",
       "resources/js/Pages/Partials/LoaderSmall.vue",
-      "_combobox-3f97974a.js",
-      "_hidden-d9b34b6a.js",
-      "_use-tracked-pointer-6135db55.js",
+      "_combobox-5baaa23a.js",
+      "_hidden-a9b7010e.js",
+      "_use-tracked-pointer-fbb95acd.js",
       "_disposables-ed35e013.js",
-      "_ChevronUpDownIcon-3bac5e85.js",
-      "_listbox-a9b11ff2.js"
+      "_ChevronUpDownIcon-f4b8884a.js",
+      "_listbox-26ab1718.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Forms/FormBooking.vue"
   },
   "resources/js/Pages/Forms/FormPatientDetails.vue": {
-    "file": "assets/FormPatientDetails-c69ece52.js",
+    "css": [
+      "assets/FieldDatePicker-d41f2167.css"
+    ],
+    "file": "assets/FormPatientDetails-7c62c261.js",
     "imports": [
       "resources/js/app.js",
       "resources/js/Pages/Fields/FieldDatePicker.vue",
@@ -366,7 +370,7 @@
     "src": "resources/js/Pages/Forms/FormPatientDetails.vue"
   },
   "resources/js/Pages/Forms/FormPatientPhoto.vue": {
-    "file": "assets/FormPatientPhoto-507dd3f3.js",
+    "file": "assets/FormPatientPhoto-1b67fe40.js",
     "imports": [
       "resources/js/app.js",
       "resources/js/Pages/Partials/Loader.vue",
@@ -380,38 +384,39 @@
     "src": "resources/js/Pages/Forms/FormPatientPhoto.vue"
   },
   "resources/js/Pages/Forms/FormPatientRecord.vue": {
-    "file": "assets/FormPatientRecord-9ca72925.js",
+    "css": [
+      "assets/FieldDatePicker-d41f2167.css"
+    ],
+    "file": "assets/FormPatientRecord-f9ea64ba.js",
     "imports": [
       "resources/js/app.js",
-      "resources/js/Pages/Fields/FieldDatePicker.vue",
-      "resources/js/Pages/Fields/FieldSelect.vue",
       "resources/js/Pages/Fields/FieldInput.vue",
       "resources/js/Pages/Fields/FieldSelectObject.vue",
       "resources/js/Pages/Fields/FieldTextarea.vue",
       "resources/js/Pages/Partials/Loader.vue",
-      "_ChevronUpDownIcon-3bac5e85.js",
-      "_listbox-a9b11ff2.js",
-      "_hidden-d9b34b6a.js",
-      "_use-tracked-pointer-6135db55.js",
+      "_ChevronUpDownIcon-f4b8884a.js",
+      "_listbox-26ab1718.js",
+      "_hidden-a9b7010e.js",
+      "_use-tracked-pointer-fbb95acd.js",
       "__plugin-vue_export-helper-c27b6911.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Forms/FormPatientRecord.vue"
   },
   "resources/js/Pages/Partials/ConfirmDialog.vue": {
-    "file": "assets/ConfirmDialog-b4990413.js",
+    "file": "assets/ConfirmDialog-d51195dc.js",
     "imports": [
-      "_ExclamationTriangleIcon-95b48495.js",
+      "_ExclamationTriangleIcon-3bee3b49.js",
       "resources/js/app.js",
-      "_transition-6aa59ba0.js",
-      "_hidden-d9b34b6a.js",
+      "_transition-6e04a2ba.js",
+      "_hidden-a9b7010e.js",
       "_disposables-ed35e013.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Partials/ConfirmDialog.vue"
   },
   "resources/js/Pages/Partials/Loader.vue": {
-    "file": "assets/Loader-5bd44e7c.js",
+    "file": "assets/Loader-f575573e.js",
     "imports": [
       "__plugin-vue_export-helper-c27b6911.js",
       "resources/js/app.js"
@@ -420,7 +425,7 @@
     "src": "resources/js/Pages/Partials/Loader.vue"
   },
   "resources/js/Pages/Partials/LoaderSmall.vue": {
-    "file": "assets/LoaderSmall-dc4f727d.js",
+    "file": "assets/LoaderSmall-2df227b5.js",
     "imports": [
       "__plugin-vue_export-helper-c27b6911.js",
       "resources/js/app.js"
@@ -429,28 +434,28 @@
     "src": "resources/js/Pages/Partials/LoaderSmall.vue"
   },
   "resources/js/Pages/Partials/Modal.vue": {
-    "file": "assets/Modal-6b67eb36.js",
+    "file": "assets/Modal-ca7a5398.js",
     "imports": [
       "_helpers-41226ef1.js",
-      "_transition-6aa59ba0.js",
+      "_transition-6e04a2ba.js",
       "resources/js/app.js",
-      "_hidden-d9b34b6a.js",
+      "_hidden-a9b7010e.js",
       "_disposables-ed35e013.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Partials/Modal.vue"
   },
   "resources/js/Pages/Partials/Notifications.vue": {
-    "file": "assets/Notifications-5e7a5f3b.js",
+    "file": "assets/Notifications-2ead63f9.js",
     "imports": [
       "resources/js/app.js",
-      "_ExclamationTriangleIcon-95b48495.js"
+      "_ExclamationTriangleIcon-3bee3b49.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Partials/Notifications.vue"
   },
   "resources/js/Pages/Partials/Pagination.vue": {
-    "file": "assets/Pagination-9ec539ad.js",
+    "file": "assets/Pagination-04250fed.js",
     "imports": [
       "resources/js/app.js"
     ],
@@ -458,34 +463,37 @@
     "src": "resources/js/Pages/Partials/Pagination.vue"
   },
   "resources/js/Pages/Patient.vue": {
-    "file": "assets/Patient-bac5631e.js",
+    "css": [
+      "assets/FieldDatePicker-d41f2167.css"
+    ],
+    "file": "assets/Patient-5fd862ca.js",
     "imports": [
-      "_AuthenticatedLayout-b947db35.js",
+      "_AuthenticatedLayout-37b538e2.js",
       "resources/js/app.js",
       "resources/js/Pages/Patient/PatientHistory.vue",
       "resources/js/Pages/Patient/PatientInformation.vue",
       "resources/js/Pages/Patient/PatientPhotos.vue",
       "resources/js/Pages/Partials/Notifications.vue",
-      "_ExclamationTriangleIcon-95b48495.js",
-      "_ApplicationLogo-63aa65cf.js",
+      "_ExclamationTriangleIcon-3bee3b49.js",
+      "_ApplicationLogo-843b8c63.js",
       "__plugin-vue_export-helper-c27b6911.js",
-      "resources/js/Pages/Partials/Modal.vue",
       "_helpers-41226ef1.js",
-      "_transition-6aa59ba0.js",
-      "_hidden-d9b34b6a.js",
-      "_disposables-ed35e013.js",
       "resources/js/Pages/Forms/FormPatientRecord.vue",
-      "resources/js/Pages/Fields/FieldDatePicker.vue",
-      "resources/js/Pages/Fields/FieldSelect.vue",
       "resources/js/Pages/Fields/FieldInput.vue",
       "resources/js/Pages/Fields/FieldSelectObject.vue",
-      "_ChevronUpDownIcon-3bac5e85.js",
-      "_listbox-a9b11ff2.js",
-      "_use-tracked-pointer-6135db55.js",
+      "_ChevronUpDownIcon-f4b8884a.js",
+      "_listbox-26ab1718.js",
+      "_hidden-a9b7010e.js",
+      "_use-tracked-pointer-fbb95acd.js",
       "resources/js/Pages/Fields/FieldTextarea.vue",
       "resources/js/Pages/Partials/Loader.vue",
       "resources/js/Pages/Partials/ConfirmDialog.vue",
+      "_transition-6e04a2ba.js",
+      "_disposables-ed35e013.js",
+      "resources/js/Pages/Partials/Modal.vue",
       "resources/js/Pages/Forms/FormPatientDetails.vue",
+      "resources/js/Pages/Fields/FieldDatePicker.vue",
+      "resources/js/Pages/Fields/FieldSelect.vue",
       "resources/js/Pages/Forms/FormPatientPhoto.vue",
       "resources/js/Pages/Fields/FieldPhoto.vue"
     ],
@@ -493,89 +501,95 @@
     "src": "resources/js/Pages/Patient.vue"
   },
   "resources/js/Pages/Patient/PatientHistory.vue": {
-    "file": "assets/PatientHistory-db7a5582.js",
+    "css": [
+      "assets/FieldDatePicker-d41f2167.css"
+    ],
+    "file": "assets/PatientHistory-a20eacd0.js",
     "imports": [
-      "resources/js/Pages/Partials/Modal.vue",
       "_helpers-41226ef1.js",
       "resources/js/Pages/Forms/FormPatientRecord.vue",
       "resources/js/Pages/Partials/ConfirmDialog.vue",
       "resources/js/app.js",
-      "_transition-6aa59ba0.js",
-      "_hidden-d9b34b6a.js",
-      "_disposables-ed35e013.js",
-      "resources/js/Pages/Fields/FieldDatePicker.vue",
-      "resources/js/Pages/Fields/FieldSelect.vue",
       "resources/js/Pages/Fields/FieldInput.vue",
       "resources/js/Pages/Fields/FieldSelectObject.vue",
-      "_ChevronUpDownIcon-3bac5e85.js",
-      "_listbox-a9b11ff2.js",
-      "_use-tracked-pointer-6135db55.js",
+      "_ChevronUpDownIcon-f4b8884a.js",
+      "_listbox-26ab1718.js",
+      "_hidden-a9b7010e.js",
+      "_use-tracked-pointer-fbb95acd.js",
       "resources/js/Pages/Fields/FieldTextarea.vue",
       "resources/js/Pages/Partials/Loader.vue",
       "__plugin-vue_export-helper-c27b6911.js",
-      "_ExclamationTriangleIcon-95b48495.js"
+      "_ExclamationTriangleIcon-3bee3b49.js",
+      "_transition-6e04a2ba.js",
+      "_disposables-ed35e013.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Patient/PatientHistory.vue"
   },
   "resources/js/Pages/Patient/PatientInformation.vue": {
-    "file": "assets/PatientInformation-d8415b67.js",
+    "css": [
+      "assets/FieldDatePicker-d41f2167.css"
+    ],
+    "file": "assets/PatientInformation-565aab25.js",
     "imports": [
       "resources/js/Pages/Partials/Modal.vue",
       "resources/js/Pages/Forms/FormPatientDetails.vue",
       "resources/js/Pages/Partials/ConfirmDialog.vue",
       "resources/js/app.js",
       "_helpers-41226ef1.js",
-      "_transition-6aa59ba0.js",
-      "_hidden-d9b34b6a.js",
+      "_transition-6e04a2ba.js",
+      "_hidden-a9b7010e.js",
       "_disposables-ed35e013.js",
       "resources/js/Pages/Fields/FieldDatePicker.vue",
       "resources/js/Pages/Fields/FieldSelect.vue",
       "resources/js/Pages/Fields/FieldInput.vue",
       "resources/js/Pages/Partials/Loader.vue",
       "__plugin-vue_export-helper-c27b6911.js",
-      "_ExclamationTriangleIcon-95b48495.js"
+      "_ExclamationTriangleIcon-3bee3b49.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Patient/PatientInformation.vue"
   },
   "resources/js/Pages/Patient/PatientPhotos.vue": {
-    "file": "assets/PatientPhotos-8b427e4d.js",
+    "file": "assets/PatientPhotos-26c0e8e9.js",
     "imports": [
       "resources/js/Pages/Partials/Modal.vue",
       "resources/js/Pages/Forms/FormPatientPhoto.vue",
       "resources/js/Pages/Partials/ConfirmDialog.vue",
       "resources/js/app.js",
       "_helpers-41226ef1.js",
-      "_transition-6aa59ba0.js",
-      "_hidden-d9b34b6a.js",
+      "_transition-6e04a2ba.js",
+      "_hidden-a9b7010e.js",
       "_disposables-ed35e013.js",
       "resources/js/Pages/Partials/Loader.vue",
       "__plugin-vue_export-helper-c27b6911.js",
       "resources/js/Pages/Fields/FieldPhoto.vue",
       "resources/js/Pages/Fields/FieldInput.vue",
       "resources/js/Pages/Fields/FieldTextarea.vue",
-      "_ExclamationTriangleIcon-95b48495.js"
+      "_ExclamationTriangleIcon-3bee3b49.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Patient/PatientPhotos.vue"
   },
   "resources/js/Pages/Patients.vue": {
-    "file": "assets/Patients-4fae112b.js",
+    "css": [
+      "assets/FieldDatePicker-d41f2167.css"
+    ],
+    "file": "assets/Patients-5fb6499a.js",
     "imports": [
       "resources/js/app.js",
-      "_AuthenticatedLayout-b947db35.js",
+      "_AuthenticatedLayout-37b538e2.js",
       "resources/js/Pages/Partials/Pagination.vue",
-      "_index-3cc1dff9.js",
+      "_index-d673e21e.js",
       "resources/js/Pages/Partials/Modal.vue",
       "resources/js/Pages/Forms/FormPatientDetails.vue",
       "resources/js/Pages/Partials/Notifications.vue",
-      "_ExclamationTriangleIcon-95b48495.js",
-      "_ApplicationLogo-63aa65cf.js",
+      "_ExclamationTriangleIcon-3bee3b49.js",
+      "_ApplicationLogo-843b8c63.js",
       "__plugin-vue_export-helper-c27b6911.js",
       "_helpers-41226ef1.js",
-      "_transition-6aa59ba0.js",
-      "_hidden-d9b34b6a.js",
+      "_transition-6e04a2ba.js",
+      "_hidden-a9b7010e.js",
       "_disposables-ed35e013.js",
       "resources/js/Pages/Fields/FieldDatePicker.vue",
       "resources/js/Pages/Fields/FieldSelect.vue",
@@ -586,79 +600,82 @@
     "src": "resources/js/Pages/Patients.vue"
   },
   "resources/js/Pages/Patients/SearchPatients.vue": {
-    "file": "assets/SearchPatients-fb1e6cf2.js",
+    "css": [
+      "assets/FieldDatePicker-d41f2167.css"
+    ],
+    "file": "assets/SearchPatients-a2114ba2.js",
     "imports": [
       "resources/js/app.js",
-      "_index-3cc1dff9.js",
+      "_index-d673e21e.js",
       "resources/js/Pages/Partials/LoaderSmall.vue",
       "resources/js/Pages/Partials/Modal.vue",
       "resources/js/Pages/Forms/FormPatientDetails.vue",
-      "_combobox-3f97974a.js",
-      "_transition-6aa59ba0.js",
+      "_combobox-5baaa23a.js",
+      "_transition-6e04a2ba.js",
       "__plugin-vue_export-helper-c27b6911.js",
       "_helpers-41226ef1.js",
-      "_hidden-d9b34b6a.js",
+      "_hidden-a9b7010e.js",
       "_disposables-ed35e013.js",
       "resources/js/Pages/Fields/FieldDatePicker.vue",
       "resources/js/Pages/Fields/FieldSelect.vue",
       "resources/js/Pages/Fields/FieldInput.vue",
       "resources/js/Pages/Partials/Loader.vue",
-      "_use-tracked-pointer-6135db55.js"
+      "_use-tracked-pointer-fbb95acd.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Patients/SearchPatients.vue"
   },
   "resources/js/Pages/Profile/Edit.vue": {
-    "file": "assets/Edit-d2202e3d.js",
+    "file": "assets/Edit-2cde66b6.js",
     "imports": [
-      "_AuthenticatedLayout-b947db35.js",
+      "_AuthenticatedLayout-37b538e2.js",
       "resources/js/app.js",
       "resources/js/Pages/Profile/Partials/UpdatePasswordForm.vue",
       "resources/js/Pages/Profile/Partials/UpdateProfileInformationForm.vue",
       "resources/js/Pages/Partials/Notifications.vue",
-      "_ExclamationTriangleIcon-95b48495.js",
-      "_ApplicationLogo-63aa65cf.js",
+      "_ExclamationTriangleIcon-3bee3b49.js",
+      "_ApplicationLogo-843b8c63.js",
       "__plugin-vue_export-helper-c27b6911.js",
-      "_TextInput-6a4087a1.js",
-      "_PrimaryButton-a5d36f1c.js"
+      "_TextInput-af6dbfb3.js",
+      "_PrimaryButton-ebcdd566.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Profile/Edit.vue"
   },
   "resources/js/Pages/Profile/Partials/DeleteUserForm.vue": {
-    "file": "assets/DeleteUserForm-0835b515.js",
+    "file": "assets/DeleteUserForm-f038c009.js",
     "imports": [
       "resources/js/app.js",
       "__plugin-vue_export-helper-c27b6911.js",
-      "_TextInput-6a4087a1.js"
+      "_TextInput-af6dbfb3.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Profile/Partials/DeleteUserForm.vue"
   },
   "resources/js/Pages/Profile/Partials/UpdatePasswordForm.vue": {
-    "file": "assets/UpdatePasswordForm-63029a44.js",
+    "file": "assets/UpdatePasswordForm-934691ba.js",
     "imports": [
       "resources/js/app.js",
-      "_TextInput-6a4087a1.js",
-      "_PrimaryButton-a5d36f1c.js",
+      "_TextInput-af6dbfb3.js",
+      "_PrimaryButton-ebcdd566.js",
       "__plugin-vue_export-helper-c27b6911.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Profile/Partials/UpdatePasswordForm.vue"
   },
   "resources/js/Pages/Profile/Partials/UpdateProfileInformationForm.vue": {
-    "file": "assets/UpdateProfileInformationForm-588fd2c0.js",
+    "file": "assets/UpdateProfileInformationForm-3dd4208f.js",
     "imports": [
       "resources/js/app.js",
-      "_TextInput-6a4087a1.js",
-      "_PrimaryButton-a5d36f1c.js",
+      "_TextInput-af6dbfb3.js",
+      "_PrimaryButton-ebcdd566.js",
       "__plugin-vue_export-helper-c27b6911.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Profile/Partials/UpdateProfileInformationForm.vue"
   },
   "resources/js/Pages/Tabs.vue": {
-    "file": "assets/Tabs-cfd58d19.js",
+    "file": "assets/Tabs-fd8fe26c.js",
     "imports": [
       "resources/js/app.js"
     ],
@@ -666,7 +683,7 @@
     "src": "resources/js/Pages/Tabs.vue"
   },
   "resources/js/Pages/Welcome.vue": {
-    "file": "assets/Welcome-64636ccd.js",
+    "file": "assets/Welcome-4ccb2e56.js",
     "imports": [
       "resources/js/app.js"
     ],
@@ -674,12 +691,12 @@
     "src": "resources/js/Pages/Welcome.vue"
   },
   "resources/js/app.css": {
-    "file": "assets/app-47bfc93b.css",
+    "file": "assets/app-4b5c388c.css",
     "src": "resources/js/app.css"
   },
   "resources/js/app.js": {
     "css": [
-      "assets/app-47bfc93b.css"
+      "assets/app-4b5c388c.css"
     ],
     "dynamicImports": [
       "resources/js/Pages/Auth/ConfirmPassword.vue",
@@ -722,7 +739,7 @@
       "resources/js/Pages/Tabs.vue",
       "resources/js/Pages/Welcome.vue"
     ],
-    "file": "assets/app-72327078.js",
+    "file": "assets/app-24a5834a.js",
     "isEntry": true,
     "src": "resources/js/app.js"
   }

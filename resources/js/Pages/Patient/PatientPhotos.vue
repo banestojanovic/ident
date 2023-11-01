@@ -1,51 +1,21 @@
 <template>
-    <div class="col-span-3 mt-1 overflow-hidden bg-white p-4">
-        <div class="flex items-center justify-between">
-            <h3 class="flex items-center space-x-2 text-xl font-medium">
-                <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M3.66675 14.6667L7.87058 10.4628C8.21438 10.1191 8.68061 9.92606 9.16675 9.92606C9.65288 9.92606 10.1191 10.1191 10.4629 10.4628L14.6667 14.6667M12.8334 12.8333L14.2872 11.3795C14.631 11.0358 15.0973 10.8427 15.5834 10.8427C16.0695 10.8427 16.5358 11.0358 16.8796 11.3795L18.3334 12.8333M12.8334 7.33333H12.8426M5.50008 18.3333H16.5001C16.9863 18.3333 17.4526 18.1402 17.7964 17.7964C18.1403 17.4525 18.3334 16.9862 18.3334 16.5V5.5C18.3334 5.01377 18.1403 4.54745 17.7964 4.20364C17.4526 3.85982 16.9863 3.66667 16.5001 3.66667H5.50008C5.01385 3.66667 4.54754 3.85982 4.20372 4.20364C3.8599 4.54745 3.66675 5.01377 3.66675 5.5V16.5C3.66675 16.9862 3.8599 17.4525 4.20372 17.7964C4.54754 18.1402 5.01385 18.3333 5.50008 18.3333Z"
-                        stroke="black"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                    />
-                </svg>
-
-                <span>Snimci</span>
-            </h3>
-        </div>
-        <div class="mt-4">
+    <div class="col-span-3 mt-1 overflow-hidden">
+        <div class="bg-white p-6">
             <div class="flow-root">
-                <ul role="list" class="space-y-4">
+                <ul role="list" class="grid grid-cols-2 gap-6">
                     <li v-for="photo in patient?.photos" :key="photo.id">
-                        <div class="flex space-x-4">
-                            <div class="flex-shrink-0">
+                        <div class="flex w-full flex-col space-y-2">
+                            <div class="relative h-[136px] w-full overflow-hidden rounded-lg">
                                 <a :href="photo.src" class="glightbox" :data-glightbox="`title: ${photo?.name || ''}; description: ${photo?.description || ''}`">
-                                    <img class="h-16 w-20" :src="photo.src" alt="Snimak zuba" />
+                                    <img class="absolute left-0 top-0 h-full w-full object-cover" :src="photo.src" alt="Snimak zuba" />
                                 </a>
                             </div>
-                            <div class="min-w-0 flex-1">
-                                <p v-if="photo?.name" class="truncate text-base text-gray-900">
+                            <div class="px-2">
+                                <button v-if="photo?.name" type="button" class="text-left text-sm leading-tight text-gray-900" @click="handleEditPhoto(photo)">
                                     {{ photo.name }}
-                                </p>
-                                <p class="truncate text-sm text-gray-500">
+                                </button>
+                                <button type="button" class="text-left text-xs text-gray-500" @click="handleEditPhoto(photo)">
                                     {{ new Date(photo?.created_at).toLocaleDateString(dateOptions.locale) }}
-                                </p>
-                            </div>
-                            <div class="mt-auto">
-                                <button type="button" class="flex items-center space-x-2 text-gray-500 hover:underline" @click="() => handleEditPhoto(photo)">
-                                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M8.25 3.75H4.5C4.10218 3.75 3.72064 3.90803 3.43934 4.18934C3.15804 4.47064 3 4.85217 3 5.25V13.5C3 13.8978 3.15804 14.2794 3.43934 14.5607C3.72064 14.842 4.10218 15 4.5 15H12.75C13.1478 15 13.5294 14.842 13.8107 14.5607C14.092 14.2794 14.25 13.8978 14.25 13.5V9.75M13.1895 2.6895C13.3279 2.54623 13.4934 2.43196 13.6764 2.35335C13.8594 2.27473 14.0562 2.23335 14.2554 2.23162C14.4546 2.22989 14.6521 2.26785 14.8364 2.34327C15.0208 2.41869 15.1883 2.53007 15.3291 2.67091C15.4699 2.81175 15.5813 2.97922 15.6567 3.16357C15.7322 3.34791 15.7701 3.54543 15.7684 3.7446C15.7666 3.94377 15.7253 4.1406 15.6467 4.32361C15.568 4.50661 15.4538 4.67213 15.3105 4.8105L8.871 11.25H6.75V9.129L13.1895 2.6895Z"
-                                            stroke="#737373"
-                                            stroke-width="2"
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                        />
-                                    </svg>
-
-                                    <span class="text-sm">Izmeni</span>
                                 </button>
                             </div>
                         </div>
@@ -55,7 +25,7 @@
         </div>
         <button
             type="button"
-            class="focus-visible:ring-ring mt-8 inline-flex w-full items-center justify-center space-x-2 rounded-md bg-blue-100 px-8 py-2 text-base text-sky-700 transition-colors hover:bg-blue-200 focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-50"
+            class="focus-visible:ring-ring inline-flex w-full items-center justify-center space-x-2 uppercase bg-blue-100 px-8 py-9 text-base text-sky-700 hover:bg-blue-200 focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-50"
             @click="() => (photoModal = true)"
         >
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">

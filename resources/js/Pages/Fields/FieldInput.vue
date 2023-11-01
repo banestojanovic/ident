@@ -10,7 +10,7 @@
                 :id="name"
                 :name="name"
                 autocomplete="off"
-                class="block w-full rounded-md border-0 bg-stone-100 px-4 placeholder-gray-400 focus:border-stone-300 focus:ring-stone-300"
+                class="block w-full rounded-md border-0 bg-slate-100 px-4 placeholder-gray-400 focus:border-slate-300 focus:ring-slate-300"
                 :placeholder="placeholder"
                 @change="
                     ($e) => {
