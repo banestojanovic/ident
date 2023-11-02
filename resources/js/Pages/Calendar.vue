@@ -8,20 +8,41 @@
 
         <div class="mt-1 grid grid-cols-12">
             <div class="col-span-3 mr-1 flex flex-col space-y-4 bg-white p-6 px-10 2xl:col-span-2">
-                <h5 class="ml-6 text-gray-500">Doktori</h5>
+                <div class="flex justify-between">
+                    <h5 class="ml-6 text-gray-500">Doktori</h5>
+
+                    <div class="flex space-x-2 text-xl">
+                        <button
+                            v-if="dentistForm.dentists.length < $page.props.global.dentists.data.length"
+                            type="button"
+                            class="text-green-500"
+                            @click="
+                                () => {
+                                    dentistForm.dentists = $page.props.global.dentists.data?.map(dentist => dentist.id)
+                                }
+                            "
+                        >
+                            {{ "+" }}
+                        </button>
+                        <button
+                            v-if="dentistForm.dentists.length > 0"
+                            type="button"
+                            class="text-red-500"
+                            @click="
+                                () => {
+                                    dentistForm.dentists = []
+                                }
+                            "
+                        >
+                            {{ "-" }}
+                        </button>
+                    </div>
+                </div>
 
                 <div class="flex flex-col space-y-2.5">
                     <div v-for="(dentist, idx) in $page.props.global.dentists.data" :key="dentist.id">
                         <div class="relative flex items-center">
-                            <input
-                                v-model="dentistForm.dentists"
-                                :id="dentist.name"
-                                :name="dentist.name"
-                                :value="dentist.id"
-                                type="checkbox"
-                                :class="['h-4 w-4 cursor-pointer rounded border-gray-300']"
-                                :style="{color: dentist?.color}"
-                            />
+                            <input v-model="dentistForm.dentists" :id="dentist.name" :name="dentist.name" :value="dentist.id" type="checkbox" :class="['h-4 w-4 cursor-pointer rounded border-gray-300']" :style="{ color: dentist?.color }" />
                             <label :for="dentist.name" class="ml-2 block cursor-pointer font-medium text-black">
                                 {{ dentist.name }}
                             </label>
@@ -55,12 +76,22 @@
                 }
             "
         >
-            <FormBooking :appointment="selectedEvent" :edit="true" :date="selectedDate" :selected-patient="selectedEvent?._def?.extendedProps?.patient"
-                         :data="{
-                            patient_id: selectedEvent?._def?.extendedProps?.patient,
-                            dentist_id: selectedEvent?._def?.extendedProps?.dentist
-                         }"
-                         @success="handleAppointmentSuccess" />
+            <FormBooking
+                :appointment="selectedEvent"
+                :edit="true"
+                :date="selectedDate"
+                :selected-patient="selectedEvent?._def?.extendedProps?.patient"
+                :data="{
+                    patient_id: selectedEvent?._def?.extendedProps?.patient,
+                    dentist_id: selectedEvent?._def?.extendedProps?.dentist
+                }"
+                @success="handleAppointmentSuccess"
+                @delete="
+                    () => {
+                        confirmDialogOpen = true
+                    }
+                "
+            />
         </Modal>
 
         <ConfirmDialog
@@ -176,8 +207,8 @@ const calendarOptions = ref({
     editable: true,
     locale: "sr-Latn-RS",
     //firstDay: 1,
-    slotDuration: "00:30:00",
-    slotLabelInterval: "00:30:00",
+    slotDuration: "00:15:00",
+    slotLabelInterval: "00:15:00",
     slotLabelFormat: {
         hour: "numeric",
         minute: "2-digit",
@@ -192,11 +223,11 @@ const calendarOptions = ref({
     slotEventOverlap: false,
     plugins: [timeGridPlugin, interactionPlugin],
     eventDisplay: "block",
-    initialView: "sedam",
+    initialView: "dva",
     headerToolbar: {
         left: "title",
         center: "",
-        right: "today,prev,next,timeGridDay,dva,sedam"
+        right: "today,prev,next,timeGridDay,dva"
     },
     scrollTime: new Date(currentDate.setHours(currentDate.getHours() - 1)).toTimeString(),
     views: {

@@ -9,7 +9,7 @@
                 :value="modelValue"
                 :id="name"
                 :name="name"
-                rows="6"
+                rows="3"
                 class="block w-full rounded-md border-0 bg-slate-100 px-4 placeholder-gray-400 focus:border-slate-300 focus:ring-slate-300"
                 @change="
                     ($e) => {

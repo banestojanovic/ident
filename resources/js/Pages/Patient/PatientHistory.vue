@@ -264,6 +264,4 @@ const handleToothChange = (tooth) => {
     selectedRecord.item = null
     recordFormOpen.value = false
 }
-
-console.log(props.patient.teeth)
 </script>

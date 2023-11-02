@@ -2,7 +2,6 @@
     <form @submit.prevent="submit" class="flex flex-col space-y-2">
         <FieldPhoto v-if="!edit" v-model="form.photo" name="photo" label="Dodaj nov snimak" :error="form?.errors?.photo" />
         <FieldInput v-model="form.name" name="name" label="Naslov snimka" :error="form?.errors?.photo" />
-        <FieldTextarea v-model="form.description" name="description" label="Dodatni opis" :error="form?.errors?.description" />
 
         <div class="mt-2 flex flex-col-reverse items-end sm:col-span-2 sm:flex-row">
             <button v-if="edit" type="button" @click="$emit('delete', { id: form.photo_id })" class="flex items-center space-x-1 text-red-500 hover:underline sm:mr-auto">
@@ -35,7 +34,7 @@
                     />
                 </svg>
 
-                <span v-if="!loading">{{ edit ? "Sačuvaj izmene" : "Dodaj karton" }}</span>
+                <span v-if="!loading">{{ edit ? "Sačuvaj izmene" : "Dodaj snimak" }}</span>
                 <Loader v-if="loading" class="w-[56px]" />
             </button>
         </div>

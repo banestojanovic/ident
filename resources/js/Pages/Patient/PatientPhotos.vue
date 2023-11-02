@@ -1,6 +1,6 @@
 <template>
     <div class="col-span-3 mt-1 overflow-hidden">
-        <div class="bg-white p-6">
+        <div v-if="patient?.photos.length > 0" class="bg-white p-6">
             <div class="flow-root">
                 <ul role="list" class="grid grid-cols-2 gap-6">
                     <li v-for="photo in patient?.photos" :key="photo.id">
@@ -10,7 +10,7 @@
                                     <img class="absolute left-0 top-0 h-full w-full object-cover" :src="photo.src" alt="Snimak zuba" />
                                 </a>
                             </div>
-                            <div class="px-2">
+                            <div class="flex flex-col px-2">
                                 <button v-if="photo?.name" type="button" class="text-left text-sm leading-tight text-gray-900" @click="handleEditPhoto(photo)">
                                     {{ photo.name }}
                                 </button>
@@ -25,7 +25,7 @@
         </div>
         <button
             type="button"
-            class="focus-visible:ring-ring inline-flex w-full items-center justify-center space-x-2 uppercase bg-blue-100 px-8 py-9 text-base text-sky-700 hover:bg-blue-200 focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-50"
+            class="focus-visible:ring-ring inline-flex w-full items-center justify-center space-x-2 bg-blue-100 px-8 py-9 text-base uppercase text-sky-700 hover:bg-blue-200 focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-50"
             @click="() => (photoModal = true)"
         >
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">

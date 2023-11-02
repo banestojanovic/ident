@@ -1,7 +1,19 @@
 <template>
     <form @submit.prevent="submit" class="space-y-2">
-        <FieldSelectDentists v-model="form.dentist_id" type="dentist" :items="$page.props.global.dentists.data" name="dentist_id" label="Izaberite doktora" :error="form.errors?.dentist_id" />
-        <FieldCombobox v-if="!newPatient" v-model="form.patient_id" :items="patients" name="patient_id" label="Izaberite pacijenta" :error="form.errors?.patient_id" @searched="(patients) => (searchedValues = patients)" />
+        <FieldSelectDentists v-model="form.dentist_id" type="dentist" :items="$page.props.global.dentists.data" name="dentist_id" :label="edit ? 'Izabran doktor' : 'Izaberite doktora'" :error="form.errors?.dentist_id" />
+        <FieldCombobox
+            v-if="!newPatient"
+            v-model="form.patient_id"
+            :items="patients"
+            name="patient_id"
+            :label="edit ? 'Izabran pacijent' : 'Izaberite pacijenta'"
+            :error="form.errors?.patient_id"
+            @searched="(patients) => (searchedValues = patients)"
+        />
+
+        <div v-if="edit && form.patient_id">
+        <inertia-link :href="route('patients.show', { slug: form.patient_id.slug })" class="mt-4 ml-2 underline">Pogledaj pacijenta</inertia-link>
+        </div>
 
         <button
             type="button"
@@ -65,7 +77,7 @@ import FieldSelectDentists from "@/Pages/Fields/FieldSelectDentists.vue"
 const props = defineProps({
     appointment: {
         type: Object,
-        required: false,
+        required: false
     },
     selectedPatient: {
         type: Object,
@@ -83,7 +95,7 @@ const props = defineProps({
 })
 
 const form = useForm({
-    _method: 'post',
+    _method: "post",
     date: props.date?.date || null,
     dentist_id: props?.data?.dentist_id || (usePage()?.props.auth?.user?.role === 2 ? usePage()?.props.auth?.user : 0),
     patient_id: props?.data?.patient_id || null,
@@ -104,10 +116,10 @@ const submit = () => {
     loading.value = true
 
     if (props.edit) {
-        form._method = 'put'
+        form._method = "put"
     }
 
-    form.post(props.edit ? route("appointments.update_users", {id: props?.appointment?._def?.publicId ?? null }) : route("appointments.store"), {
+    form.post(props.edit ? route("appointments.update_users", { id: props?.appointment?._def?.publicId ?? null }) : route("appointments.store"), {
         preserveScroll: true,
         onSuccess: () => {
             emit("success")
@@ -117,6 +129,4 @@ const submit = () => {
         }
     })
 }
-
-console.log(props.data)
 </script>

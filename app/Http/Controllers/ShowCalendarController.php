@@ -6,6 +6,7 @@ use App\Http\Resources\IndexAppointmentsResource;
 use App\Models\Appointment;
 use App\Models\Patient;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class ShowCalendarController extends Controller
@@ -21,11 +22,12 @@ class ShowCalendarController extends Controller
             'patient' => Patient::where('id', request('patient_id'))->first(),
             'bookings' => IndexAppointmentsResource::collection(
                 Appointment::with('dentist', 'patient')
-                    ->when(!empty($dentists), fn($q) => $q->whereIn('user_id', $dentists))
+                    ->whereIn('user_id', $dentists ?? [])
+                    ->whereDate('start_time', '>', Carbon::now()->tz('Europe/Belgrade')->addDay(-1))
                     ->get()
             ),
             'query' => [
-                'dentists' => request('dentists') ? request('dentists') : null,
+                'dentists' => request('dentists') ? request('dentists') : [],
             ],
         ]);
     }

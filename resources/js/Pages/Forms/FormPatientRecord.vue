@@ -1,6 +1,6 @@
 <template>
     <form @submit.prevent="submit" class="flex flex-col space-y-2">
-        <FieldInput v-model="form.diagnosis" name="diagnosis" label="Dijagnoza" :error="form?.errors?.diagnosis" />
+        <FieldTextarea v-model="form.diagnosis" name="diagnosis" label="Dijagnoza" :error="form?.errors?.diagnosis" />
         <FieldSelectObject v-model="form.therapy" :value="form.therapy" :items="$page.props.global.therapies" name="therapy" label="Odaberi terapiju" :error="form?.errors.therapy" />
         <FieldTextarea v-model="form.description" name="description" label="Opis terapije" :error="form?.errors?.description" class="sm:col-span-2" />
 
