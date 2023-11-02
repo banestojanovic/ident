@@ -18,6 +18,7 @@ class Patient extends Model
         'old_id',
         'first_name',
         'last_name',
+        'email',
         'slug',
         'address',
         'city',
