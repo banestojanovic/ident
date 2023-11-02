@@ -7,11 +7,11 @@
                         type="button"
                         v-for="(tooth, idx) in firstTeeth"
                         :key="tooth"
-                        :class="[!activeTeeth.includes(tooth) ? 'opacity-30' : 'opacity-100 hover:opacity-80', 'flex w-10 flex-col items-center justify-end space-y-1']"
+                        :class="[!activeTeeth.includes(tooth) ? 'opacity-60' : 'ring-[1px] ring-red-400', 'flex w-10 flex-col items-center justify-end space-y-1']"
                         @click="handleToothChange(tooth)"
                     >
                         <img :src="`/storage/images/site/teeth/${tooth}.svg`" alt="Slika zuba" />
-                        <span class="text-sm text-gray-500">{{ tooth }}</span>
+                        <span :class="[!activeTeeth.includes(tooth) ? 'opacity-60' : 'opacity-100', 'text-sm text-gray-500']">{{ tooth }}</span>
                     </button>
                 </div>
                 <div class="mx-2 grid grid-cols-8">
@@ -19,11 +19,11 @@
                         type="button"
                         v-for="(tooth, idx) in secondTeeth"
                         :key="tooth"
-                        :class="[!activeTeeth.includes(tooth) ? 'opacity-30' : 'opacity-100 hover:opacity-80', 'flex w-10 flex-col items-center justify-end space-y-1']"
+                        :class="[!activeTeeth.includes(tooth) ? 'opacity-60' : 'ring-[1px] ring-red-400', 'flex w-10 flex-col items-center justify-end space-y-1']"
                         @click="handleToothChange(tooth)"
                     >
                         <img :src="`/storage/images/site/teeth/${tooth}.svg`" alt="Slika zuba" />
-                        <span class="text-sm text-gray-500">{{ tooth }}</span>
+                        <span :class="[!activeTeeth.includes(tooth) ? 'opacity-60' : 'opacity-100', 'text-sm text-gray-500']">{{ tooth }}</span>
                     </button>
                 </div>
                 <div class="mx-2 grid grid-cols-8">
@@ -31,10 +31,10 @@
                         type="button"
                         v-for="(tooth, idx) in fourthTeeth"
                         :key="tooth"
-                        :class="[!activeTeeth.includes(tooth) ? 'opacity-30' : 'opacity-100 hover:opacity-80', 'flex w-10 flex-col items-center justify-start space-y-1']"
+                        :class="[!activeTeeth.includes(tooth) ? 'opacity-60' : 'ring-[1px] ring-red-400', 'flex w-10 flex-col items-center justify-start space-y-1']"
                         @click="handleToothChange(tooth)"
                     >
-                        <span class="text-sm text-gray-500">{{ tooth }}</span>
+                        <span :class="[!activeTeeth.includes(tooth) ? 'opacity-60' : 'opacity-100', 'text-sm text-gray-500']">{{ tooth }}</span>
                         <img :src="`/storage/images/site/teeth/${tooth}.svg`" alt="Slika zuba" />
                     </button>
                 </div>
@@ -43,21 +43,21 @@
                         type="button"
                         v-for="(tooth, idx) in thirdTeeth"
                         :key="tooth"
-                        :class="[!activeTeeth.includes(tooth) ? 'opacity-30' : 'opacity-100 hover:opacity-80', 'flex w-10 flex-col items-center justify-start space-y-1']"
+                        :class="[!activeTeeth.includes(tooth) ? 'opacity-60' : 'ring-[1px] ring-red-400', 'flex w-10 flex-col items-center justify-start space-y-1']"
                         @click="handleToothChange(tooth)"
                     >
-                        <span class="text-sm text-gray-500">{{ tooth }}</span>
+                        <span :class="[!activeTeeth.includes(tooth) ? 'opacity-80' : 'opacity-100', 'text-sm text-gray-500']">{{ tooth }}</span>
                         <img :src="`/storage/images/site/teeth/${tooth}.svg`" alt="Slika zuba" />
                     </button>
                 </div>
             </div>
         </div>
 
-        <div v-if="selectedTooth" class="grid grid-cols-12">
-            <div class="col-span-2 flex items-center justify-center bg-white p-6 text-3xl font-medium text-gray-500">
+        <div v-if="selectedTooth" class="grid grid-cols-12 gap-1">
+            <div class="col-span-2 flex items-center justify-center bg-white px-6 py-3 text-3xl font-medium text-gray-500">
                 {{ selectedTooth }}
             </div>
-            <div class="col-span-7 mx-1 flex items-center space-x-1 bg-white p-6">
+            <div class="col-span-7 flex items-center space-x-1 bg-white px-6 py-3">
                 <span class="text-3xl">{{ selectedRecords.length }}</span>
                 <span v-if="[1, 21, 31, 41, 51, 61, 71, 81, 91].includes(selectedRecords.length)">karton</span>
                 <span v-else>kartona</span>
@@ -65,7 +65,7 @@
             <div class="col-span-3">
                 <button
                     type="button"
-                    class="focus-visible:ring-ring inline-flex w-full items-center justify-center space-x-2 bg-pink-200 px-2 py-8 text-base uppercase text-[#8A245B] hover:bg-pink-300/70 focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-50"
+                    class="focus-visible:ring-ring inline-flex w-full items-center justify-center space-x-2 bg-pink-200 px-2 py-5 text-base uppercase text-[#8A245B] hover:bg-pink-300/70 focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-50"
                     @click="
                         () => {
                             recordFormOpen = true
@@ -88,18 +88,28 @@
             </div>
         </div>
 
-        <div v-if="selectedRecords" class="grid grid-cols-12">
+        <div v-if="selectedRecords && selectedTooth" class="grid grid-cols-12 gap-1">
             <div class="col-span-2">
                 <ul class="my-1">
                     <li v-for="(record, idx) in selectedRecords" :key="record.id">
-                        <button type="button" @click="() => (selectedRecord.item = record)"
-                                :class="[{ 'bg-white': selectedRecord?.item?.id === record.id, 'bg-emerald-100': highlightFirstRecord && idx === 0}, 'flex w-full justify-center px-6 py-3 text-sm']">
+                        <button
+                            type="button"
+                            @click="() => (selectedRecord.item = record)"
+                            :class="[{ 'bg-white': selectedRecord?.item?.id === record.id, 'bg-emerald-100': highlightFirstRecord && idx === 0 }, 'flex w-full justify-center px-6 py-3 text-sm']"
+                        >
                             {{ new Date(record.date).toLocaleDateString(dateOptions.locale) }}
                         </button>
                     </li>
                 </ul>
             </div>
-            <div v-if="recordFormOpen || selectedRecord.item" :key="selectedRecord.item?.id || 999999999" class="col-span-10 my-1 ml-1 w-full bg-white p-6">
+            <div v-if="selectedTooth && selectedRecords.length > 0 && !recordFormOpen && !selectedRecord.item" class="col-span-10 flex items-center my-1 space-x-1 w-full bg-white p-6">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
+                </svg>
+
+                <span>Odaberi datum levo</span>
+            </div>
+            <div v-if="recordFormOpen || selectedRecord.item" :key="selectedRecord.item?.id || 999999999" class="col-span-10 w-full bg-white p-6">
                 <div class="mb-4 flex justify-between">
                     <h5 v-if="recordFormOpen" class="text-lg font-semibold">Novi karton</h5>
 
@@ -135,7 +145,13 @@
                 <div class="mt-10 flex items-center justify-end divide-x divide-gray-900 text-sm">
                     <button type="button" class="flex items-center space-x-1 px-3">
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M5.6 11.5242C5.4 11.5492 5.2 11.5758 5 11.6042M5.6 11.5242C8.52188 11.1576 11.4781 11.1576 14.4 11.5242M5.6 11.5242L5.28333 15M14.4 11.5242C14.6 11.5492 14.8 11.5758 15 11.6042M14.4 11.5242L14.7167 15L14.9075 17.1025C14.9193 17.2322 14.904 17.363 14.8624 17.4864C14.8209 17.6099 14.7541 17.7233 14.6663 17.8195C14.5785 17.9157 14.4716 17.9926 14.3524 18.0452C14.2332 18.0978 14.1044 18.125 13.9742 18.125H6.02583C5.47417 18.125 5.0425 17.6517 5.0925 17.1025L5.28333 15M5.28333 15H4.375C3.87772 15 3.40081 14.8025 3.04917 14.4508C2.69754 14.0992 2.5 13.6223 2.5 13.125V7.88C2.5 6.97917 3.14 6.20083 4.03083 6.0675C4.56079 5.98823 5.09229 5.9196 5.625 5.86167M14.715 15H15.6242C15.8705 15.0001 16.1144 14.9517 16.342 14.8575C16.5695 14.7633 16.7763 14.6252 16.9505 14.4511C17.1247 14.277 17.2629 14.0703 17.3572 13.8427C17.4515 13.6152 17.5 13.3713 17.5 13.125V7.88C17.5 6.97917 16.86 6.20083 15.9692 6.0675C15.4392 5.98823 14.9077 5.9196 14.375 5.86167M14.375 5.86167C11.4669 5.54525 8.53308 5.54525 5.625 5.86167M14.375 5.86167V2.8125C14.375 2.295 13.955 1.875 13.4375 1.875H6.5625C6.045 1.875 5.625 2.295 5.625 2.8125V5.86167M15 8.75H15.0067V8.75667H15V8.75ZM12.5 8.75H12.5067V8.75667H12.5V8.75Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path
+                                d="M5.6 11.5242C5.4 11.5492 5.2 11.5758 5 11.6042M5.6 11.5242C8.52188 11.1576 11.4781 11.1576 14.4 11.5242M5.6 11.5242L5.28333 15M14.4 11.5242C14.6 11.5492 14.8 11.5758 15 11.6042M14.4 11.5242L14.7167 15L14.9075 17.1025C14.9193 17.2322 14.904 17.363 14.8624 17.4864C14.8209 17.6099 14.7541 17.7233 14.6663 17.8195C14.5785 17.9157 14.4716 17.9926 14.3524 18.0452C14.2332 18.0978 14.1044 18.125 13.9742 18.125H6.02583C5.47417 18.125 5.0425 17.6517 5.0925 17.1025L5.28333 15M5.28333 15H4.375C3.87772 15 3.40081 14.8025 3.04917 14.4508C2.69754 14.0992 2.5 13.6223 2.5 13.125V7.88C2.5 6.97917 3.14 6.20083 4.03083 6.0675C4.56079 5.98823 5.09229 5.9196 5.625 5.86167M14.715 15H15.6242C15.8705 15.0001 16.1144 14.9517 16.342 14.8575C16.5695 14.7633 16.7763 14.6252 16.9505 14.4511C17.1247 14.277 17.2629 14.0703 17.3572 13.8427C17.4515 13.6152 17.5 13.3713 17.5 13.125V7.88C17.5 6.97917 16.86 6.20083 15.9692 6.0675C15.4392 5.98823 14.9077 5.9196 14.375 5.86167M14.375 5.86167C11.4669 5.54525 8.53308 5.54525 5.625 5.86167M14.375 5.86167V2.8125C14.375 2.295 13.955 1.875 13.4375 1.875H6.5625C6.045 1.875 5.625 2.295 5.625 2.8125V5.86167M15 8.75H15.0067V8.75667H15V8.75ZM12.5 8.75H12.5067V8.75667H12.5V8.75Z"
+                                stroke="black"
+                                stroke-width="1.5"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            />
                         </svg>
 
                         <span>Recept</span>
@@ -144,6 +160,19 @@
                     <button type="button" class="px-3">Izjava</button>
                 </div>
             </div>
+        </div>
+
+        <div :class="[{'opacity-75': selectedTooth}, 'grid grid-cols-12 gap-1']">
+            <template v-for="(tooth, fdi) in patient.teeth" :key="fdi">
+                <div class="col-span-2 flex items-center justify-center bg-white px-6 py-3 text-3xl font-medium text-gray-500">
+                    {{ fdi }}
+                </div>
+                <div class="col-span-10 flex items-center space-x-1 bg-white px-6 py-3">
+                    <span class="text-3xl">{{ tooth.length }}</span>
+                    <span v-if="[1, 21, 31, 41, 51, 61, 71, 81, 91].includes(tooth.length)">karton</span>
+                    <span v-else>kartona</span>
+                </div>
+            </template>
         </div>
     </div>
 
@@ -235,4 +264,6 @@ const handleToothChange = (tooth) => {
     selectedRecord.item = null
     recordFormOpen.value = false
 }
+
+console.log(props.patient.teeth)
 </script>
