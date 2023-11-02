@@ -42,7 +42,7 @@
                 }
             "
         >
-            <FormBooking :date="selectedDate" :selected-patient="patient" @success="handleAppointmentSuccess" />
+            <FormBooking :edit="false" :date="selectedDate" :selected-patient="patient" @success="handleAppointmentSuccess" />
         </Modal>
 
         <Modal
@@ -55,51 +55,12 @@
                 }
             "
         >
-            <div class="flex flex-col space-y-6">
-                <div class="flex space-x-10">
-                    <div class="flex flex-col space-y-3">
-                        <div>
-                            <span class="font-semibold">Pacijent</span>
-                            <h5>
-                                <inertia-link :href="route('patients.show', {slug: selectedEvent.extendedProps.patient.slug})" class="underline">
-                                    {{ `${selectedEvent.extendedProps.patient.first_name} ${selectedEvent.extendedProps.patient.last_name}` }}
-                                </inertia-link>
-                            </h5>
-                            <div v-if="selectedEvent.extendedProps.patient?.address">
-                                {{ `${selectedEvent.extendedProps.patient?.address}, ${selectedEvent.extendedProps?.patient?.city}` }}
-                            </div>
-                            <div>{{ `${selectedEvent.extendedProps.patient?.phone}` }}</div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <span class="font-semibold">Izabran doktor</span>
-                        <h5>{{ selectedEvent.extendedProps.dentist.name }}</h5>
-                    </div>
-                </div>
-
-                <div class="flex items-end justify-between">
-                    <button
-                        type="button"
-                        @click="
-                            () => {
-                                confirmDialogOpen = true
-                                eventModal = false
-                            }
-                        "
-                        class="text-sm text-red-500 hover:underline"
-                    >
-                        Izbriši zakazani termin
-                    </button>
-
-                    <inertia-link
-                        :href="route('patients.show', { slug: selectedEvent.extendedProps.patient.slug })"
-                        class="focus-visible:ring-ring inline-flex items-center justify-center space-x-2 rounded-md bg-sky-100 px-4 py-1.5 text-base text-sky-800 transition-colors hover:bg-sky-200 focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-50 lg:col-span-3"
-                    >
-                        Vidi karton pacijenta
-                    </inertia-link>
-                </div>
-            </div>
+            <FormBooking :appointment="selectedEvent" :edit="true" :date="selectedDate" :selected-patient="selectedEvent?._def?.extendedProps?.patient"
+                         :data="{
+                            patient_id: selectedEvent?._def?.extendedProps?.patient,
+                            dentist_id: selectedEvent?._def?.extendedProps?.dentist
+                         }"
+                         @success="handleAppointmentSuccess" />
         </Modal>
 
         <ConfirmDialog
@@ -294,6 +255,7 @@ const handleDeleteAppointment = () => {
 
 const handleAppointmentSuccess = () => {
     bookingModal.value = false
+    eventModal.value = false
     if (props.patient) {
         setTimeout(() => {
             router.replace(route("calendar.show"))

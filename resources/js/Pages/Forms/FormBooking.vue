@@ -46,7 +46,6 @@
                     'focus-visible:ring-ring border-input mb-4 ml-auto inline-flex w-full items-center justify-center space-x-2 rounded-xl border bg-emerald-600 px-6 py-2 text-base font-medium text-white shadow-sm transition-colors hover:bg-emerald-700 hover:text-white focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-50 sm:mb-0 sm:mt-4 sm:w-[200px]'
                 ]"
             >
-
                 <span v-if="!loading">{{ "Zakaži" }}</span>
                 <Loader v-if="loading" class="w-[56px]" />
             </button>
@@ -64,6 +63,10 @@ import FieldInput from "@/Pages/Fields/FieldInput.vue"
 import FieldSelectDentists from "@/Pages/Fields/FieldSelectDentists.vue"
 
 const props = defineProps({
+    appointment: {
+        type: Object,
+        required: false,
+    },
     selectedPatient: {
         type: Object,
         required: false
@@ -80,6 +83,7 @@ const props = defineProps({
 })
 
 const form = useForm({
+    _method: 'post',
     date: props.date?.date || null,
     dentist_id: props?.data?.dentist_id || (usePage()?.props.auth?.user?.role === 2 ? usePage()?.props.auth?.user : 0),
     patient_id: props?.data?.patient_id || null,
@@ -92,14 +96,18 @@ const form = useForm({
 const emit = defineEmits(["success", "delete"])
 
 const loading = ref(false)
-const patients = ref(props.selectedPatient || null)
+const patients = ref(props?.data?.patient_id || null)
 const newPatient = ref(false)
 const searchedValues = ref({})
 
 const submit = () => {
     loading.value = true
 
-    form.post(route("appointments.store"), {
+    if (props.edit) {
+        form._method = 'put'
+    }
+
+    form.post(props.edit ? route("appointments.update_users", {id: props?.appointment?._def?.publicId ?? null }) : route("appointments.store"), {
         preserveScroll: true,
         onSuccess: () => {
             emit("success")
@@ -109,4 +117,6 @@ const submit = () => {
         }
     })
 }
+
+console.log(props.data)
 </script>

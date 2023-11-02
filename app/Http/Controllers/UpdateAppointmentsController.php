@@ -40,5 +40,7 @@ class UpdateAppointmentsController extends Controller
             'text' => 'Uspešno ste izmenili termin',
             'group' => 'success',
         ]);
+
+        return back();
     }
 }
