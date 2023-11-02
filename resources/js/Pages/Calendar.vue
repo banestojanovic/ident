@@ -6,9 +6,9 @@
             <SearchPatients />
         </div>
 
-        <div class="mt-1 grid grid-cols-8">
+        <div class="mt-1 grid grid-cols-12">
             <span class="sr-only text-emerald-400 text-orange-400 text-red-400 text-sky-400"></span>
-            <div class="col-span-1 mr-1 flex flex-col space-y-4 bg-white p-6 px-10">
+            <div class="col-span-3 2xl:col-span-2 mr-1 flex flex-col space-y-4 bg-white p-6 px-10">
                 <h5 class="ml-6 text-gray-500">Doktori</h5>
 
                 <div class="flex flex-col space-y-2.5">
@@ -29,7 +29,7 @@
                     </div>
                 </div>
             </div>
-            <FullCalendar ref="calendarEl" :options="calendarOptions" class="col-span-7 h-[80vh] bg-white" />
+            <FullCalendar ref="calendarEl" :options="calendarOptions" class="col-span-9 2xl:col-span-10 h-[80vh] bg-white" />
         </div>
 
         <Modal
@@ -213,8 +213,8 @@ const calendarOptions = ref({
     editable: true,
     locale: "sr-Latn-RS",
     firstDay: 1,
-    slotDuration: "00:15:00",
-    slotLabelInterval: "00:15:00",
+    slotDuration: "00:30:00",
+    slotLabelInterval: "00:30:00",
     slotLabelFormat: {
         hour: "numeric",
         minute: "2-digit",
@@ -233,7 +233,7 @@ const calendarOptions = ref({
     headerToolbar: {
         left: "title",
         center: "",
-        right: "today,prev,next,timeGridDay,dva,pet,timeGridWeek"
+        right: "today,prev,next,timeGridDay,dva,timeGridWeek"
     },
     scrollTime: new Date(currentDate.setHours(currentDate.getHours() - 1)).toTimeString(),
     views: {
@@ -360,12 +360,12 @@ const handleAppointmentSuccess = () => {
     text-transform: uppercase;
     font-size: 14px;
     border: none;
-    color: rgb(0 0 0 / 30%);
+    color: rgb(0 0 0 / 100%);
 }
 
 .fc .fc-button-primary:hover {
     background-color: rgb(235 242 245 / 100%);
-    color: rgb(0 0 0 / 100%);
+    color: rgb(0 0 0 / 30%);
 }
 
 .fc .fc-button-primary:not(:disabled).fc-button-active:focus,
@@ -379,6 +379,12 @@ const handleAppointmentSuccess = () => {
     color: rgb(0 0 0 / 100%);
 }
 
+.fc .fc-button-primary:not(:disabled).fc-button-active:focus,
+.fc .fc-button-primary:not(:disabled).fc-button-active,
+.fc .fc-button-primary:not(:disabled).fc-button-active {
+    border-bottom: 1px solid #000;
+}
+
 .fc .fc-button-primary.fc-today-button:disabled {
     background-color: #ebf2f5;
     color: rgb(112 117 122 / 30%);
@@ -386,7 +392,7 @@ const handleAppointmentSuccess = () => {
 
 .fc .fc-button-primary.fc-today-button {
     background-color: #ebf2f5;
-    color: rgb(0 0 0 / 30%);
+    color: rgb(0 0 0 / 100%);
 }
 
 .fc .fc-button-primary.fc-today-button:not(:disabled):hover {
