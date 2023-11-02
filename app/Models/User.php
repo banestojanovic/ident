@@ -56,12 +56,24 @@ class User extends Authenticatable
     public static function dentistBaseColor($id)
     {
         switch ($id) {
-            case 1:
-                return 'orange';
             case 2:
-                return 'emerald';
+                return '#D1D5DB';
             case 3:
-                return 'red';
+                return '#F8B4B4';
+            case 4:
+                return '#FDBA8C';
+            case 5:
+                return '#84E1BC';
+            case 6:
+                return '#AFECEF';
+            case 7:
+                return '#A4CAFE';
+            case 8:
+                return '#B4C6FC';
+            case 9:
+                return '#CABFFD';
+            case 10:
+                return '#F8B4D9';
             default:
                 return 'sky';
         }
@@ -70,42 +82,78 @@ class User extends Authenticatable
     public static function dentistColor($id)
     {
         switch ($id) {
-            case 1:
-                return '#fff7ed';
             case 2:
-                return '#ecfdf5';
+                return '#f1f5f9';
             case 3:
-                return '#fef2f2';
+                return '#fee2e2';
+            case 4:
+                return '#ffedd5';
+            case 5:
+                return '#dcfce7';
+            case 6:
+                return '#cffafe';
+            case 7:
+                return '#dbeafe';
+            case 8:
+                return '#e0e7ff';
+            case 9:
+                return '#f3e8ff';
+            case 10:
+                return '#fce7f3';
             default:
-                return '#f0f9ff';
+                return 'sky';
         }
     }
 
     public static function dentistTextColor($id)
     {
         switch ($id) {
-            case 1:
-                return '#9a3412';
             case 2:
-                return '#065f46';
+                return '#334155';
             case 3:
-                return '#991b1b';
+                return '#b91c1c';
+            case 4:
+                return '#c2410c';
+            case 5:
+                return '#15803d';
+            case 6:
+                return '#0e7490';
+            case 7:
+                return '#1d4ed8';
+            case 8:
+                return '#4338ca';
+            case 9:
+                return '#7e22ce';
+            case 10:
+                return '#be185d';
             default:
-                return '#075985';
+                return 'sky';
         }
     }
 
     public static function dentistBorderColor($id)
     {
         switch ($id) {
-            case 1:
-                return '#fed7aa';
             case 2:
-                return '#a7f3d0';
+                return '#64748b';
             case 3:
-                return '#fecaca';
+                return '#ef4444';
+            case 4:
+                return '#f97316';
+            case 5:
+                return '#22c55e';
+            case 6:
+                return '#06b6d4';
+            case 7:
+                return '#3b82f6';
+            case 8:
+                return '#6366f1';
+            case 9:
+                return '#a855f7';
+            case 10:
+                return '#ec4899';
             default:
-                return '#bae6fd';
+                return 'sky';
         }
     }
 }

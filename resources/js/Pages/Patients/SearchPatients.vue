@@ -54,7 +54,7 @@
             </div>
             <button
                 type="button"
-                class="focus-visible:ring-ring flex w-full items-center justify-center space-x-2 bg-red-200 px-4 py-9 text-sm text-red-700 hover:bg-red-100 focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-50 lg:col-span-3"
+                class="focus-visible:ring-ring flex w-full items-center justify-center space-x-2 bg-red-100 px-4 py-9 text-sm text-red-700 hover:bg-red-200 focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-50 lg:col-span-3"
                 @click="() => (newPatientModal = true)"
             >
                 <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">

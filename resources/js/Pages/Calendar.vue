@@ -7,7 +7,6 @@
         </div>
 
         <div class="mt-1 grid grid-cols-12">
-            <span class="sr-only text-emerald-400 text-orange-400 text-red-400 text-sky-400"></span>
             <div class="col-span-3 mr-1 flex flex-col space-y-4 bg-white p-6 px-10 2xl:col-span-2">
                 <h5 class="ml-6 text-gray-500">Doktori</h5>
 
@@ -20,7 +19,8 @@
                                 :name="dentist.name"
                                 :value="dentist.id"
                                 type="checkbox"
-                                :class="[dentist?.color ? `text-${dentist.color}-400` : ' text-red-600 focus:ring-gray-100', 'h-4 w-4 cursor-pointer rounded border-gray-300']"
+                                :class="['h-4 w-4 cursor-pointer rounded border-gray-300']"
+                                :style="{color: dentist?.color}"
                             />
                             <label :for="dentist.name" class="ml-2 block cursor-pointer font-medium text-black">
                                 {{ dentist.name }}
