@@ -8,7 +8,7 @@
 
         <div class="mt-1 grid grid-cols-12">
             <span class="sr-only text-emerald-400 text-orange-400 text-red-400 text-sky-400"></span>
-            <div class="col-span-3 2xl:col-span-2 mr-1 flex flex-col space-y-4 bg-white p-6 px-10">
+            <div class="col-span-3 mr-1 flex flex-col space-y-4 bg-white p-6 px-10 2xl:col-span-2">
                 <h5 class="ml-6 text-gray-500">Doktori</h5>
 
                 <div class="flex flex-col space-y-2.5">
@@ -22,14 +22,14 @@
                                 type="checkbox"
                                 :class="[dentist?.color ? `text-${dentist.color}-400` : ' text-red-600 focus:ring-gray-100', 'h-4 w-4 cursor-pointer rounded border-gray-300']"
                             />
-                            <label :for="dentist.name" class="ml-2 block cursor-pointer text-gray-900">
+                            <label :for="dentist.name" class="ml-2 block cursor-pointer font-medium text-black">
                                 {{ dentist.name }}
                             </label>
                         </div>
                     </div>
                 </div>
             </div>
-            <FullCalendar ref="calendarEl" :options="calendarOptions" class="col-span-9 2xl:col-span-10 h-[80vh] bg-white" />
+            <FullCalendar ref="calendarEl" :options="calendarOptions" class="col-span-9 h-[80vh] bg-white 2xl:col-span-10" />
         </div>
 
         <Modal
@@ -47,7 +47,7 @@
 
         <Modal
             :open="eventModal"
-            :title="`Pregled Termina`"
+            :title="`Termin - ${selectedEvent?.start.toLocaleString(dateOptions.locale)}`"
             subtitle="Detaljan pregled zakazanog termina"
             @close="
                 () => {
@@ -56,12 +56,14 @@
             "
         >
             <div class="flex flex-col space-y-6">
-                <div class="flex justify-between">
+                <div class="flex space-x-10">
                     <div class="flex flex-col space-y-3">
                         <div>
                             <span class="font-semibold">Pacijent</span>
                             <h5>
-                                {{ `${selectedEvent.extendedProps.patient.first_name} ${selectedEvent.extendedProps.patient.last_name}` }}
+                                <inertia-link :href="route('patients.show', {slug: selectedEvent.extendedProps.patient.slug})" class="underline">
+                                    {{ `${selectedEvent.extendedProps.patient.first_name} ${selectedEvent.extendedProps.patient.last_name}` }}
+                                </inertia-link>
                             </h5>
                             <div v-if="selectedEvent.extendedProps.patient?.address">
                                 {{ `${selectedEvent.extendedProps.patient?.address}, ${selectedEvent.extendedProps?.patient?.city}` }}
@@ -71,7 +73,7 @@
                     </div>
 
                     <div>
-                        <span class="font-semibold">Doktor</span>
+                        <span class="font-semibold">Izabran doktor</span>
                         <h5>{{ selectedEvent.extendedProps.dentist.name }}</h5>
                     </div>
                 </div>
@@ -212,7 +214,7 @@ watch(
 const calendarOptions = ref({
     editable: true,
     locale: "sr-Latn-RS",
-    firstDay: 1,
+    //firstDay: 1,
     slotDuration: "00:30:00",
     slotLabelInterval: "00:30:00",
     slotLabelFormat: {
@@ -229,11 +231,11 @@ const calendarOptions = ref({
     slotEventOverlap: false,
     plugins: [timeGridPlugin, interactionPlugin],
     eventDisplay: "block",
-    initialView: "timeGridWeek",
+    initialView: "sedam",
     headerToolbar: {
         left: "title",
         center: "",
-        right: "today,prev,next,timeGridDay,dva,timeGridWeek"
+        right: "today,prev,next,timeGridDay,dva,sedam"
     },
     scrollTime: new Date(currentDate.setHours(currentDate.getHours() - 1)).toTimeString(),
     views: {
@@ -246,6 +248,11 @@ const calendarOptions = ref({
             type: "timeGrid",
             duration: { days: 5 },
             buttonText: "5 dana"
+        },
+        sedam: {
+            type: "timeGrid",
+            duration: { days: 7 },
+            buttonText: "7 dana"
         }
     },
     dateClick: handleDateClick,
@@ -303,14 +310,13 @@ const handleAppointmentSuccess = () => {
 }
 
 .fc-theme-standard .fc-scrollgrid {
-    border: none;
 }
 
 .fc .fc-timegrid-axis-cushion,
 .fc .fc-timegrid-slot-label-cushion {
-    color: rgba(112, 117, 122, 0.7);
+    color: rgba(0, 0, 0, 1);
     background-color: #fff;
-    font-size: 14px;
+    font-size: 12px;
 }
 
 .fc-theme-standard td,

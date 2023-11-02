@@ -31,7 +31,7 @@ class UpdateAppointmentsController extends Controller
             ]);
             $appointment = Appointment::findOrFail(request('id'))->update([
                 'start_time' => \Illuminate\Support\Carbon::parse(request('start_time'))->tz('Europe/Belgrade'),
-                'finish_time' => Carbon::parse(request('start_time'))->tz('Europe/Belgrade')->addMinutes(60),
+                'finish_time' => Carbon::parse(request('start_time'))->tz('Europe/Belgrade')->addMinutes(30),
             ]);
         }
 

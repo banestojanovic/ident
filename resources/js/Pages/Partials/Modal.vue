@@ -30,7 +30,6 @@
                                     </svg>
 
                                     <span>{{ title }}</span>
-                                    <span class="relative top-0.5 pl-2 text-base text-gray-500">{{ new Date().toLocaleDateString(dateOptions.locale) }}</span>
                                 </DialogTitle>
                                 <div class="mt-4">
                                     <slot />

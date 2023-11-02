@@ -1,5 +1,5 @@
 <template>
-    <footer class="bg-sky-50 pb-8 text-sm text-sky-700">
+    <footer class="bg-sky-50 py-4 text-sm text-[#587787]">
         <div class="flex items-center justify-between px-12">
             <div>
                 © Kreirao

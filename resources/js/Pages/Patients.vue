@@ -21,7 +21,7 @@
                         <input
                             id="search"
                             v-model="form.keyword"
-                            class="block w-full rounded-lg border-0 bg-gray-100 px-4 py-3 leading-5 text-gray-900 placeholder-gray-400 focus:border-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-cyan-600"
+                            class="block w-full rounded-lg border-0 bg-[#EBF2F5] px-4 py-3 leading-5 text-gray-900 placeholder-gray-400 focus:border-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-cyan-600"
                             placeholder="Klikni ovde i počni da kucaš pacijentovo ime pa prezime..."
                             type="search"
                             name="search"

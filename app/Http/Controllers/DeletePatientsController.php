@@ -23,6 +23,6 @@ class DeletePatientsController extends Controller
             'group' => 'success',
         ]);
 
-        return to_route('patients.index');
+        return to_route('calendar.show');
     }
 }

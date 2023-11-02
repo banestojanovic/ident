@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="relative min-h-screen bg-sky-50">
+        <div class="relative min-h-screen bg-[#EBF2F5]">
             <nav class="">
                 <!-- Primary Navigation Menu -->
                 <div class="mx-auto bg-white px-8 py-4">
@@ -8,7 +8,7 @@
                         <div class="flex">
                             <!-- Logo -->
                             <div class="flex shrink-0 items-center">
-                                <Link :href="route('patients.index')">
+                                <Link :href="route('calendar.show')">
                                     <ApplicationLogo class="h-9 fill-current" />
                                 </Link>
                             </div>
@@ -26,7 +26,7 @@
                                                 </figure>
 
                                                 <span class="inline-flex flex-col text-left">
-                                                    <span class="text-gray-500">{{ $page.props.auth.user.role === 2 ? 'Doktor' : 'Stomatološka sestra'}}</span>
+                                                    <span class="text-gray-500">{{ $page.props.auth.user.role === 2 ? "Doktor" : "Stomatološka sestra" }}</span>
                                                     <span class="text-lg font-medium">{{ $page.props.auth.user.name }}</span>
                                                 </span>
                                             </button>
